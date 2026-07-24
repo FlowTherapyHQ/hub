@@ -2,6 +2,10 @@
    FlowHub Global Styles
 ========================= */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -24,19 +28,16 @@ body {
     border-bottom: 1px solid #dbeafe;
 }
 
-
 .logo img {
     width: 180px;
     max-width: 70%;
 }
-
 
 .subtitle {
     margin-top: 10px;
     font-size: 18px;
     color: #52606d;
 }
-
 
 .nav {
     display: flex;
@@ -46,19 +47,23 @@ body {
     margin-top: 20px;
 }
 
-
 .nav a {
     padding: 8px 12px;
     color: #1677c8;
     text-decoration: none;
     font-weight: bold;
+    border-radius: 20px;
+    transition: background .2s ease, color .2s ease;
 }
-
 
 .nav a:hover {
-    text-decoration: underline;
+    background: #dbeafe;
 }
 
+.nav a:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
 
 
 /* =========================
@@ -72,7 +77,6 @@ body {
     margin: 40px auto;
     padding: 20px;
 }
-
 
 
 /* =========================
@@ -89,6 +93,7 @@ body {
 
 .welcome h1 {
     margin-bottom: 15px;
+    color: #1677c8;
 }
 
 .welcome p {
@@ -106,7 +111,6 @@ body {
 }
 
 
-
 /* =========================
    Cards
 ========================= */
@@ -118,34 +122,34 @@ body {
     margin-top: 30px;
 }
 
-
 .card {
     background: white;
     padding: 25px;
     border-radius: 16px;
     box-shadow: 0 5px 20px rgba(0,0,0,.08);
     text-align: center;
-    transition: .3s ease;
+    transition: transform .25s ease, box-shadow .25s ease;
 }
-
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,.12);
 }
-
 
 .card h2,
 .card h3 {
     color: #1677c8;
+    margin-top: 0;
 }
-
 
 .card h3 {
     font-size: 22px;
     margin-bottom: 15px;
 }
 
+.card p {
+    line-height: 1.6;
+}
 
 
 /* =========================
@@ -156,7 +160,6 @@ body {
     margin-top: 20px;
 }
 
-
 .category {
     display: inline-block;
     background: #dbeafe;
@@ -166,7 +169,6 @@ body {
     margin: 5px;
     font-weight: bold;
 }
-
 
 
 /* =========================
@@ -182,13 +184,18 @@ body {
     text-decoration: none;
     border-radius: 25px;
     font-weight: bold;
+    transition: background .2s ease, transform .2s ease;
 }
-
 
 .button:hover {
     background: #125fa5;
+    transform: translateY(-2px);
 }
 
+.button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
 
 
 /* =========================
@@ -200,6 +207,20 @@ body {
     margin-top: 30px;
 }
 
+.back a {
+    color: #1677c8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back a:hover {
+    text-decoration: underline;
+}
+
+.back a:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
 
 
 /* =========================
@@ -214,11 +235,9 @@ body {
     border-top: 1px solid #dbeafe;
 }
 
-
 .footer-nav {
     margin-bottom: 15px;
 }
-
 
 .footer-nav a {
     color: #1677c8;
@@ -227,60 +246,60 @@ body {
     margin: 0 10px;
 }
 
-
 .footer-nav a:hover {
     text-decoration: underline;
 }
 
+.footer-nav a:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
 
 
 /* =========================
    Mobile Responsive
 ========================= */
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
 
     .header {
         padding: 20px;
     }
 
-
     .logo img {
         width: 150px;
     }
 
-
     .subtitle {
         font-size: 16px;
     }
-
 
     .container {
         margin: 20px auto;
         padding: 15px;
     }
 
-
     .welcome {
         padding: 20px;
     }
 
+    .welcome .button {
+        width: 100%;
+        max-width: 320px;
+    }
 
     .card {
         padding: 20px;
     }
 
-
     .card h3 {
         font-size: 20px;
     }
-
 
     .category {
         font-size: 14px;
         margin: 4px;
     }
-
 
     .footer-nav a {
         display: block;
