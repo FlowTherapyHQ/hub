@@ -275,16 +275,16 @@ body {
 .notice {
     background: #ffffff;
     border-radius: 18px;
-    padding: 32px 40px;
-    margin-top: 0;
+    padding: 30px 40px;
+    margin: 30px 0;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .notice h2 {
-    margin-top: 0;
-    margin-bottom: 16px;
+    margin: 0 0 14px;
     color: #1f2937;
+    font-size: 24px;
 }
 
 .notice p {
@@ -292,7 +292,6 @@ body {
     margin: 0 auto;
     line-height: 1.7;
 }
-
 
 /* =========================
    Mobile Responsive
@@ -321,9 +320,10 @@ body {
         padding: 20px;
     }
 
-    .notice {
-        padding: 24px 20px;
-    }
+   .notice {
+    padding: 24px 20px;
+    margin: 24px 0;
+}
 
     .welcome .button {
         width: 100%;
