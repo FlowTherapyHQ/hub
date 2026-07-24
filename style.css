@@ -22,7 +22,20 @@ body {
     max-width: 70%;
 }
 
+.subtitle {
+    margin-top:10px;
+    font-size:18px;
+    color:#52606d;
+}
 
+
+.welcome {
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    text-align:center;
+}
 .subtitle {
     margin-top: 10px;
     font-size: 18px;
