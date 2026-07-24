@@ -66,10 +66,18 @@ body {
     border-radius:16px;
     box-shadow:0 5px 20px rgba(0,0,0,.08);
     text-align:center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
 }
 
 .card h3 {
     color:#1677c8;
+    font-size:22px;
+    margin-bottom:15px;
 }
 
 .footer {
@@ -78,15 +86,15 @@ body {
     color:#6b7280;
 }
 .button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 24px;
-    background: #1677c8;
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: 0.3s ease;
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 26px;
+    background:#1677c8;
+    color:white;
+    text-decoration:none;
+    border-radius:25px;
+    font-weight:bold;
+    transition:0.3s ease;
 }
 
 .button:hover {
