@@ -59,7 +59,14 @@ body {
 .nav a:hover {
     background: #dbeafe;
 }
+.nav a.active {
+    background: #1677c8;
+    color: white;
+}
 
+.nav a.active:hover {
+    background: #125fa5;
+}
 .nav a:focus-visible {
     outline: 3px solid #93c5fd;
     outline-offset: 3px;
@@ -249,7 +256,10 @@ body {
 .footer-nav a:hover {
     text-decoration: underline;
 }
-
+.footer-nav a.active {
+    color: #125fa5;
+    text-decoration: underline;
+}
 .footer-nav a:focus-visible {
     outline: 3px solid #93c5fd;
     outline-offset: 3px;
