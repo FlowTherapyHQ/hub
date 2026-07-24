@@ -37,11 +37,15 @@ body {
     color: #52606d;
 }
 .nav {
-    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
 .nav a {
-    margin:0 10px;
+    margin:0;
+    padding:8px 12px;
     color:#1677c8;
     text-decoration:none;
     font-weight:bold;
@@ -113,6 +117,38 @@ body {
 .button:hover {
     background: #125fa5;
 }
+@media (max-width:600px) {
+
+    .header {
+        padding:20px;
+    }
+
+    .logo img {
+        width:150px;
+    }
+
+    .subtitle {
+        font-size:16px;
+    }
+
+    .container {
+        margin:20px auto;
+        padding:15px;
+    }
+
+    .welcome {
+        padding:20px;
+    }
+
+    .card {
+        padding:20px;
+    }
+
+    .card h3 {
+        font-size:20px;
+    }
+
+}    
 </style>
 
 </head>
