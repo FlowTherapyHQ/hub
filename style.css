@@ -95,7 +95,7 @@ body {
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
     margin-top: 30px;
 }
@@ -193,6 +193,25 @@ body {
     padding: 30px;
     color: #6b7280;
     margin-top: auto;
+    border-top: 1px solid #dbeafe;
+}
+
+
+.footer-nav {
+    margin-bottom: 15px;
+}
+
+
+.footer-nav a {
+    color: #1677c8;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+
+.footer-nav a:hover {
+    text-decoration: underline;
 }
 
 
@@ -242,6 +261,12 @@ body {
     .category {
         font-size: 14px;
         margin: 4px;
+    }
+
+
+    .footer-nav a {
+        display: block;
+        margin: 10px 0;
     }
 
 }
