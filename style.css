@@ -21,7 +21,11 @@ body {
     width: 180px;
     max-width: 70%;
 }
-
+.subtitle {
+    margin-top:10px;
+    font-size:18px;
+    color:#52606d;
+}
 .subtitle {
     margin-top:10px;
     font-size:18px;
