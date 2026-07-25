@@ -182,7 +182,34 @@ body {
     margin: 5px;
     font-weight: bold;
 }
+.article-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #dbeafe;
+    color: #1677c8;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
 
+.article-list {
+    max-width: 520px;
+    margin: 16px auto 0;
+    padding-left: 22px;
+    color: #52606d;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.article-list {
+    margin: 16px 0 0;
+    padding-left: 22px;
+    color: #52606d;
+    line-height: 1.8;
+}
 
 /* =========================
    Buttons
