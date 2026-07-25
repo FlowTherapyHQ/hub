@@ -211,9 +211,8 @@ body {
     text-align: left;
 }
 .featured-article {
-    max-width: 760px;
     width: 100%;
-    margin: 40px auto 30px;
+    margin: 30px 0;
 }
    
 /* =========================
