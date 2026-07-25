@@ -212,11 +212,8 @@ body {
 }
 .featured-article {
     max-width: 760px;
-    width: calc(100% - 40px);
+    width: 100%;
     margin: 40px auto 30px;
-}
-   .welcome + .featured-article {
-    margin-top: 40px;
 }
    
 /* =========================
