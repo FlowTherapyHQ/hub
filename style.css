@@ -23,20 +23,21 @@ body {
 
 .header {
     background: white;
-    padding: 30px;
+    padding: 20px 30px 28px;
     text-align: center;
     border-bottom: 1px solid #dbeafe;
 }
 
 .logo img {
-    width: min(420px, 90%);
+    width: min(460px, 90%);
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
 .subtitle {
-    margin-top: 10px;
+    margin-top: 8px;
+    margin-bottom: 4px;
     font-size: 18px;
     color: #52606d;
 }
@@ -55,12 +56,13 @@ body {
     text-decoration: none;
     font-weight: bold;
     border-radius: 20px;
-    transition: background .2s ease, color .2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nav a:hover {
     background: #dbeafe;
 }
+
 .nav a.active {
     background: #1677c8;
     color: white;
@@ -69,6 +71,7 @@ body {
 .nav a.active:hover {
     background: #125fa5;
 }
+
 .nav a:focus-visible {
     outline: 3px solid #93c5fd;
     outline-offset: 3px;
@@ -96,11 +99,12 @@ body {
     background: white;
     padding: 30px;
     border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
 }
 
 .welcome h1 {
+    margin-top: 0;
     margin-bottom: 15px;
     color: #1677c8;
 }
@@ -135,14 +139,14 @@ body {
     background: white;
     padding: 25px;
     border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
-    transition: transform .25s ease, box-shadow .25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0,0,0,.12);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 .card h2,
@@ -193,7 +197,7 @@ body {
     text-decoration: none;
     border-radius: 25px;
     font-weight: bold;
-    transition: background .2s ease, transform .2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .button:hover {
@@ -242,6 +246,7 @@ body {
     color: #6b7280;
     margin-top: auto;
     border-top: 1px solid #dbeafe;
+    background: white;
 }
 
 .footer-nav {
@@ -295,6 +300,7 @@ body {
     line-height: 1.7;
 }
 
+
 /* =========================
    Mobile Responsive
 ========================= */
@@ -302,15 +308,25 @@ body {
 @media (max-width: 600px) {
 
     .header {
-    padding: 20px 20px 30px;
-}
+        padding: 16px 20px 22px;
+    }
 
     .logo img {
-        width: min(300px, 92%);
+        width: min(320px, 94%);
     }
 
     .subtitle {
         font-size: 16px;
+    }
+
+    .nav {
+        gap: 6px;
+        margin-top: 16px;
+    }
+
+    .nav a {
+        padding: 7px 10px;
+        font-size: 14px;
     }
 
     .container {
@@ -322,10 +338,14 @@ body {
         padding: 20px;
     }
 
-   .notice {
-    padding: 24px 20px;
-    margin: 24px 0;
-}
+    .welcome h1 {
+        font-size: 28px;
+    }
+
+    .notice {
+        padding: 24px 20px;
+        margin: 24px 0;
+    }
 
     .welcome .button {
         width: 100%;
@@ -345,9 +365,12 @@ body {
         margin: 4px;
     }
 
+    .footer {
+        padding: 24px 20px;
+    }
+
     .footer-nav a {
         display: block;
         margin: 10px 0;
     }
-
 }
