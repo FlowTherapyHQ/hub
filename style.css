@@ -77,7 +77,10 @@ body {
     outline-offset: 3px;
 }
 
-
+.category {
+    display: inline-block;
+    text-decoration: none;
+}
 /* =========================
    Main Layout
 ========================= */
