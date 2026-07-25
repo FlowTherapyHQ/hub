@@ -29,8 +29,10 @@ body {
 }
 
 .logo img {
-    width: 180px;
-    max-width: 70%;
+    width: min(420px, 90%);
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .subtitle {
