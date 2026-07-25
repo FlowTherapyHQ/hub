@@ -209,7 +209,7 @@ body {
     color: #52606d;
     line-height: 1.8;
     text-align: left;
-   
+}
 .featured-article {
     max-width: 760px;
     width: calc(100% - 40px);
