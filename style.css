@@ -212,8 +212,13 @@ body {
    
 .featured-article {
     max-width: 760px;
-    margin: 30px auto;
+    width: calc(100% - 40px);
+    margin: 40px auto 30px;
 }
+   .welcome + .featured-article {
+    margin-top: 40px;
+}
+   
 /* =========================
    Buttons
 ========================= */
