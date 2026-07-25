@@ -182,6 +182,7 @@ body {
     margin: 5px;
     font-weight: bold;
 }
+
 .article-label {
     display: inline-block;
     margin-bottom: 12px;
@@ -195,6 +196,12 @@ body {
     text-transform: uppercase;
 }
 
+.article-meta {
+    margin-top: 16px;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
 .article-list {
     max-width: 520px;
     margin: 16px auto 0;
@@ -204,13 +211,12 @@ body {
     text-align: left;
 }
 
-.article-list {
-    margin: 16px 0 0;
-    padding-left: 22px;
-    color: #52606d;
-    line-height: 1.8;
+.featured-article {
+    grid-column: 1 / -1;
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto;
 }
-
 /* =========================
    Buttons
 ========================= */
