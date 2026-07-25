@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Explore FlowNotes about massage recovery, soreness, rest, hydration, heat, ice, and supporting your body after activity or therapeutic bodywork.">
+
+    <title>Recovery | FlowNotes</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FlowHub">
+    <meta name="theme-color" content="#1677c8">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img
+                src="flowhub-horizontal.png"
+                alt="FlowHub wellness portal logo"
+                title="FlowHub">
+
+        </a>
+
+    </div>
+
+    <div class="subtitle">
+        Your Wellness Portal
+    </div>
+
+    <nav class="nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="forms.html">Forms</a>
+        <a href="aftercare.html">Aftercare</a>
+        <a href="flownotes.html" class="active">FlowNotes</a>
+        <a href="flowresources.html">FlowResources</a>
+        <a href="flowpass.html">FlowPass</a>
+        <a href="faq.html">FAQ</a>
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <section class="welcome">
+
+        <h1>Recovery</h1>
+
+        <p>
+            Explore articles about rest, soreness, hydration, massage
+            aftercare, and practical ways to support your body after physical
+            activity or therapeutic bodywork.
+        </p>
+
+    </section>
+
+
+    <div class="center-link">
+
+        <a href="flownotes.html">
+            ← Back to FlowNotes
+        </a>
+
+    </div>
+
+
+    <div class="category-content">
+
+        <article class="library-entry">
+
+            <div class="article-label">
+                Recovery
+            </div>
+
+            <h2>First FlowNote Coming Soon</h2>
+
+            <p class="library-summary">
+                This library will provide practical information about
+                post-massage care, exercise recovery, soreness, rest, and
+                recognizing what your body may need after activity.
+            </p>
+
+        </article>
+
+
+        <section class="coming-soon-card">
+
+            <h2>Coming Soon</h2>
+
+            <p>
+                Upcoming Recovery FlowNotes include:
+            </p>
+
+            <ul class="article-list">
+
+                <li>Massage Soreness: What Is Normal?</li>
+                <li>Heat or Ice: Which Should You Use?</li>
+                <li>Do You Really Need to Drink Water After Massage?</li>
+                <li>Rest Days Are Part of Your Training</li>
+                <li>When Your Body Needs Recovery Instead of More Pressure</li>
+
+            </ul>
+
+        </section>
+
+    </div>
+
+
+    <div class="center-link bottom-link">
+
+        <a href="flownotes.html">
+            ← Return to FlowNotes
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+
+        <a href="index.html">Home</a>
+        <a href="forms.html">Forms</a>
+        <a href="aftercare.html">Aftercare</a>
+        <a href="flownotes.html" class="active">FlowNotes</a>
+        <a href="flowresources.html">FlowResources</a>
+        <a href="flowpass.html">FlowPass</a>
+        <a href="faq.html">FAQ</a>
+
+    </nav>
+
+    <p>
+        © FlowTherapy • Move Better. Feel Better. Live Better.
+    </p>
+
+</footer>
+
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+        navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(function () {
+                console.log("FlowHub service worker registered.");
+            })
+            .catch(function (error) {
+                console.error(
+                    "Service worker registration failed:",
+                    error
+                );
+            });
+    });
+}
+</script>
+
+</body>
+</html>
