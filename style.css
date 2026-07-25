@@ -209,13 +209,10 @@ body {
     color: #52606d;
     line-height: 1.8;
     text-align: left;
-}
-
+   
 .featured-article {
-    grid-column: 1 / -1;
     max-width: 760px;
-    width: 100%;
-    margin: 0 auto;
+    margin: 30px auto;
 }
 /* =========================
    Buttons
