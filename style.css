@@ -1,6 +1,35 @@
-/* =========================
-   FlowHub Global Styles
-========================= */
+/* ==========================================================================
+
+    FLOWHUB STYLESHEET
+
+    Main stylesheet for the FlowHub client portal.
+    Shared by all public pages.
+
+    Version: 1.0.0
+    Last Updated: July 2026
+
+    TABLE OF CONTENTS
+
+    01. Reset & Global Styles
+    02. Header
+    03. Navigation
+    04. Layout
+    05. Welcome Section
+    06. Cards
+    07. Buttons & Return Links
+    08. FlowNotes Landing Page
+    09. FlowNotes Category Pages
+    10. FlowNotes Article Pages
+    11. Forms & Notices
+    12. Footer
+    13. Mobile Responsive
+
+========================================================================== */
+
+
+/* ==========================================================================
+   01. Reset & Global Styles
+========================================================================== */
 
 * {
     box-sizing: border-box;
@@ -32,9 +61,9 @@ a {
 }
 
 
-/* =========================
-   Header and Navigation
-========================= */
+/* ==========================================================================
+   02. Header
+========================================================================== */
 
 .header {
     background: #ffffff;
@@ -56,6 +85,11 @@ a {
     color: #52606d;
     font-size: 18px;
 }
+
+
+/* ==========================================================================
+   03. Navigation
+========================================================================== */
 
 .nav {
     display: flex;
@@ -91,15 +125,16 @@ a {
 .footer-nav a:focus-visible,
 .back a:focus-visible,
 .center-link a:focus-visible,
+.article-back a:focus-visible,
 .category:focus-visible {
     outline: 3px solid #93c5fd;
     outline-offset: 3px;
 }
 
 
-/* =========================
-   Main Layout
-========================= */
+/* ==========================================================================
+   04. Layout
+========================================================================== */
 
 .container {
     flex: 1;
@@ -110,9 +145,9 @@ a {
 }
 
 
-/* =========================
-   Welcome Section
-========================= */
+/* ==========================================================================
+   05. Welcome Section
+========================================================================== */
 
 .welcome {
     background: #ffffff;
@@ -139,9 +174,9 @@ a {
 }
 
 
-/* =========================
-   Cards
-========================= */
+/* ==========================================================================
+   06. Cards
+========================================================================== */
 
 .cards {
     display: grid;
@@ -182,9 +217,49 @@ a {
 }
 
 
-/* =========================
-   FlowNotes Landing Page
-========================= */
+/* ==========================================================================
+   07. Buttons & Return Links
+========================================================================== */
+
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 26px;
+    background: #1677c8;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: #125fa5;
+    transform: translateY(-2px);
+}
+
+.back {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.back a,
+.center-link a,
+.article-back a {
+    color: #1677c8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back a:hover,
+.center-link a:hover,
+.article-back a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   08. FlowNotes Landing Page
+========================================================================== */
 
 .featured-article {
     width: 100%;
@@ -256,55 +331,9 @@ a.category:hover {
 }
 
 
-/* =========================
-   Buttons
-========================= */
-
-.button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 26px;
-    background: #1677c8;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-}
-
-.button:hover {
-    background: #125fa5;
-    transform: translateY(-2px);
-}
-
-
-/* =========================
-   Return Links
-========================= */
-
-.back {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.back a,
-.center-link a,
-.article-back a {
-    color: #1677c8;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.back a:hover,
-.center-link a:hover,
-.article-back a:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================
-   Stress and Wellness
-   Category Page
-========================= */
+/* ==========================================================================
+   09. FlowNotes Category Pages
+========================================================================== */
 
 .center-link {
     width: 100%;
@@ -381,35 +410,9 @@ a.category:hover {
 }
 
 
-/* =========================
-   Resource Notice
-========================= */
-
-.notice {
-    margin: 30px 0;
-    padding: 30px 40px;
-    background: #ffffff;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    text-align: center;
-}
-
-.notice h2 {
-    margin: 0 0 14px;
-    color: #1f2937;
-    font-size: 24px;
-}
-
-.notice p {
-    max-width: 760px;
-    margin: 0 auto;
-    line-height: 1.7;
-}
-
-
-/* =========================
-   FlowNotes Article Pages
-========================= */
+/* ==========================================================================
+   10. FlowNotes Article Pages
+========================================================================== */
 
 .article-container {
     flex: 1;
@@ -573,9 +576,35 @@ a.category:hover {
 }
 
 
-/* =========================
-   Footer
-========================= */
+/* ==========================================================================
+   11. Forms & Notices
+========================================================================== */
+
+.notice {
+    margin: 30px 0;
+    padding: 30px 40px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.notice h2 {
+    margin: 0 0 14px;
+    color: #1f2937;
+    font-size: 24px;
+}
+
+.notice p {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   12. Footer
+========================================================================== */
 
 .footer {
     margin-top: auto;
@@ -607,9 +636,9 @@ a.category:hover {
 }
 
 
-/* =========================
-   Mobile Responsive
-========================= */
+/* ==========================================================================
+   13. Mobile Responsive
+========================================================================== */
 
 @media (max-width: 650px) {
 
