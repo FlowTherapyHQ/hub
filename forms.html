@@ -9,11 +9,16 @@
     <title>FlowHub | Client Forms & Resources</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.webmanifest">
 
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FlowHub">
 
     <meta name="theme-color" content="#1677c8">
 
@@ -68,25 +73,25 @@
 
         <div class="cards">
 
-         <div class="card">
+            <div class="card">
 
-    <h2>FlowStart Intake</h2>
+                <h2>FlowStart Intake</h2>
 
-    <p>
-        Please complete your confidential intake form before your first
-        appointment. This will help us provide safe, personalized care and 
-        ensure your first session is tailored to your individual needs.
-        
-    </p>
+                <p>
+                    Please complete your confidential intake form before your
+                    first appointment. This will help us provide safe,
+                    personalized care and ensure your first session is tailored
+                    to your individual needs.
+                </p>
 
-    <a class="button"
-       href="forms/FlowStart-Intake.pdf"
-       target="_blank"
-       rel="noopener">
-        Open Form
-    </a>
+                <a class="button"
+                   href="forms/FlowStart-Intake.pdf"
+                   target="_blank"
+                   rel="noopener">
+                    Open Form
+                </a>
 
-</div>
+            </div>
 
 
             <div class="card">
@@ -200,6 +205,22 @@
         </p>
 
     </div>
+
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker
+                    .register("/service-worker.js")
+                    .then(function () {
+                        console.log("FlowHub service worker registered.");
+                    })
+                    .catch(function (error) {
+                        console.error("Service worker registration failed:", error);
+                    });
+            });
+        }
+    </script>
 
 </body>
 
