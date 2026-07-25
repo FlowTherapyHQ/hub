@@ -518,3 +518,148 @@ body {
     margin-bottom: 0;
     text-align: center;
 }
+/* =========================
+   Mobile Responsive
+========================= */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 16px 20px 22px;
+    }
+
+    .logo img {
+        width: min(320px, 94%);
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .nav {
+        gap: 6px;
+        margin-top: 16px;
+    }
+
+    .nav a {
+        padding: 7px 10px;
+        font-size: 14px;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .welcome {
+        padding: 20px;
+    }
+
+    .welcome h1 {
+        font-size: 28px;
+    }
+
+    .notice {
+        padding: 24px 20px;
+        margin: 24px 0;
+    }
+
+    .welcome .button {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card h3 {
+        font-size: 20px;
+    }
+
+    .category {
+        font-size: 14px;
+        margin: 4px;
+    }
+
+    .footer {
+        padding: 24px 20px;
+    }
+
+    .footer-nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+
+    /* FlowNotes Article Mobile Styles */
+
+    .article-container {
+        margin: 18px auto;
+        padding: 14px;
+    }
+
+    .flow-article {
+        padding: 30px 22px;
+        border-radius: 14px;
+    }
+
+    .article-header {
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+    }
+
+    .article-header h1 {
+        font-size: 2rem;
+    }
+
+    .article-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .article-meta {
+        font-size: 0.85rem;
+    }
+
+    .article-meta span {
+        display: inline-block;
+        margin: 0 4px;
+    }
+
+    .flow-article section {
+        margin-top: 32px;
+    }
+
+    .flow-article h2 {
+        font-size: 1.45rem;
+    }
+
+    .flow-article p {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .article-intro,
+    .article-warning,
+    .did-you-know,
+    .author-card,
+    .article-cta {
+        padding: 22px 20px;
+    }
+
+    .article-quote {
+        margin: 24px 0;
+        padding: 20px;
+        font-size: 1.1rem;
+    }
+
+    .article-list-check {
+        padding-left: 20px;
+    }
+
+    .article-cta .button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+}
