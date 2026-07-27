@@ -51,6 +51,7 @@ body {
 
 img {
     max-width: 100%;
+    height: auto;
 }
 
 a {
@@ -72,9 +73,14 @@ a {
     border-bottom: 1px solid #dbeafe;
 }
 
+.logo {
+    text-align: center;
+}
+
 .logo img {
     display: block;
     width: min(460px, 90%);
+    max-width: 460px;
     height: auto;
     margin: 0 auto;
 }
