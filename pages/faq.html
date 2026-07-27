@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FlowHub | Frequently Asked Questions</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/icons/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/icons/apple-touch-icon.png"
+    />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="FlowHub" />
+
+    <meta name="theme-color" content="#1677c8" />
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="logo">
+        <img
+          src="../assets/images/flowhub-horizontal.png"
+          alt="FlowHub wellness portal logo"
+          title="FlowHub"
+        />
+      </div>
+
+      <div class="subtitle">Your Wellness Portal</div>
+
+      <div class="nav">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html">FlowNotes</a>
+        <a href="../pages/flowresources.html">FlowResources</a>
+        <a href="../pages/flowpass.html">FlowPass</a>
+        <a href="../pages/faq.html" class="active">FAQ</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="welcome">
+        <h1>Frequently Asked Questions</h1>
+
+        <p>
+          Everything you need to know before your appointment. If you don't see
+          your question here, feel free to reach out.
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h2>What should I wear?</h2>
+
+          <p>
+            Wear whatever makes you comfortable. Most clients arrive in everyday
+            clothing and undress only to their comfort level before the session.
+            Proper draping is always used to protect your privacy.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Do I have to undress?</h2>
+
+          <p>
+            Massage should remain within your comfort level. You may undress
+            only to your comfort level, and proper draping is always used
+            throughout your session.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Will the massage hurt?</h2>
+
+          <p>
+            Therapeutic massage should never feel overwhelming. Some techniques
+            may create temporary discomfort, but communication is encouraged
+            throughout your session so pressure can be adjusted at any time.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>How often should I get a massage?</h2>
+
+          <p>
+            Every person is different. Your therapist may recommend a schedule
+            based on your goals, lifestyle, activity level, and how your body
+            responds to treatment.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>What if I'm running late?</h2>
+
+          <p>
+            Please let us know as soon as possible. Every effort will be made to
+            accommodate you, although your session may need to be shortened to
+            avoid impacting other scheduled appointments.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>What if I need to cancel?</h2>
+
+          <p>
+            Please provide as much notice as possible if you need to cancel or
+            reschedule your appointment. This allows the opportunity to offer
+            that appointment time to another client.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Do you work with prenatal clients?</h2>
+
+          <p>
+            Yes. Prenatal massage is available with positioning and techniques
+            adapted for comfort throughout pregnancy. Please share any
+            pregnancy-related concerns or restrictions, and consult your
+            healthcare provider when medically advised.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Should I drink water afterward?</h2>
+
+          <p>
+            Staying hydrated after your massage can support your overall
+            well-being. Continue normal hydration and pay attention to how your
+            body feels over the next day or two.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>How should I prepare for my appointment?</h2>
+
+          <p>
+            Complete any required forms before your visit when possible, arrive
+            a few minutes early, and let your therapist know about any injuries,
+            medical conditions, or areas of concern.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Still have questions?</h2>
+
+          <p>
+            We're happy to help. Please reach out before your appointment if you
+            have any questions about services, scheduling, or what to expect
+            during your visit.
+          </p>
+        </div>
+      </div>
+
+      <div class="back">
+        <a href="../index.html"> ← Return to FlowHub </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html">FlowNotes</a>
+        <a href="../pages/flowresources.html">FlowResources</a>
+        <a href="../pages/flowpass.html">FlowPass</a>
+        <a href="../pages/faq.html" class="active">FAQ</a>
+      </div>
+
+      <p>© FlowTherapy • Move Better. Feel Better. Live Better.</p>
+    </div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(function () {
+              console.log("FlowHub service worker registered.");
+            })
+            .catch(function (error) {
+              console.error("Service worker registration failed:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
