@@ -731,8 +731,9 @@ a {
         padding-bottom: 24px;
     }
 
-    .article-header h1 {
-        font-size: 2rem;
+    .article-header h1{
+    font-size:2.75rem;
+    
     }
 
     .article-subtitle {
@@ -783,4 +784,186 @@ a {
         width: 100%;
         max-width: 300px;
     }
+}
+/* 30-SECOND DESK RESET */
+
+.desk-reset {
+  margin: 32px 0;
+  padding: 28px 30px;
+  border-left: 4px solid #1677c8;
+  border-radius: 12px;
+  background: #f1f7fb;
+}
+
+.desk-reset h2 {
+  margin-top: 0;
+  color: #1677c8;
+}
+
+.desk-reset-steps {
+  margin: 24px 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: desk-step;
+}
+
+.desk-reset-steps li {
+  counter-increment: desk-step;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  align-items: start;
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border: 1px solid #d6e8f5;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.desk-reset-steps li::before {
+  content: counter(desk-step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #1677c8;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.desk-reset-steps strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #123b66;
+}
+
+.desk-reset-note {
+  margin-bottom: 0;
+  padding-top: 18px;
+  border-top: 1px solid #d6e8f5;
+  color: #49657d;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .desk-reset {
+    padding: 22px 18px;
+  }
+
+  .desk-reset-steps li {
+    grid-template-columns: 34px 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .desk-reset-steps li::before {
+    width: 30px;
+    height: 30px;
+  }
+}/* FLOWBREAK — THE FLOW FIVE */
+
+.flowbreak-section {
+  margin: 34px 0;
+  padding: 30px;
+  border-left: 4px solid #1677c8;
+  border-radius: 12px;
+  background: #f1f7fb;
+}
+
+.flowbreak-heading {
+  margin-bottom: 20px;
+}
+
+.flowbreak-name {
+  display: block;
+  color: #1677c8;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.flowbreak-feature {
+  display: block;
+  margin-top: 4px;
+  color: #49657d;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.flow-five-steps {
+  margin: 25px 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: flow-five-step;
+}
+
+.flow-five-steps li {
+  counter-increment: flow-five-step;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 15px;
+  align-items: start;
+  margin-bottom: 14px;
+  padding: 16px;
+  border: 1px solid #d6e8f5;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.flow-five-steps li::before {
+  content: counter(flow-five-step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: #1677c8;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.flow-five-steps strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #123b66;
+  font-size: 1rem;
+}
+
+.flow-five-steps p {
+  margin: 0;
+}
+
+.flowbreak-note {
+  margin-bottom: 0;
+  padding-top: 19px;
+  border-top: 1px solid #d6e8f5;
+  color: #49657d;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .flowbreak-section {
+    padding: 23px 18px;
+  }
+
+  .flowbreak-name {
+    font-size: 1.65rem;
+  }
+
+  .flow-five-steps li {
+    grid-template-columns: 34px 1fr;
+    gap: 11px;
+    padding: 13px;
+  }
+
+  .flow-five-steps li::before {
+    width: 30px;
+    height: 30px;
+  }
 }
