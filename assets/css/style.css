@@ -2703,29 +2703,55 @@ border: 1px solid #dcecff;
 .veteran-resources-section {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 2rem;
+  gap: 2.5rem;
+  align-items: center;
   max-width: 1000px;
   margin: 4rem auto;
   padding: 2.5rem;
   border-radius: 18px;
   background: rgba(224, 241, 252, 0.75);
 }
-
+.veteran-feature > div:first-child,
+.comfort-section > div:first-child,
+.veteran-summary-section > div:first-child,
+.veteran-resources-section > div:first-child {
+    max-width: 430px;
+}
 .veteran-goals,
 .comfort-list,
 .summary-includes,
 .veteran-resource-links {
-  padding: 1.5rem;
+  padding: 1.25rem;
   border-radius: 14px;
   background: #ffffff;
 }
 
 .veteran-goals p,
-.comfort-list p {
-  margin-top: 0;
-  margin-bottom: 0.9rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 1px solid rgba(22, 119, 200, 0.12);
+.comfort-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.comfort-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.comfort-list li:last-child {
+    margin-bottom: 0;
+}
+
+.comfort-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #1677c8;
+    font-weight: 700;
+    font-size: 1.1rem;
 }
 
 .veteran-goals p:last-child,
@@ -2810,39 +2836,81 @@ border: 1px solid #dcecff;
   line-height: 1.75;
 }
 
+.veteran-resources-section {
+  align-items: center;
+  padding: 2.25rem;
+}
+
+.veteran-resources-section > div:first-child {
+  max-width: 430px;
+}
+
 .veteran-resource-links {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.9rem;
+  padding: 0;
+  background: transparent;
 }
 
 .veteran-resource-link {
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  border: 1px solid rgba(22, 119, 200, 0.15);
-  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 72px;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(22, 119, 200, 0.18);
+  border-radius: 14px;
+  background: #ffffff;
   color: inherit;
   text-decoration: none;
+  box-shadow: 0 6px 16px rgba(20, 55, 85, 0.06);
   transition:
     transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .veteran-resource-link strong {
+  display: block;
+  margin-bottom: 0.25rem;
   color: #1677c8;
+  font-size: 1rem;
 }
 
 .veteran-resource-link span {
-  margin-top: 0.25rem;
   color: #4f6475;
   font-size: 0.92rem;
+  line-height: 1.35;
 }
 
-.veteran-resource-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(20, 55, 85, 0.1);
+.resource-arrow{
+    font-size:1.5rem;
+    color:#1677c8;
+    opacity:.7;
 }
 
+.veteran-resource-link:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 22px rgba(20,55,85,.10);
+}
+
+.resource-arrow{
+    transition:.2s;
+}
+
+.veteran-resource-link:hover .resource-arrow{
+    transform:translateX(5px);
+}
+.veteran-resources-section {
+    align-items: center;
+}
+
+.veteran-resources-section > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .veteran-faq details {
   max-width: 850px;
   margin: 0 auto 1rem;
@@ -2891,5 +2959,129 @@ border: 1px solid #dcecff;
 @media (max-width: 520px) {
   .veteran-step {
     grid-template-columns: 1fr;
+  }
+}/* -------------------------------------------------
+   FlowHub Global Polish
+------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.55;
+}
+
+.container {
+  width: min(1100px, calc(100% - 2rem));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.welcome {
+  padding: 2.5rem;
+}
+
+.welcome h1 {
+  margin-top: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.welcome h2 {
+  margin-bottom: 1rem;
+}
+
+.welcome p:last-of-type {
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow {
+  letter-spacing: 0.1em;
+}
+
+.section-heading h2 {
+  margin-top: 0.35rem;
+}
+
+.card,
+.service-card,
+.flowpass-card,
+.perk-card,
+.flowchair-card,
+.veteran-care-card,
+.homework-card,
+.event-card,
+.veteran-resource-link {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.card:hover,
+.service-card:hover,
+.flowpass-card:hover,
+.perk-card:hover,
+.flowchair-card:hover,
+.veteran-care-card:hover,
+.homework-card:hover,
+.event-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(22, 119, 200, 0.32);
+  box-shadow: 0 12px 28px rgba(20, 55, 85, 0.12);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.4rem;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(22, 119, 200, 0.2);
+}
+
+.button:focus-visible,
+.nav a:focus-visible,
+.footer-nav a:focus-visible,
+.veteran-resource-link:focus-visible,
+summary:focus-visible {
+  outline: 3px solid rgba(22, 119, 200, 0.35);
+  outline-offset: 3px;
+}
+
+.back {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.back a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back a:hover {
+  text-decoration: underline;
+}
+
+footer,
+.footer {
+  margin-top: 0;
+}
+
+@media (max-width: 700px) {
+  .welcome {
+    padding: 1.75rem;
+  }
+
+  .container {
+    width: min(100% - 1.25rem, 1100px);
   }
 }
