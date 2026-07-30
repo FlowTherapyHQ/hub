@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Explore FlowResources from FlowTherapy, including practical wellness guides, movement routines, workplace wellness resources, and self-care tools."
+    />
+
+    <title>Wellness Programs | FlowTherapy</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <link rel="manifest" href="../manifest.webmanifest" />
+
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/icons/favicon-32x32.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/icons/favicon-16x16.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/icons/apple-touch-icon.png"
+    />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <meta name="apple-mobile-web-app-title" content="FlowHub" />
+
+    <meta name="theme-color" content="#1677c8" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="../index.html">
+          <img
+            src="../assets/images/flowhub-horizontal.png"
+            alt="FlowHub wellness portal logo"
+            title="FlowHub"
+          />
+        </a>
+      </div>
+
+      <div class="subtitle">Your Wellness Portal</div>
+
+      <div class="nav">
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="../pages/forms.html">Forms</a>
+          <a href="../pages/aftercare.html">Aftercare</a>
+          <a href="../pages/flownotes.html">FlowNotes</a>
+          <a href="../pages/flowresources.html">FlowResources</a>
+          <a href="../pages/wellness-programs.html" class="active">Wellness Programs</a>
+          <a href="../pages/faq.html">FAQ</a>
+        </nav>
+      </nav>
+    </header>
+
+    <div class="container wellness-programs-page">
+
+    <div class="welcome">
+  <h1>Wellness Programs</h1>
+
+  <p class="welcome-subtitle">
+    Discover personalized programs designed to support your health, wellness, and long-term care.
+  </p>
+
+  <p>
+    Explore programs designed to support consistent therapeutic care,
+    restorative self-care, workplace wellness, and specialized resources.
+  </p>
+</div>
+
+    <div class="cards">
+
+  <div class="card">
+    <h2>SpaFlow</h2>
+
+    <p class="card-subtitle">Luxury Self-Care Experiences</p>
+
+    <p>
+      Experience Flow &amp; Glow, Back Renewal, HandFlow, and SoleFlow—
+      thoughtfully designed treatments that complement therapeutic massage
+      or offer a relaxing escape on their own.
+    </p>
+
+    <a class="button" href="../pages/spaflow.html">
+      Explore SpaFlow
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>FlowPass</h2>
+
+    <p class="card-subtitle">Wellness Made Routine</p>
+
+    <p>
+      Enjoy consistent therapeutic care through monthly memberships,
+      exclusive member benefits, discounted FlowBoosts, and access to
+      FlowRewards.
+    </p>
+
+    <a class="button" href="../pages/flowpass.html">
+      View Memberships
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>Veterans Resource Center</h2>
+
+    <p class="card-subtitle">Supporting Those Who Served</p>
+
+    <p>
+      Explore resources for Veterans, including information about
+      trauma-informed massage, VA Community Care, and what to expect
+      throughout your wellness journey.
+    </p>
+
+    <a class="button" href="../pages/veterans.html">
+      Visit Resource Center
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>Corporate Wellness</h2>
+
+    <p class="card-subtitle">Wellness at Work</p>
+
+    <p>
+      Bring FlowChair and workplace wellness programs directly to your
+      office, conference, healthcare facility, employee event, or special
+      gathering.
+    </p>
+
+    <a class="button" href="../pages/corporate.html">
+      Explore Corporate Wellness
+    </a>
+  </div>
+
+</div>
+
+</div>
+    
+    </main>
+
+    <footer class="footer">
+      <div class="footer-nav">
+    <a href="../index.html">Home</a>
+    <a href="../pages/forms.html">Forms</a>
+    <a href="../pages/aftercare.html">Aftercare</a>
+    <a href="../pages/flownotes.html">FlowNotes</a>
+    <a href="../pages/flowresources.html">FlowResources</a>
+    <a href="../pages/wellness-programs.html" class="active">Wellness Programs</a>
+    <a href="../pages/faq.html">FAQ</a>
+</div>
+
+      <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
+    </footer>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(function () {
+              console.log("FlowHub service worker registered.");
+            })
+            .catch(function (error) {
+              console.error("Service worker registration failed:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
