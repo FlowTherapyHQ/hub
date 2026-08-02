@@ -311,6 +311,13 @@ a {
     margin-top: 20px;
 }
 
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
 .categories a {
     display: inline-block;
     margin: 5px;
@@ -3283,4 +3290,263 @@ footer,
   .continue-reading-card {
     min-height: auto;
   }
+}
+.related-articles {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid #cfe2f5;
+}
+
+.related-articles h2 {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.related-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.related-article-card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  border: 1px solid #cfe2f5;
+  border-radius: 14px;
+  background: #f7fbff;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.related-article-card:hover,
+.related-article-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: #1677c8;
+  box-shadow: 0 10px 24px rgba(22, 119, 200, 0.12);
+}
+
+.related-article-card h3 {
+  margin: 0 0 10px;
+  color: #1677c8;
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+
+.related-article-card p {
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+
+.related-article-card span {
+  margin-top: auto;
+  color: #1677c8;
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .related-articles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.future-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-top: 25px;
+}
+
+.future-card {
+  background: #f8fbff;
+  border: 1px solid #d6e7f7;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.future-card h3 {
+  color: #1677c8;
+  margin-bottom: 10px;
+}
+
+.future-card p {
+  margin: 0;
+}
+.start-here {
+  height: 100%;
+}
+
+.start-here h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.start-here-intro {
+  max-width: 440px;
+  margin: 0 auto 20px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.start-here-links {
+  display: grid;
+  gap: 10px;
+}
+
+.start-here-link {
+  display: block;
+  padding: 14px 16px;
+  border: 1px solid #d6e7f7;
+  border-radius: 10px;
+  background: #f8fbff;
+  color: #12324a;
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.start-here-link:hover,
+.start-here-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: #1677c8;
+  background: #ffffff;
+}
+
+.start-here-category {
+  display: block;
+  margin-bottom: 4px;
+  color: #1677c8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.start-here-link strong {
+  display: block;
+  line-height: 1.35;
+}
+/* =========================================================
+   Can Massage Improve Sleep – article sections
+   ========================================================= */
+
+.highlight-card {
+  margin: 36px 0;
+  padding: 30px;
+  border: 1px solid #cfe2f5;
+  border-radius: 18px;
+  background: #f5f9fd;
+}
+
+.highlight-card > h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #1677c8;
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0 36px;
+}
+
+.info-card {
+  padding: 24px;
+  border: 1px solid #cfe2f5;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(20, 55, 85, 0.06);
+}
+
+.info-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #1677c8;
+}
+
+.info-card p {
+  margin-bottom: 0;
+}
+
+.related-notes {
+  margin: 36px 0;
+  padding: 28px;
+  border: 1px solid #cfe2f5;
+  border-radius: 16px;
+  background: #f7fbff;
+}
+
+.related-notes h2 {
+  margin-top: 0;
+  color: #1677c8;
+}
+
+.related-notes .article-list {
+  margin-bottom: 0;
+}
+
+.important-note {
+  margin: 32px 0;
+  padding: 24px;
+  border-left: 4px solid #e59a18;
+  border-radius: 12px;
+  background: #fff7ec;
+}
+
+.important-note h3 {
+  margin-top: 0;
+  color: #8a4700;
+}
+
+.important-note p {
+  margin-bottom: 0;
+}
+
+.callout-box {
+  margin: 36px 0;
+  padding: 32px;
+  border-radius: 18px;
+  background: #f1f8fe;
+  text-align: center;
+}
+
+.callout-box h2 {
+  margin-top: 0;
+  color: #1677c8;
+}
+
+.section-divider {
+  width: 120px;
+  height: 3px;
+  margin: 34px auto;
+  border-radius: 999px;
+  background: #1677c8;
+  opacity: 0.25;
+}
+
+@media (max-width: 700px) {
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-card,
+  .related-notes,
+  .callout-box {
+    padding: 22px;
+  }
+}
+.sleep-myth-label.myth-label {
+  background: #f7f3f0;
+  color: #8a5a3b;
+}
+
+.sleep-myth-label.fact-label {
+  background: #eaf4fe;
+  color: #1677c8;
 }
