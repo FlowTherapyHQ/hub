@@ -1,0 +1,1431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Submit an inquiry to FlowTherapy about corporate wellness, private events, Veterans resources, or wellness programs."
+    />
+
+    <title>Inquiry Form | FlowHub</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/icons/favicon-32x32.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/icons/favicon-16x16.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/icons/apple-touch-icon.png"
+    />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="FlowHub" />
+    <meta name="theme-color" content="#1677c8" />
+
+    <style>
+      :root {
+        --inquiry-blue: #1677c8;
+        --inquiry-blue-dark: #0b3f78;
+        --inquiry-blue-hover: #0e5fa5;
+        --inquiry-blue-soft: #eaf4fe;
+        --inquiry-blue-pale: #f5faff;
+        --inquiry-ink: #17324d;
+        --inquiry-muted: #52677b;
+        --inquiry-border: #cfe2f5;
+        --inquiry-page: #f3f8fc;
+        --inquiry-warning: #80530e;
+        --inquiry-warning-soft: #fff9ed;
+        --inquiry-shadow: 0 12px 30px rgba(27, 67, 103, 0.08);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--inquiry-page);
+        color: var(--inquiry-ink);
+      }
+
+      .inquiry-shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 42px 0 72px;
+      }
+
+      /* =====================================================
+         HERO
+         ===================================================== */
+
+      .inquiry-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+        gap: 46px;
+        align-items: stretch;
+        overflow: hidden;
+        padding: 48px;
+        border: 1px solid var(--inquiry-border);
+        border-radius: 26px;
+        background:
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(22, 119, 200, 0.14),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #ffffff 0%, #f5faff 100%);
+        box-shadow: var(--inquiry-shadow);
+      }
+
+      .inquiry-hero-copy {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .inquiry-kicker {
+        display: inline-flex;
+        align-self: flex-start;
+        margin-bottom: 16px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--inquiry-blue-soft);
+        color: var(--inquiry-blue);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .inquiry-hero h1 {
+        margin: 0 0 16px;
+        color: var(--inquiry-blue);
+        font-size: clamp(2.6rem, 5.7vw, 4.7rem);
+        line-height: 1.02;
+      }
+
+      .inquiry-hero-copy > p {
+        max-width: 690px;
+        margin: 0;
+        color: var(--inquiry-muted);
+        font-size: 1.08rem;
+        line-height: 1.75;
+      }
+
+      .inquiry-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 27px;
+      }
+
+      .inquiry-primary-button,
+      .inquiry-secondary-button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 18px;
+        border-radius: 999px;
+        font: inherit;
+        font-weight: 800;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .inquiry-primary-button {
+        border: 1px solid var(--inquiry-blue);
+        background: var(--inquiry-blue);
+        color: #ffffff;
+      }
+
+      .inquiry-primary-button:hover {
+        border-color: var(--inquiry-blue-hover);
+        background: var(--inquiry-blue-hover);
+      }
+
+      .inquiry-secondary-button {
+        border: 1px solid var(--inquiry-border);
+        background: #ffffff;
+        color: var(--inquiry-blue);
+      }
+
+      .inquiry-secondary-button:hover {
+        border-color: var(--inquiry-blue);
+      }
+
+      /* =====================================================
+         HERO SUMMARY
+         ===================================================== */
+
+      .inquiry-hero-visual {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .inquiry-summary-card {
+        width: 100%;
+        max-width: 405px;
+        padding: 30px;
+        border: 7px solid #ffffff;
+        border-radius: 22px;
+        background: #ffffff;
+        box-shadow: 0 20px 42px rgba(27, 67, 103, 0.18);
+      }
+
+      .inquiry-summary-label {
+        color: var(--inquiry-blue);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .inquiry-summary-card h2 {
+        margin: 11px 0 18px;
+        color: var(--inquiry-blue-dark);
+        font-size: 1.45rem;
+        line-height: 1.3;
+      }
+
+      .inquiry-summary-list {
+        display: grid;
+        gap: 13px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .inquiry-summary-list li {
+        display: grid;
+        grid-template-columns: 23px minmax(0, 1fr);
+        gap: 11px;
+        align-items: start;
+        color: var(--inquiry-muted);
+        line-height: 1.5;
+      }
+
+      .inquiry-summary-list li::before {
+        content: "✓";
+        display: inline-flex;
+        width: 23px;
+        height: 23px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+        border-radius: 50%;
+        background: var(--inquiry-blue-soft);
+        color: var(--inquiry-blue);
+        font-size: 0.75rem;
+        font-weight: 900;
+      }
+
+      /* =====================================================
+         FORM SECTION
+         ===================================================== */
+
+      .inquiry-section {
+        margin-top: 72px;
+      }
+
+      .section-heading {
+        margin-bottom: 32px;
+        text-align: center;
+      }
+
+      .section-heading h2 {
+        margin: 0 0 9px;
+        color: var(--inquiry-blue);
+        font-size: clamp(1.8rem, 3vw, 2.35rem);
+      }
+
+      .section-heading p {
+        max-width: 760px;
+        margin: 0 auto;
+        color: var(--inquiry-muted);
+        line-height: 1.7;
+      }
+
+      .inquiry-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(285px, 0.7fr);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .inquiry-form-card {
+        padding: 36px;
+        border: 1px solid var(--inquiry-border);
+        border-radius: 24px;
+        background: #ffffff;
+        box-shadow: var(--inquiry-shadow);
+      }
+
+      .inquiry-form {
+        display: grid;
+        gap: 22px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .form-field {
+        display: grid;
+        min-width: 0;
+        gap: 8px;
+      }
+
+      .form-field label {
+        color: var(--inquiry-blue-dark);
+        font-size: 0.92rem;
+        font-weight: 800;
+      }
+
+      .required-mark {
+        color: #a23838;
+      }
+
+      .form-field input,
+      .form-field select,
+      .form-field textarea {
+        width: 100%;
+        min-width: 0;
+        padding: 13px 14px;
+        border: 1px solid #bcd5e9;
+        border-radius: 12px;
+        background: #fbfdff;
+        color: var(--inquiry-ink);
+        font: inherit;
+        line-height: 1.45;
+      }
+
+      .form-field textarea {
+        min-height: 165px;
+        resize: vertical;
+      }
+
+      .form-field input:focus,
+      .form-field select:focus,
+      .form-field textarea:focus {
+        outline: 3px solid rgba(22, 119, 200, 0.14);
+        border-color: var(--inquiry-blue);
+        background: #ffffff;
+      }
+
+      .field-note {
+        margin: 0;
+        color: var(--inquiry-muted);
+        font-size: 0.8rem;
+        line-height: 1.5;
+      }
+
+      /* =====================================================
+         CONDITIONAL FORM SECTIONS
+         ===================================================== */
+
+      .inquiry-details {
+        display: none;
+        gap: 18px;
+        padding: 24px;
+        border: 1px solid var(--inquiry-border);
+        border-radius: 18px;
+        background: var(--inquiry-blue-pale);
+      }
+
+      .inquiry-details.is-visible {
+        display: grid;
+      }
+
+      .inquiry-details-heading {
+        margin: 0;
+        color: var(--inquiry-blue-dark);
+        font-size: 1.25rem;
+      }
+
+      .inquiry-details-intro {
+        margin: -8px 0 0;
+        color: var(--inquiry-muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .privacy-notice {
+        padding: 17px 18px;
+        border: 1px solid #ead6a8;
+        border-radius: 14px;
+        background: var(--inquiry-warning-soft);
+        color: var(--inquiry-warning);
+        font-size: 0.86rem;
+        line-height: 1.6;
+      }
+
+      .privacy-notice strong {
+        color: #70460b;
+      }
+
+      .form-consent {
+        display: grid;
+        grid-template-columns: 20px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+      }
+
+      .form-consent input {
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+        accent-color: var(--inquiry-blue);
+      }
+
+      .form-consent label {
+        color: var(--inquiry-muted);
+        font-size: 0.88rem;
+        line-height: 1.55;
+      }
+
+      .inquiry-submit {
+        justify-self: start;
+        min-width: 170px;
+      }
+
+      .website-field {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+        clip: rect(0 0 0 0) !important;
+        white-space: nowrap !important;
+      }
+
+      /* =====================================================
+         SIDEBAR
+         ===================================================== */
+
+      .inquiry-sidebar {
+        display: grid;
+        gap: 20px;
+      }
+
+      .sidebar-card {
+        padding: 26px;
+        border: 1px solid var(--inquiry-border);
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 8px 24px rgba(27, 67, 103, 0.05);
+      }
+
+      .sidebar-card h2 {
+        margin: 0 0 12px;
+        color: var(--inquiry-blue-dark);
+        font-size: 1.3rem;
+      }
+
+      .sidebar-card p {
+        margin: 0;
+        color: var(--inquiry-muted);
+        line-height: 1.65;
+      }
+
+      .sidebar-card p + p {
+        margin-top: 12px;
+      }
+
+      .sidebar-list {
+        display: grid;
+        gap: 11px;
+        margin: 15px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .sidebar-list li {
+        display: grid;
+        grid-template-columns: 21px minmax(0, 1fr);
+        gap: 9px;
+        align-items: start;
+        color: var(--inquiry-muted);
+        line-height: 1.5;
+      }
+
+      .sidebar-list li::before {
+        content: "✓";
+        display: inline-flex;
+        width: 21px;
+        height: 21px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--inquiry-blue-soft);
+        color: var(--inquiry-blue);
+        font-size: 0.7rem;
+        font-weight: 900;
+      }
+
+      .important-card {
+        border-color: #ead6a8;
+        background: #fffdfa;
+      }
+
+      .important-card h2 {
+        color: #80530e;
+      }
+
+      /* =====================================================
+         CLOSING PANEL
+         ===================================================== */
+
+      .inquiry-closing-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: center;
+        padding: 34px 38px;
+        border-radius: 24px;
+        background: var(--inquiry-blue-dark);
+        color: #ffffff;
+        box-shadow: var(--inquiry-shadow);
+      }
+
+      .inquiry-closing-panel h2 {
+        margin: 0 0 9px;
+        color: #ffffff;
+      }
+
+      .inquiry-closing-panel p {
+        max-width: 760px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.7;
+      }
+
+      .inquiry-closing-panel .inquiry-secondary-button {
+        border-color: rgba(255, 255, 255, 0.58);
+        white-space: nowrap;
+      }
+
+      .back {
+        margin-top: 38px;
+        text-align: center;
+      }
+
+      .back a {
+        color: var(--inquiry-blue);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .back a:hover {
+        text-decoration: underline;
+      }
+
+      /* =====================================================
+         RESPONSIVE
+         ===================================================== */
+
+      @media (max-width: 920px) {
+        .inquiry-hero,
+        .inquiry-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .inquiry-sidebar {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .important-card {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .inquiry-shell {
+          width: min(100% - 20px, 1180px);
+          padding-top: 28px;
+        }
+
+        .inquiry-hero {
+          padding: 28px;
+        }
+
+        .inquiry-form-card {
+          padding: 26px;
+        }
+
+        .form-row,
+        .inquiry-sidebar {
+          grid-template-columns: 1fr;
+        }
+
+        .important-card {
+          grid-column: auto;
+        }
+
+        .inquiry-closing-panel {
+          grid-template-columns: 1fr;
+          padding: 28px;
+        }
+
+        .inquiry-closing-panel .inquiry-secondary-button {
+          justify-self: start;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .inquiry-hero-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .inquiry-primary-button,
+        .inquiry-secondary-button {
+          width: 100%;
+        }
+
+        .inquiry-summary-card,
+        .inquiry-form-card,
+        .sidebar-card {
+          padding: 23px;
+        }
+
+        .inquiry-submit {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="../index.html">
+          <img
+            src="../assets/images/flowhub-horizontal.png"
+            alt="FlowHub wellness portal logo"
+            title="FlowHub"
+          />
+        </a>
+      </div>
+
+      <div class="subtitle">Your Wellness Portal</div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html">FlowNotes</a>
+        <a href="../pages/flowresources-redesign.html">FlowResources</a>
+        <a href="../pages/wellness-programs.html">Wellness Programs</a>
+        <a href="../pages/faq.html">FAQ</a>
+      </nav>
+    </header>
+
+    <main class="inquiry-shell">
+      <!-- ===================================================
+           HERO
+           =================================================== -->
+
+      <section class="inquiry-hero">
+        <div class="inquiry-hero-copy">
+          <span id="hero-kicker" class="inquiry-kicker">
+            Personalized support
+          </span>
+
+          <h1 id="hero-title">FlowTherapy Inquiry</h1>
+
+          <p id="hero-description">
+            Tell us what you are interested in and share a few general details.
+            Your inquiry will be reviewed personally, and FlowTherapy will
+            respond as soon as possible.
+          </p>
+
+          <div class="inquiry-hero-actions">
+            <a class="inquiry-primary-button" href="#inquiry-form">
+              Start Your Inquiry
+            </a>
+
+            <a class="inquiry-secondary-button" href="../pages/contact.html">
+              General Contact
+            </a>
+          </div>
+        </div>
+
+        <div class="inquiry-hero-visual">
+          <div class="inquiry-summary-card">
+            <span class="inquiry-summary-label">
+              One form, personalized questions
+            </span>
+
+            <h2>Use this form for:</h2>
+
+            <ul class="inquiry-summary-list">
+              <li>Corporate and workplace wellness inquiries</li>
+              <li>Private group or special-event requests</li>
+              <li>General Veterans-resource questions</li>
+              <li>FlowPass, SpaFlow, and wellness-program questions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           INQUIRY FORM
+           =================================================== -->
+
+      <section id="inquiry-form" class="inquiry-section">
+        <div class="section-heading">
+          <h2>Tell Us How We Can Help</h2>
+
+          <p>
+            Select an inquiry type to see the questions that apply. Required
+            fields are marked with an asterisk.
+          </p>
+        </div>
+
+        <div class="inquiry-layout">
+          <div class="inquiry-form-card">
+            <form
+              class="inquiry-form"
+              action="https://formsubmit.co/hello@discoverflowtherapy.com"
+              method="POST"
+            >
+              <!-- FormSubmit settings -->
+
+              <input
+                id="form-subject"
+                type="hidden"
+                name="_subject"
+                value="New FlowTherapy Inquiry"
+              />
+
+              <input type="hidden" name="_template" value="table" />
+
+              <input
+                type="hidden"
+                name="_next"
+                value="https://hub.discoverflowtherapy.com/pages/thank-you.html"
+              />
+
+              <input
+                id="form-url"
+                type="hidden"
+                name="_url"
+                value="https://hub.discoverflowtherapy.com/pages/inquiry.html"
+              />
+
+              <input
+                id="inquiry-source"
+                type="hidden"
+                name="Inquiry source"
+                value="Direct visit"
+              />
+
+              <!-- Honeypot spam protection -->
+
+              <div class="website-field" aria-hidden="true">
+                <label for="website">Leave this field empty</label>
+
+                <input
+                  id="website"
+                  type="text"
+                  name="_honey"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+
+              <!-- CONTACT INFORMATION -->
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="inquiry-name">
+                    Name <span class="required-mark">*</span>
+                  </label>
+
+                  <input
+                    id="inquiry-name"
+                    name="Name"
+                    type="text"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label for="inquiry-email">
+                    Email <span class="required-mark">*</span>
+                  </label>
+
+                  <input
+                    id="inquiry-email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="inquiry-phone">Phone number</label>
+
+                  <input
+                    id="inquiry-phone"
+                    name="Phone"
+                    type="tel"
+                    autocomplete="tel"
+                  />
+
+                  <p class="field-note">
+                    Optional. Include a number only if you are comfortable being
+                    contacted by phone or text.
+                  </p>
+                </div>
+
+                <div class="form-field">
+                  <label for="preferred-contact">
+                    Preferred response method
+                  </label>
+
+                  <select
+                    id="preferred-contact"
+                    name="Preferred response method"
+                  >
+                    <option value="Email">Email</option>
+                    <option value="Text message">Text message</option>
+                    <option value="Phone call">Phone call</option>
+                    <option value="No preference">No preference</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- INQUIRY TYPE -->
+
+              <div class="form-field">
+                <label for="inquiry-type">
+                  What are you inquiring about?
+                  <span class="required-mark">*</span>
+                </label>
+
+                <select id="inquiry-type" name="Inquiry type" required>
+                  <option value="" selected disabled>
+                    Select an inquiry type
+                  </option>
+
+                  <option value="corporate">Corporate Wellness</option>
+
+                  <option value="private-event">Private Flow Event</option>
+
+                  <option value="veterans">Veterans Resource Question</option>
+
+                  <option value="wellness-programs">Wellness Programs</option>
+                </select>
+              </div>
+
+              <!-- CORPORATE WELLNESS -->
+
+              <fieldset id="corporate-fields" class="inquiry-details" disabled>
+                <h2 class="inquiry-details-heading">
+                  Corporate Wellness Details
+                </h2>
+
+                <p class="inquiry-details-intro">
+                  Share what you currently know. Estimates are completely
+                  acceptable.
+                </p>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="organization-name"> Organization name </label>
+
+                    <input
+                      id="organization-name"
+                      name="Organization name"
+                      type="text"
+                      autocomplete="organization"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="corporate-event-type">Event or need</label>
+
+                    <select
+                      id="corporate-event-type"
+                      name="Corporate event or need"
+                    >
+                      <option value="">Select one</option>
+                      <option value="Employee wellness event">
+                        Employee wellness event
+                      </option>
+                      <option value="Conference or convention">
+                        Conference or convention
+                      </option>
+                      <option value="Healthcare facility">
+                        Healthcare facility
+                      </option>
+                      <option value="Ongoing workplace wellness">
+                        Ongoing workplace wellness
+                      </option>
+                      <option value="Staff appreciation">
+                        Staff appreciation
+                      </option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="corporate-date">
+                      Preferred or estimated date
+                    </label>
+
+                    <input
+                      id="corporate-date"
+                      name="Corporate preferred date"
+                      type="date"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="participant-count">
+                      Estimated participants
+                    </label>
+
+                    <input
+                      id="participant-count"
+                      name="Estimated participants"
+                      type="number"
+                      min="1"
+                      inputmode="numeric"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="corporate-city">Event city</label>
+
+                    <input
+                      id="corporate-city"
+                      name="Corporate event city"
+                      type="text"
+                      autocomplete="address-level2"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="corporate-duration">
+                      Estimated service duration
+                    </label>
+
+                    <select
+                      id="corporate-duration"
+                      name="Estimated corporate duration"
+                    >
+                      <option value="">Not sure yet</option>
+                      <option value="2 hours">2 hours</option>
+                      <option value="4 hours">4 hours</option>
+                      <option value="6 hours">6 hours</option>
+                      <option value="Multiple days">Multiple days</option>
+                      <option value="Ongoing program">Ongoing program</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- PRIVATE EVENT -->
+
+              <fieldset
+                id="private-event-fields"
+                class="inquiry-details"
+                disabled
+              >
+                <h2 class="inquiry-details-heading">
+                  Private Flow Event Details
+                </h2>
+
+                <p class="inquiry-details-intro">
+                  Use this section for private groups, celebrations, hotel
+                  suites, retreats, or in-home wellness events.
+                </p>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="private-event-type">Event type</label>
+
+                    <select id="private-event-type" name="Private event type">
+                      <option value="">Select one</option>
+                      <option value="Birthday or celebration">
+                        Birthday or celebration
+                      </option>
+                      <option value="Wedding group">Wedding group</option>
+                      <option value="Retreat">Retreat</option>
+                      <option value="Hotel or suite">Hotel or suite</option>
+                      <option value="In-home gathering">
+                        In-home gathering
+                      </option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="private-event-date">
+                      Preferred or estimated date
+                    </label>
+
+                    <input
+                      id="private-event-date"
+                      name="Private event preferred date"
+                      type="date"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="private-group-size">
+                      Estimated group size
+                    </label>
+
+                    <input
+                      id="private-group-size"
+                      name="Estimated private group size"
+                      type="number"
+                      min="1"
+                      inputmode="numeric"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="private-city">Event city</label>
+
+                    <input
+                      id="private-city"
+                      name="Private event city"
+                      type="text"
+                      autocomplete="address-level2"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="private-setting">Event setting</label>
+
+                  <select id="private-setting" name="Private event setting">
+                    <option value="">Select one</option>
+                    <option value="Private home">Private home</option>
+                    <option value="Hotel or suite">Hotel or suite</option>
+                    <option value="Office">Office</option>
+                    <option value="Event venue">Event venue</option>
+                    <option value="Not decided">Not decided</option>
+                  </select>
+                </div>
+              </fieldset>
+
+              <!-- VETERANS -->
+
+              <fieldset id="veterans-fields" class="inquiry-details" disabled>
+                <h2 class="inquiry-details-heading">
+                  Veterans Resource Question
+                </h2>
+
+                <p class="inquiry-details-intro">
+                  Ask a general question about FlowTherapy’s Veterans resources
+                  or preparing for care.
+                </p>
+
+                <div class="form-field">
+                  <label for="veterans-topic">
+                    What information are you looking for?
+                  </label>
+
+                  <select id="veterans-topic" name="Veterans resource topic">
+                    <option value="">Select one</option>
+                    <option value="VA Community Care information">
+                      VA Community Care information
+                    </option>
+                    <option value="Trauma-informed massage">
+                      Trauma-informed massage
+                    </option>
+                    <option value="Preparing for a first appointment">
+                      Preparing for a first appointment
+                    </option>
+                    <option value="Accessibility question">
+                      Accessibility question
+                    </option>
+                    <option value="Finding the correct resource">
+                      Finding the correct resource
+                    </option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div class="privacy-notice">
+                  <strong>Please do not include</strong> diagnoses, disability
+                  ratings, claim numbers, medical records, Social Security
+                  numbers, VA identification numbers, or detailed health
+                  history. This is a general inquiry form, not a secure
+                  healthcare or VA-document portal.
+                </div>
+              </fieldset>
+
+              <!-- WELLNESS PROGRAMS -->
+
+              <fieldset
+                id="wellness-programs-fields"
+                class="inquiry-details"
+                disabled
+              >
+                <h2 class="inquiry-details-heading">
+                  Wellness Program Details
+                </h2>
+
+                <p class="inquiry-details-intro">
+                  Tell us which wellness pathway interests you.
+                </p>
+
+                <div class="form-field">
+                  <label for="program-interest"> Program of interest </label>
+
+                  <select
+                    id="program-interest"
+                    name="Wellness program of interest"
+                  >
+                    <option value="">Select one</option>
+                    <option value="FlowPass">FlowPass Memberships</option>
+                    <option value="SpaFlow">SpaFlow Experiences</option>
+                    <option value="Veterans Resource Center">
+                      Veterans Resource Center
+                    </option>
+                    <option value="Corporate Wellness">
+                      Corporate Wellness
+                    </option>
+                    <option value="Not sure">
+                      Not sure—which program fits me?
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="wellness-goal">
+                    What are you hoping the program will support?
+                  </label>
+
+                  <select id="wellness-goal" name="General wellness goal">
+                    <option value="">Select one</option>
+                    <option value="Consistent therapeutic care">
+                      Consistent therapeutic care
+                    </option>
+                    <option value="Restorative self-care">
+                      Restorative self-care
+                    </option>
+                    <option value="Workplace wellness">
+                      Workplace wellness
+                    </option>
+                    <option value="Specialized resources">
+                      Specialized resources
+                    </option>
+                    <option value="General information">
+                      General information
+                    </option>
+                  </select>
+                </div>
+              </fieldset>
+
+              <!-- MESSAGE -->
+
+              <div class="form-field">
+                <label for="inquiry-message">
+                  Tell us more <span class="required-mark">*</span>
+                </label>
+
+                <textarea
+                  id="inquiry-message"
+                  name="Message"
+                  maxlength="2500"
+                  required
+                  placeholder="Share any general details, questions, or goals that would help us understand your inquiry."
+                ></textarea>
+
+                <p class="field-note">
+                  Please do not include confidential medical information,
+                  payment-card numbers, identification numbers, or other
+                  sensitive records.
+                </p>
+              </div>
+
+              <div class="privacy-notice">
+                <strong>Privacy reminder:</strong>
+                This form is intended for general inquiries and preliminary
+                planning. It is not a secure intake form, medical-record portal,
+                emergency service, or confirmed booking request.
+              </div>
+
+              <div class="form-consent">
+                <input
+                  id="inquiry-consent"
+                  name="Contact permission"
+                  type="checkbox"
+                  value="I agree"
+                  required
+                />
+
+                <label for="inquiry-consent">
+                  I understand this is an inquiry rather than a confirmed
+                  reservation, and I authorize FlowTherapy to respond using the
+                  contact information I provided.
+                </label>
+              </div>
+
+              <button
+                class="inquiry-primary-button inquiry-submit"
+                type="submit"
+              >
+                Submit Inquiry
+              </button>
+            </form>
+          </div>
+
+          <!-- SIDEBAR -->
+
+          <aside class="inquiry-sidebar" aria-label="Inquiry information">
+            <section class="sidebar-card">
+              <h2>What happens next?</h2>
+
+              <ul class="sidebar-list">
+                <li>Your inquiry is delivered to FlowTherapy.</li>
+                <li>The details are reviewed personally.</li>
+                <li>We may request additional planning information.</li>
+                <li>Availability and pricing are confirmed separately.</li>
+              </ul>
+            </section>
+
+            <section class="sidebar-card">
+              <h2>Helpful information</h2>
+
+              <p>
+                Estimates are welcome. You do not need to have every event
+                detail, exact participant count, or final date before reaching
+                out.
+              </p>
+
+              <p>
+                Provide only what you currently know, and FlowTherapy can help
+                guide the next step.
+              </p>
+            </section>
+
+            <section class="sidebar-card important-card">
+              <h2>Inquiry, not confirmation</h2>
+
+              <p>
+                Submitting this form does not reserve a date, confirm a service,
+                or create a clinical relationship.
+              </p>
+
+              <p>
+                Dates, service details, pricing, travel, and availability must
+                be confirmed directly by FlowTherapy.
+              </p>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           CLOSING PANEL
+           =================================================== -->
+
+      <section class="inquiry-section inquiry-closing-panel">
+        <div>
+          <h2>Looking for a regular massage appointment?</h2>
+
+          <p>
+            Use the online booking page to review current services and schedule
+            an individual FlowTherapy session.
+          </p>
+        </div>
+
+        <a
+          class="inquiry-secondary-button"
+          href="https://flowtherapy.setmore.com/book"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Schedule Your Session
+        </a>
+      </section>
+
+      <div class="back">
+        <a href="../index.html">← Return to FlowHub</a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html">FlowNotes</a>
+        <a href="../pages/flowresources-redesign.html">FlowResources</a>
+        <a href="../pages/wellness-programs.html">Wellness Programs</a>
+        <a href="../pages/faq.html">FAQ</a>
+      </nav>
+
+      <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
+    </footer>
+
+    <script>
+      const inquiryTypeSelect = document.getElementById("inquiry-type");
+      const subjectInput = document.getElementById("form-subject");
+      const formUrlInput = document.getElementById("form-url");
+      const sourceInput = document.getElementById("inquiry-source");
+
+      const heroKicker = document.getElementById("hero-kicker");
+      const heroTitle = document.getElementById("hero-title");
+      const heroDescription = document.getElementById("hero-description");
+
+      const conditionalSections = {
+        corporate: document.getElementById("corporate-fields"),
+        "private-event": document.getElementById("private-event-fields"),
+        veterans: document.getElementById("veterans-fields"),
+        "wellness-programs": document.getElementById(
+          "wellness-programs-fields",
+        ),
+      };
+
+      const inquirySettings = {
+        corporate: {
+          subject: "New Corporate Wellness Inquiry",
+          kicker: "Wellness at work",
+          title: "Corporate Wellness Inquiry",
+          description:
+            "Tell us about your organization, event, or workplace wellness needs. Estimates are welcome, and you do not need every detail finalized.",
+          source: "Corporate Wellness",
+        },
+
+        "private-event": {
+          subject: "New Private Flow Event Inquiry",
+          kicker: "Wellness brought to you",
+          title: "Private Flow Event Inquiry",
+          description:
+            "Share a few details about your private group, celebration, retreat, hotel, or in-home wellness event.",
+          source: "Private Flow Events",
+        },
+
+        veterans: {
+          subject: "New Veterans Resource Inquiry",
+          kicker: "Supporting those who served",
+          title: "Veterans Resource Inquiry",
+          description:
+            "Ask a general question about FlowTherapy’s Veterans resources, trauma-informed care, preparation, or VA Community Care information.",
+          source: "Veterans Resource Center",
+        },
+
+        "wellness-programs": {
+          subject: "New Wellness Programs Inquiry",
+          kicker: "Personalized pathways to wellness",
+          title: "Wellness Programs Inquiry",
+          description:
+            "Ask about FlowPass, SpaFlow, Veterans resources, corporate wellness, or which program may best support your goals.",
+          source: "Wellness Programs",
+        },
+      };
+
+      function updateInquiryPage(selectedType) {
+        Object.entries(conditionalSections).forEach(
+          ([sectionType, sectionElement]) => {
+            const isActive = sectionType === selectedType;
+
+            sectionElement.classList.toggle("is-visible", isActive);
+            sectionElement.disabled = !isActive;
+          },
+        );
+
+        const settings = inquirySettings[selectedType];
+
+        if (!settings) {
+          subjectInput.value = "New FlowTherapy Inquiry";
+          sourceInput.value = "Direct visit";
+          return;
+        }
+
+        subjectInput.value = settings.subject;
+        sourceInput.value = settings.source;
+        heroKicker.textContent = settings.kicker;
+        heroTitle.textContent = settings.title;
+        heroDescription.textContent = settings.description;
+
+        document.title = `${settings.title} | FlowHub`;
+      }
+
+      /* Read inquiry type from the page URL */
+
+      const parameters = new URLSearchParams(window.location.search);
+      const requestedType = parameters.get("type");
+
+      if (requestedType && inquirySettings[requestedType]) {
+        inquiryTypeSelect.value = requestedType;
+        updateInquiryPage(requestedType);
+      }
+
+      /* Record the exact page URL in the email */
+
+      if (formUrlInput) {
+        formUrlInput.value = window.location.href;
+      }
+
+      /* Update page when visitor changes inquiry type */
+
+      inquiryTypeSelect.addEventListener("change", function () {
+        updateInquiryPage(this.value);
+
+        const updatedUrl = new URL(window.location.href);
+        updatedUrl.searchParams.set("type", this.value);
+
+        window.history.replaceState({}, document.title, updatedUrl.toString());
+      });
+
+      /* Service worker */
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(function () {
+              console.log("FlowHub service worker registered.");
+            })
+            .catch(function (error) {
+              console.error("Service worker registration failed:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
