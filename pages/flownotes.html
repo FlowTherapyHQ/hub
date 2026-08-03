@@ -10,7 +10,7 @@
       content="Explore FlowNotes from FlowTherapy, including massage education, recovery strategies, movement tips, stress and wellness guidance, and workplace wellness resources."
     />
 
-    <title>FlowHub | FlowNotes</title>
+    <title>FlowNotes | FlowHub</title>
 
     <link rel="stylesheet" href="../assets/css/style.css" />
 
@@ -39,11 +39,8 @@
     />
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
-
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
     <meta name="apple-mobile-web-app-title" content="FlowHub" />
-
     <meta name="theme-color" content="#1677c8" />
 
     <!-- MailerLite Universal -->
@@ -72,6 +69,637 @@
       ml("account", "2527346");
     </script>
     <!-- End MailerLite Universal -->
+
+    <style>
+      :root {
+        --notes-blue: #1677c8;
+        --notes-blue-dark: #0b3f78;
+        --notes-blue-hover: #0e5fa5;
+        --notes-blue-soft: #eaf4fe;
+        --notes-ink: #17324d;
+        --notes-muted: #52677b;
+        --notes-border: #cfe2f5;
+        --notes-page: #f3f8fc;
+        --notes-surface: #ffffff;
+        --notes-shadow: 0 12px 30px rgba(27, 67, 103, 0.08);
+      }
+
+      body {
+        background: var(--notes-page);
+      }
+
+      .flownotes-shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 42px 0 72px;
+      }
+
+      /* =====================================================
+         HERO
+         ===================================================== */
+
+      .flownotes-hero {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+        gap: 34px;
+        align-items: center;
+        overflow: hidden;
+        padding: 48px;
+        border: 1px solid var(--notes-border);
+        border-radius: 26px;
+        background:
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(22, 119, 200, 0.14),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #ffffff 0%, #f5faff 100%);
+        box-shadow: var(--notes-shadow);
+      }
+
+      .flownotes-hero-copy {
+        position: relative;
+        z-index: 2;
+      }
+
+      .flownotes-kicker {
+        display: inline-flex;
+        margin-bottom: 16px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--notes-blue-soft);
+        color: var(--notes-blue);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .flownotes-hero h1 {
+        margin: 0 0 16px;
+        color: var(--notes-blue);
+        font-size: clamp(2.7rem, 6vw, 4.8rem);
+        line-height: 1;
+      }
+
+      .flownotes-hero-copy > p {
+        max-width: 690px;
+        margin: 0;
+        color: var(--notes-muted);
+        font-size: 1.08rem;
+        line-height: 1.75;
+      }
+
+      .flownotes-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .flownotes-primary-button,
+      .flownotes-secondary-button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 18px;
+        border-radius: 999px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .flownotes-primary-button {
+        background: var(--notes-blue);
+        color: #ffffff;
+      }
+
+      .flownotes-primary-button:hover {
+        background: var(--notes-blue-hover);
+      }
+
+      .flownotes-secondary-button {
+        border: 1px solid var(--notes-border);
+        background: #ffffff;
+        color: var(--notes-blue);
+      }
+
+      .flownotes-secondary-button:hover {
+        border-color: var(--notes-blue);
+      }
+
+      .flownotes-hero-visual {
+        position: relative;
+        min-height: 300px;
+      }
+
+      .note-preview {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 185px;
+        padding: 24px;
+        border: 7px solid #ffffff;
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 20px 42px rgba(27, 67, 103, 0.18);
+      }
+
+      .note-preview-one {
+        inset: 10px 64px 74px 4px;
+        transform: rotate(-3deg);
+      }
+
+      .note-preview-two {
+        inset: 82px 0 8px 88px;
+        transform: rotate(4deg);
+      }
+
+      .note-preview-label {
+        color: var(--notes-blue);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .note-preview h2 {
+        margin: 12px 0;
+        color: var(--notes-blue-dark);
+        font-size: 1.2rem;
+        line-height: 1.3;
+      }
+
+      .note-preview p {
+        margin: 0;
+        color: var(--notes-muted);
+        font-size: 0.83rem;
+        line-height: 1.5;
+      }
+
+      .preview-line {
+        width: 54%;
+        height: 5px;
+        margin-top: 18px;
+        border-radius: 999px;
+        background: linear-gradient(
+          90deg,
+          var(--notes-blue),
+          rgba(22, 119, 200, 0.12)
+        );
+      }
+
+      /* =====================================================
+         SHARED SECTION STYLES
+         ===================================================== */
+
+      .flownotes-section {
+        margin-top: 42px;
+      }
+
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 22px;
+      }
+
+      .section-heading-copy h2 {
+        margin: 0 0 8px;
+        color: var(--notes-blue);
+        font-size: clamp(1.7rem, 3vw, 2.35rem);
+      }
+
+      .section-heading-copy p {
+        max-width: 720px;
+        margin: 0;
+        color: var(--notes-muted);
+        line-height: 1.7;
+      }
+
+      .section-badge {
+        flex: 0 0 auto;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--notes-blue-soft);
+        color: var(--notes-blue);
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+
+      /* =====================================================
+         FEATURED FLOWNOTE
+         ===================================================== */
+
+      .featured-flownote {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+        overflow: hidden;
+        border: 1px solid var(--notes-border);
+        border-radius: 24px;
+        background: #ffffff;
+        box-shadow: var(--notes-shadow);
+      }
+
+      .featured-flownote-visual {
+        position: relative;
+        display: flex;
+        min-height: 320px;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 36px;
+        background:
+          radial-gradient(
+            circle at 28% 24%,
+            rgba(255, 255, 255, 0.45),
+            transparent 25%
+          ),
+          linear-gradient(145deg, #0b3f78, #1677c8);
+      }
+
+      .featured-symbol {
+        position: relative;
+        display: flex;
+        width: 160px;
+        height: 160px;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid rgba(255, 255, 255, 0.75);
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 4.5rem;
+        font-weight: 800;
+      }
+
+      .featured-symbol::before,
+      .featured-symbol::after {
+        content: "";
+        position: absolute;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        border-radius: 50%;
+      }
+
+      .featured-symbol::before {
+        inset: -24px;
+      }
+
+      .featured-symbol::after {
+        inset: -48px;
+      }
+
+      .featured-flownote-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 38px;
+      }
+
+      .article-label {
+        align-self: flex-start;
+        margin-bottom: 14px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: var(--notes-blue-soft);
+        color: var(--notes-blue);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .featured-flownote h2 {
+        margin: 0 0 14px;
+        color: var(--notes-blue-dark);
+        font-size: clamp(1.8rem, 4vw, 2.65rem);
+        line-height: 1.15;
+      }
+
+      .featured-flownote-body > p {
+        margin: 0;
+        color: #334e66;
+        line-height: 1.75;
+      }
+
+      .featured-article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin-top: 18px;
+        color: #61778b;
+        font-size: 0.88rem;
+      }
+
+      .featured-action {
+        align-self: flex-start;
+        margin-top: 24px;
+      }
+
+      /* =====================================================
+         CATEGORY + START HERE LAYOUT
+         ===================================================== */
+
+      .discovery-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+        gap: 24px;
+      }
+
+      .discovery-panel {
+        padding: 30px;
+        border: 1px solid var(--notes-border);
+        border-radius: 22px;
+        background: #ffffff;
+        box-shadow: 0 8px 24px rgba(27, 67, 103, 0.05);
+      }
+
+      .discovery-panel h2 {
+        margin: 0 0 10px;
+        color: var(--notes-blue);
+        font-size: 1.65rem;
+      }
+
+      .discovery-panel > p {
+        margin: 0;
+        color: var(--notes-muted);
+        line-height: 1.7;
+      }
+
+      .category-grid {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .category-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 17px;
+        border: 1px solid var(--notes-border);
+        border-radius: 15px;
+        background: #f9fcff;
+        color: var(--notes-blue-dark);
+        font-weight: 800;
+        text-decoration: none;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .category-link::after {
+        content: "→";
+        color: var(--notes-blue);
+      }
+
+      .category-link:hover {
+        border-color: var(--notes-blue);
+        background: var(--notes-blue-soft);
+        transform: translateX(3px);
+      }
+
+      .start-here-intro {
+        margin-bottom: 20px !important;
+      }
+
+      .start-here-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+      }
+
+      .start-here-link {
+        display: flex;
+        min-height: 126px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 18px;
+        border: 1px solid var(--notes-border);
+        border-radius: 15px;
+        background: #f9fcff;
+        color: var(--notes-blue-dark);
+        text-decoration: none;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .start-here-link:hover {
+        border-color: var(--notes-blue);
+        background: var(--notes-blue-soft);
+        transform: translateY(-3px);
+      }
+
+      .start-here-category {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--notes-blue);
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .start-here-link strong {
+        font-size: 1rem;
+        line-height: 1.45;
+      }
+
+      /* =====================================================
+         FLOWRESOURCES CROSS-PROMOTION
+         ===================================================== */
+
+      .resource-promotion {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: center;
+        margin-top: 42px;
+        padding: 32px 36px;
+        border: 1px solid var(--notes-border);
+        border-radius: 22px;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(22, 119, 200, 0.11),
+            transparent 32%
+          ),
+          linear-gradient(135deg, #ffffff, #f3f9fe);
+        box-shadow: 0 8px 24px rgba(27, 67, 103, 0.05);
+      }
+
+      .resource-promotion-copy h2 {
+        margin: 0 0 10px;
+        color: var(--notes-blue);
+      }
+
+      .resource-promotion-copy p {
+        max-width: 760px;
+        margin: 0;
+        color: var(--notes-muted);
+        line-height: 1.7;
+      }
+
+      .resource-promotion-action {
+        white-space: nowrap;
+      }
+
+      /* =====================================================
+         TOPIC SUGGESTION
+         ===================================================== */
+
+      .flownotes-request-section {
+        margin-top: 42px;
+      }
+
+      .flownotes-request-card {
+        padding: 34px;
+        border-radius: 22px;
+        background: var(--notes-blue);
+        color: #ffffff;
+        text-align: center;
+        box-shadow: var(--notes-shadow);
+      }
+
+      .flownotes-request-card .section-label {
+        margin: 0 0 20px;
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .flownotes-request-form {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 22px;
+        border-radius: 17px;
+        background: #ffffff;
+      }
+
+      .flownotes-request-note {
+        max-width: 760px;
+        margin: 20px auto 0;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.65;
+      }
+
+      .back {
+        margin-top: 36px;
+        text-align: center;
+      }
+
+      .back a {
+        color: var(--notes-blue);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .back a:hover {
+        text-decoration: underline;
+      }
+
+      /* =====================================================
+         RESPONSIVE
+         ===================================================== */
+
+      @media (max-width: 920px) {
+        .flownotes-hero {
+          grid-template-columns: 1fr;
+        }
+
+        .flownotes-hero-visual {
+          min-height: 270px;
+        }
+
+        .featured-flownote,
+        .discovery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .featured-flownote-visual {
+          min-height: 245px;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .flownotes-shell {
+          width: min(100% - 20px, 1180px);
+          padding-top: 28px;
+        }
+
+        .flownotes-hero {
+          padding: 28px;
+        }
+
+        .flownotes-hero-visual {
+          min-height: 230px;
+        }
+
+        .note-preview {
+          padding: 18px;
+        }
+
+        .note-preview-one {
+          inset: 8px 44px 54px 0;
+        }
+
+        .note-preview-two {
+          inset: 56px 0 8px 55px;
+        }
+
+        .featured-flownote-body,
+        .discovery-panel,
+        .flownotes-request-card {
+          padding: 24px;
+        }
+
+        .start-here-links {
+          grid-template-columns: 1fr;
+        }
+
+        .resource-promotion {
+          grid-template-columns: 1fr;
+          padding: 26px;
+        }
+
+        .resource-promotion-action {
+          justify-self: start;
+        }
+
+        .section-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .flownotes-hero-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .flownotes-primary-button,
+        .flownotes-secondary-button {
+          width: 100%;
+        }
+
+        .note-preview h2 {
+          font-size: 1rem;
+        }
+
+        .note-preview p {
+          font-size: 0.76rem;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -88,140 +716,261 @@
 
       <div class="subtitle">Your Wellness Portal</div>
 
-      
-        <div class="nav">
-        <nav class="nav" aria-label="Main navigation">
-          <a href="../index.html">Home</a>
-          <a href="../pages/forms.html">Forms</a>
-          <a href="../pages/aftercare.html">Aftercare</a>
-          <a href="../pages/flownotes.html" class="active">Flownotes</a>
-          <a href="../pages/flowresources-redesign.html">FlowResources</a>
-          <a href="../pages/wellness-programs.html">Wellness Programs</a>
-          <a href="../pages/faq.html">FAQ</a>
-        </nav>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html" class="active">FlowNotes</a>
+        <a href="../pages/flowresources-redesign.html">FlowResources</a>
+        <a href="../pages/wellness-programs.html">Wellness Programs</a>
+        <a href="../pages/faq.html">FAQ</a>
+      </nav>
     </header>
 
-    <main class="container">
-      <section class="welcome">
-        <h1>FlowNotes</h1>
+    <main class="flownotes-shell">
+      <!-- ===================================================
+           HERO
+           =================================================== -->
 
-        <p>
-          Wellness education, movement tips, and practical resources designed to
-          help you move, feel, and live better.
-        </p>
+      <section class="flownotes-hero">
+        <div class="flownotes-hero-copy">
+          <span class="flownotes-kicker"> Wellness education you can use </span>
+
+          <h1>FlowNotes</h1>
+
+          <p>
+            Evidence-informed articles about massage, movement, recovery,
+            workplace wellness, stress, and practical ways to care for your body
+            between sessions.
+          </p>
+
+          <div class="flownotes-hero-actions">
+            <a class="flownotes-primary-button" href="#browse-categories">
+              Browse Categories
+            </a>
+
+            <a
+              class="flownotes-secondary-button"
+              href="../pages/flowresources-redesign.html"
+            >
+              Explore FlowResources
+            </a>
+          </div>
+        </div>
+
+        <div class="flownotes-hero-visual" aria-hidden="true">
+          <div class="note-preview note-preview-one">
+            <div>
+              <span class="note-preview-label">Massage Education</span>
+
+              <h2>The Truth About Muscle Knots</h2>
+
+              <p>
+                Understand what “knots” may represent and why pressure is not
+                always the whole answer.
+              </p>
+            </div>
+
+            <div class="preview-line"></div>
+          </div>
+
+          <div class="note-preview note-preview-two">
+            <div>
+              <span class="note-preview-label">Workplace Wellness</span>
+
+              <h2>Why Your Eyes Feel Tired After Work</h2>
+
+              <p>
+                Learn how screens, blinking, posture, and facial tension may
+                influence workday discomfort.
+              </p>
+            </div>
+
+            <div class="preview-line"></div>
+          </div>
+        </div>
       </section>
 
-      <section class="card featured-article">
-        <div class="article-label">Featured FlowNote</div>
+      <!-- ===================================================
+           FEATURED FLOWNOTE
+           =================================================== -->
 
-        <h2>Should I Go to the ER?</h2>
+      <section class="flownotes-section">
+        <div class="section-heading">
+          <div class="section-heading-copy">
+            <h2>Featured FlowNote</h2>
 
-        <p>
-          Not every ache, pain, or stressful moment is an emergency—but knowing
-          the difference matters. Learn when emergency medical care may be
-          appropriate, how chronic stress can affect the mind and body, and how
-          therapeutic massage may support a proactive wellness routine.
-        </p>
+            <p>
+              Start with a practical article designed to help you make an
+              informed decision about your health and wellness.
+            </p>
+          </div>
 
-        <p class="article-meta">
-          By Brandy Hennigan, LMT
+          <span class="section-badge">Featured</span>
+        </div>
 
-          <span aria-hidden="true">•</span>
+        <article class="featured-flownote">
+          <div class="featured-flownote-visual" aria-hidden="true">
+            <div class="featured-symbol">?</div>
+          </div>
 
-          July 2026
+          <div class="featured-flownote-body">
+            <span class="article-label">Featured FlowNote</span>
 
-          <span aria-hidden="true">•</span>
+            <h2>Should I Go to the ER?</h2>
 
-          5-minute read
-        </p>
+            <p>
+              Not every ache, pain, or stressful moment is an emergency—but
+              knowing the difference matters. Learn when emergency medical care
+              may be appropriate, how chronic stress can affect the mind and
+              body, and how therapeutic massage may support a proactive wellness
+              routine.
+            </p>
 
-        <a href="../articles/should-i-go-to-the-er.html" class="button">
-          Read Article
-        </a>
+            <div class="featured-article-meta">
+              <span>By Brandy Hennigan, LMT</span>
+              <span aria-hidden="true">•</span>
+              <span>July 2026</span>
+              <span aria-hidden="true">•</span>
+              <span>5-minute read</span>
+            </div>
+
+            <a
+              href="../articles/should-i-go-to-the-er.html"
+              class="flownotes-primary-button featured-action"
+            >
+              Read Article
+            </a>
+          </div>
+        </article>
       </section>
 
-      <div class="cards">
-        <section class="card">
+      <!-- ===================================================
+           CATEGORIES + START HERE
+           =================================================== -->
+
+      <section id="browse-categories" class="flownotes-section discovery-grid">
+        <div class="discovery-panel">
           <h2>Browse by Category</h2>
 
           <p>
-            Explore massage education, recovery strategies, movement tips, and
-            wellness insights from FlowTherapy.
+            Explore FlowNotes by the subject that best matches your current
+            needs or interests.
           </p>
 
-          <div class="categories">
-            <a href="../categories/massage-education.html">
+          <div class="category-grid">
+            <a
+              class="category-link"
+              href="../categories/massage-education.html"
+            >
               Massage Education
             </a>
 
-            <a href="../categories/movement-mobility.html">
+            <a
+              class="category-link"
+              href="../categories/movement-mobility.html"
+            >
               Movement &amp; Mobility
             </a>
 
-            <a href="../categories/recovery.html"> Recovery </a>
+            <a class="category-link" href="../categories/recovery.html">
+              Recovery
+            </a>
 
-            <a href="../categories/stress-wellness.html">
+            <a class="category-link" href="../categories/stress-wellness.html">
               Stress &amp; Wellness
             </a>
 
-            <a href="../categories/workplace-wellness.html">
+            <a
+              class="category-link"
+              href="../categories/workplace-wellness.html"
+            >
               Workplace Wellness
             </a>
           </div>
-        </section>
+        </div>
 
-       <section class="start-here">
-  <h2>Start Here</h2>
+        <div class="discovery-panel">
+          <h2>Start Here</h2>
 
-  <p class="start-here-intro">
-    New to FlowNotes? Begin with these practical guides to massage, recovery,
-    and everyday wellness.
-  </p>
+          <p class="start-here-intro">
+            New to FlowNotes? Begin with these practical guides to massage,
+            recovery, and everyday wellness.
+          </p>
 
-  <div class="start-here-links">
-    <a
-      href="../articles/what-to-expect-during-your-first-massage.html"
-      class="start-here-link"
-    >
-      <span class="start-here-category">Massage Education</span>
-      <strong>What to Expect During Your First Massage</strong>
-    </a>
+          <div class="start-here-links">
+            <a
+              href="../articles/what-to-expect-during-your-first-massage.html"
+              class="start-here-link"
+            >
+              <span class="start-here-category"> Massage Education </span>
 
-    <a
-      href="../articles/the-truth-about-muscle-knots.html"
-      class="start-here-link"
-    >
-      <span class="start-here-category">Massage Education</span>
-      <strong>The Truth About Muscle Knots</strong>
-    </a>
+              <strong> What to Expect During Your First Massage </strong>
+            </a>
 
-    <a
-      href="../articles/massage-soreness-what-is-normal.html"
-      class="start-here-link"
-    >
-      <span class="start-here-category">Recovery</span>
-      <strong>Massage Soreness: What Is Normal?</strong>
-    </a>
+            <a
+              href="../articles/the-truth-about-muscle-knots.html"
+              class="start-here-link"
+            >
+              <span class="start-here-category"> Massage Education </span>
 
-    <a
-      href="../articles/why-desk-work-can-cause-neck-and-shoulder-tension.html"
-      class="start-here-link"
-    >
-      <span class="start-here-category">Workplace Wellness</span>
-      <strong>Why Desk Work Causes Neck and Shoulder Tension</strong>
-    </a>
-  </div>
-</section>
-      </div>
+              <strong>The Truth About Muscle Knots</strong>
+            </a>
 
-      <!-- FlowNotes topic suggestion card -->
+            <a
+              href="../articles/massage-soreness-what-is-normal.html"
+              class="start-here-link"
+            >
+              <span class="start-here-category">Recovery</span>
+
+              <strong>Massage Soreness: What Is Normal?</strong>
+            </a>
+
+            <a
+              href="../articles/why-desk-work-can-cause-neck-and-shoulder-tension.html"
+              class="start-here-link"
+            >
+              <span class="start-here-category"> Workplace Wellness </span>
+
+              <strong> Why Desk Work Causes Neck and Shoulder Tension </strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           FLOWRESOURCES PROMOTION
+           =================================================== -->
+
+      <section class="resource-promotion">
+        <div class="resource-promotion-copy">
+          <h2>Prefer a quick visual guide?</h2>
+
+          <p>
+            FlowResources turns many FlowNotes topics into printable checklists,
+            routines, comparison guides, and visual tools you can save, share,
+            or revisit between appointments.
+          </p>
+        </div>
+
+        <a
+          class="flownotes-primary-button resource-promotion-action"
+          href="../pages/flowresources-redesign.html"
+        >
+          Browse FlowResources
+        </a>
+      </section>
+
+      <!-- ===================================================
+           TOPIC SUGGESTION FORM
+           =================================================== -->
 
       <section
         class="flownotes-request-section"
         aria-label="Suggest a FlowNotes topic"
       >
         <div class="flownotes-request-card">
-          <p class="section-label">YOUR QUESTIONS INSPIRE FUTURE ARTICLES</p>
+          <p class="section-label">Your questions inspire future articles</p>
 
           <div class="flownotes-request-form">
             <div class="ml-embedded" data-form="Ex1B2U"></div>
@@ -236,20 +985,20 @@
       </section>
 
       <div class="back">
-        <a href="../index.html"> ← Return to FlowHub </a>
+        <a href="../index.html">← Return to FlowHub</a>
       </div>
     </main>
 
     <footer class="footer">
-      <div class="footer-nav">
-    <a href="../index.html">Home</a>
-          <a href="../pages/forms.html">Forms</a>
-          <a href="../pages/aftercare.html">Aftercare</a>
-          <a href="../pages/flownotes.html" class="active">Flownotes</a>
-          <a href="../pages/flowresources-redesign.html">FlowResources</a>
-          <a href="../pages/wellness-programs.html">Wellness Programs</a>
-          <a href="../pages/faq.html">FAQ</a>
-</div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html" class="active">FlowNotes</a>
+        <a href="../pages/flowresources-redesign.html">FlowResources</a>
+        <a href="../pages/wellness-programs.html">Wellness Programs</a>
+        <a href="../pages/faq.html">FAQ</a>
+      </nav>
 
       <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
     </footer>
