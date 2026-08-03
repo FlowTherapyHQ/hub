@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Thank you for contacting FlowTherapy. Your message has been received."
+    />
+
+    <title>Thank You | FlowHub</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/icons/favicon-32x32.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/icons/favicon-16x16.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/icons/apple-touch-icon.png"
+    />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="FlowHub" />
+    <meta name="theme-color" content="#1677c8" />
+
+    <style>
+      :root {
+        --thanks-blue: #1677c8;
+        --thanks-blue-dark: #0b3f78;
+        --thanks-blue-hover: #0e5fa5;
+        --thanks-blue-soft: #eaf4fe;
+        --thanks-muted: #52677b;
+        --thanks-border: #cfe2f5;
+        --thanks-page: #f3f8fc;
+        --thanks-shadow: 0 18px 42px rgba(27, 67, 103, 0.12);
+      }
+
+      body {
+        background: var(--thanks-page);
+      }
+
+      .thank-you-shell {
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 54px 0 80px;
+      }
+
+      .thank-you-card {
+        position: relative;
+        overflow: hidden;
+        padding: 64px 48px;
+        border: 1px solid var(--thanks-border);
+        border-radius: 28px;
+        background:
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(22, 119, 200, 0.16),
+            transparent 35%
+          ),
+          linear-gradient(135deg, #ffffff 0%, #f5faff 100%);
+        box-shadow: var(--thanks-shadow);
+        text-align: center;
+      }
+
+      .thank-you-icon {
+        display: inline-flex;
+        width: 84px;
+        height: 84px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        border-radius: 50%;
+        background: var(--thanks-blue);
+        color: #ffffff;
+        font-size: 2.3rem;
+        font-weight: 900;
+        box-shadow: 0 14px 30px rgba(22, 119, 200, 0.22);
+      }
+
+      .thank-you-kicker {
+        display: inline-flex;
+        margin-bottom: 16px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--thanks-blue-soft);
+        color: var(--thanks-blue);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .thank-you-card h1 {
+        margin: 0 0 18px;
+        color: var(--thanks-blue);
+        font-size: clamp(2.4rem, 5vw, 4.5rem);
+        line-height: 1.05;
+      }
+
+      .thank-you-message {
+        max-width: 720px;
+        margin: 0 auto;
+        color: var(--thanks-muted);
+        font-size: 1.08rem;
+        line-height: 1.75;
+      }
+
+      .thank-you-note {
+        max-width: 680px;
+        margin: 26px auto 0;
+        padding: 18px 20px;
+        border: 1px solid var(--thanks-border);
+        border-radius: 16px;
+        background: #ffffff;
+        color: var(--thanks-blue-dark);
+        line-height: 1.65;
+      }
+
+      .thank-you-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .thank-you-primary,
+      .thank-you-secondary {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 19px;
+        border-radius: 999px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .thank-you-primary {
+        background: var(--thanks-blue);
+        color: #ffffff;
+      }
+
+      .thank-you-primary:hover {
+        background: var(--thanks-blue-hover);
+      }
+
+      .thank-you-secondary {
+        border: 1px solid var(--thanks-border);
+        background: #ffffff;
+        color: var(--thanks-blue);
+      }
+
+      .thank-you-secondary:hover {
+        border-color: var(--thanks-blue);
+      }
+
+      .thank-you-next {
+        margin-top: 42px;
+        padding-top: 34px;
+        border-top: 1px solid var(--thanks-border);
+      }
+
+      .thank-you-next h2 {
+        margin: 0 0 8px;
+        color: var(--thanks-blue-dark);
+        font-size: 1.45rem;
+      }
+
+      .thank-you-next p {
+        max-width: 680px;
+        margin: 0 auto;
+        color: var(--thanks-muted);
+        line-height: 1.7;
+      }
+
+      .thank-you-links {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 26px;
+      }
+
+      .thank-you-link-card {
+        display: block;
+        padding: 22px;
+        border: 1px solid var(--thanks-border);
+        border-radius: 18px;
+        background: #ffffff;
+        color: var(--thanks-blue-dark);
+        text-align: left;
+        text-decoration: none;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .thank-you-link-card:hover {
+        transform: translateY(-3px);
+        border-color: #a9cfea;
+        box-shadow: 0 10px 24px rgba(27, 67, 103, 0.08);
+      }
+
+      .thank-you-link-card span {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--thanks-blue);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .thank-you-link-card strong {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 1.12rem;
+      }
+
+      .thank-you-link-card p {
+        margin: 0;
+        color: var(--thanks-muted);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      @media (max-width: 760px) {
+        .thank-you-shell {
+          width: min(100% - 20px, 1080px);
+          padding-top: 32px;
+        }
+
+        .thank-you-card {
+          padding: 40px 24px;
+        }
+
+        .thank-you-links {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .thank-you-actions {
+          flex-direction: column;
+        }
+
+        .thank-you-primary,
+        .thank-you-secondary {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="../index.html">
+          <img
+            src="../assets/images/flowhub-horizontal.png"
+            alt="FlowHub wellness portal logo"
+            title="FlowHub"
+          />
+        </a>
+      </div>
+
+      <div class="subtitle">Your Wellness Portal</div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html">FlowNotes</a>
+        <a href="../pages/flowresources-redesign.html">FlowResources</a>
+        <a href="../pages/wellness-programs.html">Wellness Programs</a>
+        <a href="../pages/faq.html">FAQ</a>
+      </nav>
+    </header>
+
+    <main class="thank-you-shell">
+      <section class="thank-you-card">
+        <div class="thank-you-icon" aria-hidden="true">✓</div>
+
+        <div>
+          <span class="thank-you-kicker">Message received</span>
+        </div>
+
+        <h1>Thank You for Contacting FlowTherapy</h1>
+
+        <p class="thank-you-message">
+          Your message has been submitted successfully. We’ll review your
+          request and respond as soon as we’re available.
+        </p>
+
+        <div class="thank-you-note">
+          Please remember that this contact form is for general communication.
+          Do not use it for urgent symptoms, emergencies, or confidential
+          medical information.
+        </div>
+
+        <div class="thank-you-actions">
+          <a class="thank-you-primary" href="../index.html">
+            Return to FlowHub
+          </a>
+
+          <a
+            class="thank-you-secondary"
+            href="https://flowtherapy.setmore.com/book"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Schedule Your Session
+          </a>
+        </div>
+
+        <div class="thank-you-next">
+          <h2>Continue exploring FlowHub</h2>
+
+          <p>
+            While you’re here, you can prepare for your visit, explore
+            educational resources, or review practical aftercare guidance.
+          </p>
+
+          <div class="thank-you-links">
+            <a class="thank-you-link-card" href="../pages/forms.html">
+              <span>Prepare</span>
+
+              <strong>Client Forms</strong>
+
+              <p>
+                Complete intake paperwork and review current client documents.
+              </p>
+            </a>
+
+            <a class="thank-you-link-card" href="../pages/aftercare.html">
+              <span>Recover</span>
+
+              <strong>Aftercare</strong>
+
+              <p>
+                Find practical guidance for the hours and days after a session.
+              </p>
+            </a>
+
+            <a class="thank-you-link-card" href="../pages/flownotes.html">
+              <span>Learn</span>
+
+              <strong>FlowNotes</strong>
+
+              <p>
+                Read wellness education about massage, movement, and recovery.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html">FlowNotes</a>
+        <a href="../pages/flowresources-redesign.html">FlowResources</a>
+        <a href="../pages/wellness-programs.html">Wellness Programs</a>
+        <a href="../pages/faq.html">FAQ</a>
+      </nav>
+
+      <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
+    </footer>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(function () {
+              console.log("FlowHub service worker registered.");
+            })
+            .catch(function (error) {
+              console.error("Service worker registration failed:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
