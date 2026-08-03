@@ -2,165 +2,567 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>FlowHub | Client Forms</title>
+    <meta
+      name="description"
+      content="Access FlowTherapy client intake forms, body maps, physician permission forms, office policies, and billing information."
+    />
+
+    <title>Client Forms | FlowHub</title>
 
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="manifest" href="../manifest.webmanifest" />
 
-    <link rel="icon" href="favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/icons/favicon-32x32.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/icons/favicon-16x16.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/icons/apple-touch-icon.png"
+    />
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="FlowHub" />
-
     <meta name="theme-color" content="#1677c8" />
+
+    <style>
+      :root {
+        --forms-blue: #1677c8;
+        --forms-blue-dark: #0b3f78;
+        --forms-blue-hover: #0e5fa5;
+        --forms-blue-soft: #eaf4fe;
+        --forms-blue-pale: #f5faff;
+        --forms-ink: #17324d;
+        --forms-muted: #52677b;
+        --forms-border: #cfe2f5;
+        --forms-page: #f3f8fc;
+        --forms-surface: #ffffff;
+        --forms-shadow: 0 12px 30px rgba(27, 67, 103, 0.08);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--forms-page);
+        color: var(--forms-ink);
+      }
+
+      .forms-shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 42px 0 72px;
+      }
+
+      /* =====================================================
+         HERO
+         ===================================================== */
+
+      .forms-hero {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(310px, 0.92fr);
+        gap: 46px;
+        align-items: stretch;
+        overflow: hidden;
+        padding: 48px;
+        border: 1px solid var(--forms-border);
+        border-radius: 26px;
+        background:
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(22, 119, 200, 0.14),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #ffffff 0%, #f5faff 100%);
+        box-shadow: var(--forms-shadow);
+      }
+
+      .forms-hero-copy {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .forms-kicker {
+        display: inline-flex;
+        align-self: flex-start;
+        margin-bottom: 16px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--forms-blue-soft);
+        color: var(--forms-blue);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .forms-hero h1 {
+        margin: 0 0 16px;
+        color: var(--forms-blue);
+        font-size: clamp(2.7rem, 6vw, 4.8rem);
+        line-height: 1;
+      }
+
+      .forms-hero-copy > p {
+        max-width: 690px;
+        margin: 0;
+        color: var(--forms-muted);
+        font-size: 1.08rem;
+        line-height: 1.75;
+      }
+
+      .forms-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .forms-primary-button,
+      .forms-secondary-button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 18px;
+        border-radius: 999px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .forms-primary-button {
+        background: var(--forms-blue);
+        color: #ffffff;
+      }
+
+      .forms-primary-button:hover {
+        background: var(--forms-blue-hover);
+      }
+
+      .forms-secondary-button {
+        border: 1px solid var(--forms-border);
+        background: #ffffff;
+        color: var(--forms-blue);
+      }
+
+      .forms-secondary-button:hover {
+        border-color: var(--forms-blue);
+      }
+
+      /* =====================================================
+         HERO PREPARATION CARD
+         ===================================================== */
+
+      .forms-hero-visual {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .prepare-card {
+        width: 100%;
+        max-width: 400px;
+        padding: 30px;
+        border: 7px solid #ffffff;
+        border-radius: 22px;
+        background: #ffffff;
+        box-shadow: 0 20px 42px rgba(27, 67, 103, 0.18);
+      }
+
+      .prepare-card-label {
+        color: var(--forms-blue);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .prepare-card h2 {
+        margin: 11px 0 18px;
+        color: var(--forms-blue-dark);
+        font-size: 1.45rem;
+        line-height: 1.3;
+      }
+
+      .prepare-list {
+        display: grid;
+        gap: 13px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .prepare-list li {
+        display: grid;
+        grid-template-columns: 23px minmax(0, 1fr);
+        gap: 11px;
+        align-items: start;
+        color: var(--forms-muted);
+        line-height: 1.5;
+      }
+
+      .prepare-list li::before {
+        content: "✓";
+        display: inline-flex;
+        width: 23px;
+        height: 23px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+        border-radius: 50%;
+        background: var(--forms-blue-soft);
+        color: var(--forms-blue);
+        font-size: 0.75rem;
+        font-weight: 900;
+      }
+
+      /* =====================================================
+         SHARED SECTION STYLES
+         ===================================================== */
+
+      .forms-section {
+        margin-top: 72px;
+      }
+
+      .section-heading {
+        margin-bottom: 32px;
+        text-align: center;
+      }
+
+      .section-heading h2 {
+        margin: 0 0 9px;
+        color: var(--forms-blue);
+        font-size: clamp(1.8rem, 3vw, 2.35rem);
+      }
+
+      .section-heading p {
+        max-width: 760px;
+        margin: 0 auto;
+        color: var(--forms-muted);
+        line-height: 1.7;
+      }
+
+      /* =====================================================
+         REQUIRED FORMS
+         ===================================================== */
+
+      .required-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .required-card {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        padding: 32px;
+        border: 1px solid var(--forms-border);
+        border-radius: 22px;
+        background: linear-gradient(
+          135deg,
+          rgba(22, 119, 200, 0.08),
+          rgba(255, 255, 255, 0.98)
+        );
+        box-shadow: 0 8px 24px rgba(27, 67, 103, 0.06);
+      }
+
+      .required-card-primary {
+        border-color: #9bc9eb;
+      }
+
+      .form-status {
+        align-self: flex-start;
+        margin-bottom: 15px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--forms-blue);
+        color: #ffffff;
+        font-size: 0.67rem;
+        font-weight: 800;
+        letter-spacing: 0.075em;
+        text-transform: uppercase;
+      }
+
+      .form-status.situational {
+        background: #eef4f8;
+        color: #486176;
+      }
+
+      .form-status.optional {
+        background: var(--forms-blue-soft);
+        color: var(--forms-blue);
+      }
+
+      .form-status.reference {
+        background: #f1f4f7;
+        color: #51677a;
+      }
+
+      .required-card h3,
+      .form-card h3 {
+        margin: 0 0 11px;
+        color: var(--forms-blue-dark);
+        font-size: 1.5rem;
+        line-height: 1.35;
+      }
+
+      .required-card p,
+      .form-card p {
+        margin: 0;
+        color: var(--forms-muted);
+        line-height: 1.7;
+      }
+
+      .required-card .button,
+      .form-card .button {
+        align-self: flex-start;
+        margin-top: 24px;
+      }
+
+      /* =====================================================
+         OPTIONAL + REFERENCE FORMS
+         ===================================================== */
+
+      .forms-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .form-card {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        padding: 28px;
+        border: 1px solid var(--forms-border);
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 8px 24px rgba(27, 67, 103, 0.05);
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .form-card:hover {
+        transform: translateY(-4px);
+        border-color: #a9cfea;
+        box-shadow: 0 14px 34px rgba(27, 67, 103, 0.1);
+      }
+
+      .form-card p {
+        flex: 1;
+      }
+
+      /* =====================================================
+         FUTURE FORMS
+         ===================================================== */
+
+      .future-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: center;
+        padding: 32px 36px;
+        border: 1px dashed #a9cfea;
+        border-radius: 22px;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(22, 119, 200, 0.1),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #ffffff, #f5faff);
+      }
+
+      .future-panel h2 {
+        margin: 0 0 9px;
+        color: var(--forms-blue-dark);
+      }
+
+      .future-panel p {
+        max-width: 760px;
+        margin: 0;
+        color: var(--forms-muted);
+        line-height: 1.7;
+      }
+
+      /* =====================================================
+         SUPPORT PANEL
+         ===================================================== */
+
+      .forms-help-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: center;
+        padding: 34px 38px;
+        border-radius: 24px;
+        background: var(--forms-blue-dark);
+        color: #ffffff;
+        box-shadow: var(--forms-shadow);
+      }
+
+      .forms-help-panel h2 {
+        margin: 0 0 9px;
+        color: #ffffff;
+      }
+
+      .forms-help-panel p {
+        max-width: 760px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.7;
+      }
+
+      .forms-help-panel .forms-secondary-button {
+        border-color: rgba(255, 255, 255, 0.55);
+        white-space: nowrap;
+      }
+
+      .back {
+        margin-top: 38px;
+        text-align: center;
+      }
+
+      .back a {
+        color: var(--forms-blue);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .back a:hover {
+        text-decoration: underline;
+      }
+
+      /* =====================================================
+         RESPONSIVE
+         ===================================================== */
+
+      @media (max-width: 920px) {
+        .forms-hero {
+          grid-template-columns: 1fr;
+        }
+
+        .required-grid,
+        .forms-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .forms-shell {
+          width: min(100% - 20px, 1180px);
+          padding-top: 28px;
+        }
+
+        .forms-hero {
+          padding: 28px;
+        }
+
+        .required-grid,
+        .forms-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .future-panel,
+        .forms-help-panel {
+          grid-template-columns: 1fr;
+          padding: 28px;
+        }
+
+        .future-panel .forms-secondary-button,
+        .forms-help-panel .forms-secondary-button {
+          justify-self: start;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .forms-hero-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .forms-primary-button,
+        .forms-secondary-button {
+          width: 100%;
+        }
+
+        .prepare-card,
+        .required-card,
+        .form-card {
+          padding: 24px;
+        }
+      }
+
+      @media print {
+        .header,
+        .footer,
+        .forms-hero-actions,
+        .future-panel,
+        .forms-help-panel,
+        .back {
+          display: none !important;
+        }
+
+        body {
+          background: #ffffff;
+        }
+
+        .forms-shell {
+          width: 100%;
+          padding: 0;
+        }
+
+        .forms-hero,
+        .required-card,
+        .form-card {
+          break-inside: avoid;
+          box-shadow: none;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <div class="header">
+    <header class="header">
       <div class="logo">
-        <img
-          src="../assets/images/flowhub-horizontal.png"
-          alt="FlowHub wellness portal logo"
-          title="FlowHub"
-        />
+        <a href="../index.html">
+          <img
+            src="../assets/images/flowhub-horizontal.png"
+            alt="FlowHub wellness portal logo"
+            title="FlowHub"
+          />
+        </a>
       </div>
 
       <div class="subtitle">Your Wellness Portal</div>
 
-      <div class="nav">
-        <nav class="nav" aria-label="Main navigation">
-          <a href="../index.html">Home</a>
-          <a href="../pages/forms.html" class="active">Forms</a>
-          <a href="../pages/aftercare.html">Aftercare</a>
-          <a href="../pages/flownotes.html">FlowNotes</a>
-          <a href="../pages/flowresources-redesign.html">FlowResources</a>
-          <a href="../pages/wellness-programs.html">Wellness Programs</a>
-          <a href="../pages/faq.html">FAQ</a>
-        </nav>
-      </div>
-    </div>
-    <!-- End header -->
-
-    <div class="container forms-page">
-      <div class="welcome">
-        <h1>Client Forms</h1>
-
-        <p>
-          Access important forms, office policies, and information to help you
-          prepare for your appointment. Please complete any required forms
-          before your visit. Additional documents are provided for your
-          reference and may only apply in certain situations.
-        </p>
-      </div>
-
-      <div class="cards">
-        <div class="card">
-          <h2>FlowStart Intake</h2>
-
-          <p>
-            Please complete your confidential intake form before your first
-            appointment. This will help us provide safe, personalized care and
-            ensure your first session is tailored to your individual needs.
-          </p>
-
-          <a
-            class="button"
-            href="../documents/FlowStart-Intake.pdf"
-            target="_blank"
-            rel="noopener"
-          >
-            Open Form
-          </a>
-        </div>
-
-        <div class="card">
-          <h2>Detailed Body Map (Optional)</h2>
-
-          <p>
-            Use this optional body map to identify areas of pain, tension,
-            injuries, or other concerns before your appointment. Bringing the
-            completed form can help guide your session.
-          </p>
-
-          <a
-            class="button"
-            href="../documents/Detailed-Body-Map.pdf"
-            target="_blank"
-            rel="noopener"
-          >
-            Open Form
-          </a>
-        </div>
-
-        <div class="card">
-          <h2>Physician Permission Form</h2>
-
-          <p>
-            Some medical conditions may require written approval from your
-            healthcare provider before massage therapy can be performed.
-          </p>
-
-          <a
-            class="button"
-            href="../documents/physician-permission.pdf"
-            target="_blank"
-            rel="noopener"
-          >
-            Open Form
-          </a>
-        </div>
-
-        <div class="card">
-          <h2>Office Policies</h2>
-
-          <p>
-            Review appointment policies, cancellations, late arrivals,
-            professional boundaries, and other important practice information.
-          </p>
-
-          <a
-            class="button"
-            href="../documents/office-policies.pdf"
-            target="_blank"
-            rel="noopener"
-          >
-            Open Form
-          </a>
-        </div>
-
-        <div class="card">
-          <h2>Billing Information</h2>
-
-          <p>
-            Review payment options, accepted forms of payment, invoices,
-            receipts, HSA/FSA information, and billing policies.
-          </p>
-
-          <a
-            class="button"
-            href="../documents/billing-information.pdf"
-            target="_blank"
-            rel="noopener"
-          >
-            Open Form
-          </a>
-        </div>
-      </div>
-      <!-- End cards -->
-
-      <div class="back">
-        <a href="../index.html">← Return to FlowHub</a>
-      </div>
-    </div>
-
-    <div class="footer">
-      <div class="footer-nav">
+      <nav class="nav" aria-label="Main navigation">
         <a href="../index.html">Home</a>
         <a href="../pages/forms.html" class="active">Forms</a>
         <a href="../pages/aftercare.html">Aftercare</a>
@@ -168,10 +570,265 @@
         <a href="../pages/flowresources-redesign.html">FlowResources</a>
         <a href="../pages/wellness-programs.html">Wellness Programs</a>
         <a href="../pages/faq.html">FAQ</a>
-      </div>
+      </nav>
+    </header>
 
-      <p>© FlowTherapy • Move Better. Feel Better. Live Better.</p>
-    </div>
+    <main class="forms-shell">
+      <!-- ===================================================
+           HERO
+           =================================================== -->
+
+      <section class="forms-hero">
+        <div class="forms-hero-copy">
+          <span class="forms-kicker"> Prepare for your appointment </span>
+
+          <h1>Client Forms</h1>
+
+          <p>
+            Complete required paperwork, share important information, and review
+            practice policies before your visit. Forms open as PDF documents in
+            a new browser tab.
+          </p>
+
+          <div class="forms-hero-actions">
+            <a class="forms-primary-button" href="#required-forms">
+              Start Required Forms
+            </a>
+
+            <a class="forms-secondary-button" href="#reference-documents">
+              Review Policies
+            </a>
+          </div>
+        </div>
+
+        <div class="forms-hero-visual">
+          <div class="prepare-card">
+            <span class="prepare-card-label"> Before your appointment </span>
+
+            <h2>A few helpful reminders</h2>
+
+            <ul class="prepare-list">
+              <li>Complete the FlowStart Intake before your first visit.</li>
+              <li>
+                Share current health concerns, medications, and relevant
+                history.
+              </li>
+              <li>
+                Use the body map when a visual explanation would be helpful.
+              </li>
+              <li>
+                Review office and billing policies before your appointment.
+              </li>
+              <li>Contact FlowTherapy if you are unsure which form applies.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           REQUIRED FORMS
+           =================================================== -->
+
+      <section id="required-forms" class="forms-section">
+        <div class="section-heading">
+          <h2>Required Before Your Appointment</h2>
+
+          <p>
+            Start here. The intake form is required for new clients. The
+            physician permission form applies only when requested because of a
+            medical condition or specific health consideration.
+          </p>
+        </div>
+
+        <div class="required-grid">
+          <article class="required-card required-card-primary">
+            <span class="form-status">Required for New Clients</span>
+
+            <h3>FlowStart Intake</h3>
+
+            <p>
+              Complete your confidential intake form before your first
+              appointment. This information helps support safe, personalized
+              care and allows your session to be tailored to your needs,
+              preferences, and health history.
+            </p>
+
+            <a
+              class="button"
+              href="../documents/FlowStart-Intake.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              Open Intake Form
+            </a>
+          </article>
+
+          <article class="required-card">
+            <span class="form-status situational"> When Requested </span>
+
+            <h3>Physician Permission Form</h3>
+
+            <p>
+              Some medical conditions or recent procedures may require written
+              approval from your healthcare provider before massage therapy can
+              be performed. Complete this form only when FlowTherapy has asked
+              you to obtain permission.
+            </p>
+
+            <a
+              class="button"
+              href="../documents/physician-permission.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              Open Permission Form
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           OPTIONAL + REFERENCE
+           =================================================== -->
+
+      <section id="reference-documents" class="forms-section">
+        <div class="section-heading">
+          <h2>Optional &amp; Reference Documents</h2>
+
+          <p>
+            These documents help you communicate your needs and understand
+            FlowTherapy’s policies, payment options, and appointment
+            expectations.
+          </p>
+        </div>
+
+        <div class="forms-grid">
+          <article class="form-card">
+            <span class="form-status optional">Optional</span>
+
+            <h3>Detailed Body Map</h3>
+
+            <p>
+              Mark areas of pain, tension, injury, sensitivity, or concern
+              before your appointment. The body map can be especially helpful
+              when symptoms are difficult to describe with words.
+            </p>
+
+            <a
+              class="button"
+              href="../documents/Detailed-Body-Map.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              Open Body Map
+            </a>
+          </article>
+
+          <article class="form-card">
+            <span class="form-status reference">Reference</span>
+
+            <h3>Office Policies</h3>
+
+            <p>
+              Review appointment policies, cancellations, late arrivals,
+              professional boundaries, communication expectations, and other
+              important practice information.
+            </p>
+
+            <a
+              class="button"
+              href="../documents/office-policies.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              Review Policies
+            </a>
+          </article>
+
+          <article class="form-card">
+            <span class="form-status reference">Reference</span>
+
+            <h3>Billing Information</h3>
+
+            <p>
+              Review accepted payment methods, invoices, receipts, HSA/FSA
+              information, and general billing policies before your appointment.
+            </p>
+
+            <a
+              class="button"
+              href="../documents/billing-information.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              Review Billing Information
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           FUTURE FORMS
+           =================================================== -->
+
+      <section class="forms-section future-panel">
+        <div>
+          <h2>More forms may be added as FlowTherapy grows</h2>
+
+          <p>
+            Future documents may include specialized service forms, event
+            information, wellness-program materials, or additional preparation
+            resources. This page will remain the central location for current
+            client paperwork.
+          </p>
+        </div>
+
+        <a class="forms-secondary-button" href="../pages/faq.html">
+          View Common Questions
+        </a>
+      </section>
+
+      <!-- ===================================================
+           SUPPORT
+           =================================================== -->
+
+      <section class="forms-section forms-help-panel">
+        <div>
+          <h2>Not sure which form you need?</h2>
+
+          <p>
+            Complete the FlowStart Intake if you are a new client. For any other
+            form, contact FlowTherapy before your appointment and we’ll help you
+            determine what applies to your situation.
+          </p>
+        </div>
+
+        <a
+          class="forms-secondary-button"
+          href="mailto:hello@discoverflowtherapy.com?subject=Client%20Forms%20Question"
+        >
+          Ask a Forms Question
+        </a>
+      </section>
+
+      <div class="back">
+        <a href="../index.html">← Return to FlowHub</a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html" class="active">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html">FlowNotes</a>
+        <a href="../pages/flowresources-redesign.html">FlowResources</a>
+        <a href="../pages/wellness-programs.html">Wellness Programs</a>
+        <a href="../pages/faq.html">FAQ</a>
+      </nav>
+
+      <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
+    </footer>
 
     <script>
       if ("serviceWorker" in navigator) {

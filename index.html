@@ -2,14 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>FlowHub</title>
+    <meta
+      name="description"
+      content="FlowHub is FlowTherapy's wellness portal for client forms, massage aftercare, wellness education, practical resources, frequently asked questions, and wellness programs."
+    />
+
+    <title>FlowHub | Your Wellness Portal</title>
 
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="manifest" href="manifest.webmanifest" />
 
-    <link rel="icon" href="assets/icons/favicon.ico" />
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any" />
+
     <link
       rel="icon"
       type="image/png"
@@ -33,169 +40,1215 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="FlowHub" />
-
     <meta name="theme-color" content="#1677c8" />
+
+    <style>
+                              :root {
+                                --home-blue: #1677c8;
+                                --home-blue-dark: #0b3f78;
+                                --home-blue-hover: #0e5fa5;
+                                --home-blue-soft: #eaf4fe;
+                                --home-blue-pale: #f5faff;
+                                --home-ink: #17324d;
+                                --home-muted: #52677b;
+                                --home-border: #cfe2f5;
+                                --home-page: #f3f8fc;
+                                --home-surface: #ffffff;
+                                --home-shadow: 0 12px 30px rgba(27, 67, 103, 0.08);
+                              }
+
+                              html {
+                                scroll-behavior: smooth;
+                              }
+
+                              body {
+                                background: var(--home-page);
+                                color: var(--home-ink);
+                              }
+
+                              .home-shell {
+                                width: min(1180px, calc(100% - 32px));
+                                margin: 0 auto;
+                                padding: 42px 0 72px;
+                              }
+
+                              /* =====================================================
+                                 HERO
+                                 ===================================================== */
+
+                              .home-hero {
+                                position: relative;
+                                display: grid;
+                                grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+                                gap: 46px;
+                                align-items: stretch;
+                                overflow: hidden;
+                                padding: 48px;
+                                border: 1px solid var(--home-border);
+                                border-radius: 26px;
+                                background:
+                                  radial-gradient(
+                                    circle at 90% 10%,
+                                    rgba(22, 119, 200, 0.14),
+                                    transparent 34%
+                                  ),
+                                  linear-gradient(135deg, #ffffff 0%, #f5faff 100%);
+                                box-shadow: var(--home-shadow);
+                              }
+
+                              .home-hero-copy {
+                                position: relative;
+                                z-index: 2;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                              }
+
+                              .home-kicker {
+                                display: inline-flex;
+                                align-self: flex-start;
+                                margin-bottom: 16px;
+                                padding: 7px 12px;
+                                border-radius: 999px;
+                                background: var(--home-blue-soft);
+                                color: var(--home-blue);
+                                font-size: 0.75rem;
+                                font-weight: 800;
+                                letter-spacing: 0.08em;
+                                text-transform: uppercase;
+                              }
+
+                              .home-hero h1 {
+                                margin: 0 0 16px;
+                                color: var(--home-blue);
+                                font-size: clamp(2.7rem, 6vw, 4.8rem);
+                                line-height: 1.02;
+                              }
+
+                              .home-hero-copy > p {
+                                max-width: 700px;
+                                margin: 0;
+                                color: var(--home-muted);
+                                font-size: 1.08rem;
+                                line-height: 1.75;
+                              }
+
+                              .home-hero-actions {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 12px;
+                                margin-top: 27px;
+                              }
+
+                              .home-primary-button,
+                              .home-secondary-button {
+                                display: inline-flex;
+                                min-height: 46px;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 11px 18px;
+                                border-radius: 999px;
+                                font-weight: 800;
+                                text-decoration: none;
+                              }
+
+                              .home-primary-button {
+                                background: var(--home-blue);
+                                color: #ffffff;
+                              }
+
+                              .home-primary-button:hover {
+                                background: var(--home-blue-hover);
+                              }
+
+                              .home-secondary-button {
+                                border: 1px solid var(--home-border);
+                                background: #ffffff;
+                                color: var(--home-blue);
+                              }
+
+                              .home-secondary-button:hover {
+                                border-color: var(--home-blue);
+                              }
+
+                              /* =====================================================
+                                 HERO PORTAL OVERVIEW
+                                 ===================================================== */
+
+                              .home-hero-visual {
+                                display: flex;
+                                min-width: 0;
+                                align-items: center;
+                                justify-content: center;
+                              }
+
+                              .portal-overview-card {
+                                width: 100%;
+                                max-width: 405px;
+                                padding: 30px;
+                                border: 7px solid #ffffff;
+                                border-radius: 22px;
+                                background: #ffffff;
+                                box-shadow: 0 20px 42px rgba(27, 67, 103, 0.18);
+                              }
+
+                              .portal-overview-label {
+                                color: var(--home-blue);
+                                font-size: 0.7rem;
+                                font-weight: 800;
+                                letter-spacing: 0.08em;
+                                text-transform: uppercase;
+                              }
+
+                              .portal-overview-card h2 {
+                                margin: 11px 0 18px;
+                                color: var(--home-blue-dark);
+                                font-size: 1.45rem;
+                                line-height: 1.3;
+                              }
+
+                              .portal-overview-list {
+                                display: grid;
+                                gap: 13px;
+                                margin: 0;
+                                padding: 0;
+                                list-style: none;
+                              }
+
+                              .portal-overview-list li {
+                                display: grid;
+                                grid-template-columns: 23px minmax(0, 1fr);
+                                gap: 11px;
+                                align-items: start;
+                                color: var(--home-muted);
+                                line-height: 1.5;
+                              }
+
+                              .portal-overview-list li::before {
+                                content: "✓";
+                                display: inline-flex;
+                                width: 23px;
+                                height: 23px;
+                                align-items: center;
+                                justify-content: center;
+                                margin-top: 1px;
+                                border-radius: 50%;
+                                background: var(--home-blue-soft);
+                                color: var(--home-blue);
+                                font-size: 0.75rem;
+                                font-weight: 900;
+                              }
+
+                              /* =====================================================
+                                 SHARED SECTION STYLES
+                                 ===================================================== */
+
+                              .home-section {
+                                margin-top: 72px;
+                              }
+
+                              .section-heading {
+                                margin-bottom: 32px;
+                                text-align: center;
+                              }
+
+                              .section-heading h2 {
+                                margin: 0 0 9px;
+                                color: var(--home-blue);
+                                font-size: clamp(1.8rem, 3vw, 2.35rem);
+                              }
+
+                              .section-heading p {
+                                max-width: 760px;
+                                margin: 0 auto;
+                                color: var(--home-muted);
+                                line-height: 1.7;
+                              }
+
+                              /* =====================================================
+                                 NEW CLIENT PATH
+                                 ===================================================== */
+
+                              .start-path {
+                                display: grid;
+                                grid-template-columns: repeat(4, minmax(0, 1fr));
+                                gap: 18px;
+                              }
+
+                              .start-step {
+                                position: relative;
+                                padding: 25px;
+                                border: 1px solid var(--home-border);
+                                border-radius: 20px;
+                                background: #ffffff;
+                                box-shadow: 0 8px 24px rgba(27, 67, 103, 0.05);
+                              }
+
+                              .start-step-number {
+                                display: inline-flex;
+                                width: 40px;
+                                height: 40px;
+                                align-items: center;
+                                justify-content: center;
+                                margin-bottom: 16px;
+                                border-radius: 50%;
+                                background: var(--home-blue);
+                                color: #ffffff;
+                                font-weight: 900;
+                              }
+
+                              .start-step h3 {
+                                margin: 0 0 9px;
+                                color: var(--home-blue-dark);
+                                font-size: 1.16rem;
+                                line-height: 1.35;
+                              }
+
+                              .start-step p {
+                                margin: 0;
+                                color: var(--home-muted);
+                                font-size: 0.94rem;
+                                line-height: 1.65;
+                              }
+
+                              .start-step a {
+                                display: inline-block;
+                                margin-top: 16px;
+                                color: var(--home-blue);
+                                font-weight: 800;
+                                text-decoration: none;
+                              }
+
+                              .start-step a:hover {
+                                text-decoration: underline;
+                              }
+
+                              /* =====================================================
+                                 PORTAL PATHWAYS
+                                 ===================================================== */
+
+                              .pathway-group + .pathway-group {
+                                margin-top: 32px;
+                              }
+
+                              .pathway-heading {
+                                display: flex;
+                                gap: 14px;
+                                align-items: center;
+                                margin-bottom: 18px;
+                              }
+
+                              .pathway-heading-number {
+                                display: inline-flex;
+                                width: 40px;
+                                height: 40px;
+                                flex: 0 0 40px;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: 50%;
+                                background: var(--home-blue-soft);
+                                color: var(--home-blue);
+                                font-weight: 900;
+                              }
+
+                              .pathway-heading-copy span {
+                                display: block;
+                                margin-bottom: 2px;
+                                color: var(--home-blue);
+                                font-size: 0.68rem;
+                                font-weight: 800;
+                                letter-spacing: 0.08em;
+                                text-transform: uppercase;
+                              }
+
+                              .pathway-heading h3 {
+                                margin: 0;
+                                color: var(--home-blue-dark);
+                                font-size: 1.5rem;
+                              }
+
+                              .pathway-grid {
+                                display: grid;
+                                grid-template-columns: repeat(2, minmax(0, 1fr));
+                                gap: 22px;
+                              }
+
+                              .portal-card {
+                                display: flex;
+                                min-width: 0;
+                                flex-direction: column;
+                                padding: 30px;
+                                border: 1px solid var(--home-border);
+                                border-radius: 22px;
+                                background: #ffffff;
+                                box-shadow: 0 8px 24px rgba(27, 67, 103, 0.05);
+                                transition:
+                                  transform 0.2s ease,
+                                  border-color 0.2s ease,
+                                  box-shadow 0.2s ease;
+                              }
+
+                              .portal-card:hover {
+                                transform: translateY(-4px);
+                                border-color: #a9cfea;
+                                box-shadow: 0 14px 34px rgba(27, 67, 103, 0.1);
+                              }
+
+                              .portal-card-label {
+                                align-self: flex-start;
+                                margin-bottom: 14px;
+                                padding: 6px 10px;
+                                border-radius: 999px;
+                                background: var(--home-blue-soft);
+                                color: var(--home-blue);
+                                font-size: 0.67rem;
+                                font-weight: 800;
+                                letter-spacing: 0.075em;
+                                text-transform: uppercase;
+                              }
+
+                              .portal-card h3 {
+                                margin: 0 0 10px;
+                                color: var(--home-blue-dark);
+                                font-size: 1.5rem;
+                                line-height: 1.35;
+                              }
+
+                              .portal-card p {
+                                flex: 1;
+                                margin: 0;
+                                color: var(--home-muted);
+                                line-height: 1.7;
+                              }
+
+                              .portal-card .button {
+                                align-self: flex-start;
+                                margin-top: 23px;
+                              }
+
+
+            /* =====================================================
+         FEATURED CONTENT
+         ===================================================== */
+
+      .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .featured-card {
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        min-width: 0;
+        overflow: hidden;
+        border: 1px solid var(--home-border);
+        border-radius: 22px;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(22, 119, 200, 0.1),
+            transparent 35%
+          ),
+          linear-gradient(135deg, #ffffff, #f7fbff);
+        box-shadow: 0 8px 24px rgba(27, 67, 103, 0.05);
+      }
+
+      .featured-card-image {
+        display: block;
+        min-height: 230px;
+        overflow: hidden;
+        background: var(--home-blue-soft);
+      }
+
+      .featured-card-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .featured-card-content {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        justify-content: center;
+        padding: 26px 28px;
+      }
+
+      .featured-card-label {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--home-blue);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .featured-card h3 {
+        margin: 0 0 8px;
+        color: var(--home-blue-dark);
+        font-size: 1.35rem;
+        line-height: 1.35;
+      }
+
+      .featured-card p {
+        margin: 0;
+        color: var(--home-muted);
+        line-height: 1.6;
+      }
+
+      .featured-card-content > a {
+        display: inline-block;
+        align-self: flex-start;
+        margin-top: 14px;
+        color: var(--home-blue);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .featured-card-content > a:hover {
+        text-decoration: underline;
+      }
+
+      /* Styled FlowResource preview */
+
+      .featured-resource-preview {
+        display: flex;
+        min-height: 230px;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px;
+        background:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.22),
+            transparent 30%
+          ),
+          linear-gradient(145deg, #0b3f78, #1677c8);
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .featured-resource-preview-label {
+        margin-bottom: 16px;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .featured-resource-preview strong {
+        color: #ffffff;
+        font-size: 1.65rem;
+        line-height: 1.1;
+      }
+
+      .featured-resource-preview > span:not(
+          .featured-resource-preview-label
+        ) {
+        margin-top: 5px;
+        color: #ffffff;
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+
+      .featured-resource-preview small {
+        margin-top: 18px;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.78rem;
+        line-height: 1.45;
+      }
+
+      .featured-resource-preview:hover {
+        background:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.25),
+            transparent 30%
+          ),
+          linear-gradient(145deg, #082f5c, #0e5fa5);
+      }
+
+      /* =====================================================
+         RESPONSIVE
+         ===================================================== */
+
+      @media (max-width: 960px) {
+        .home-hero {
+          grid-template-columns: 1fr;
+        }
+
+        .start-path {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .featured-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .home-shell {
+          width: min(100% - 20px, 1180px);
+          padding-top: 28px;
+        }
+
+        .home-hero {
+          padding: 28px;
+        }
+
+        .start-path,
+        .pathway-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .home-cta {
+          grid-template-columns: 1fr;
+          padding: 28px;
+        }
+
+        .home-cta .home-secondary-button {
+          justify-self: start;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .home-hero-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .home-primary-button,
+        .home-secondary-button {
+          width: 100%;
+        }
+
+        .portal-overview-card,
+        .portal-card,
+        .start-step {
+          padding: 24px;
+        }
+
+        .featured-card {
+          grid-template-columns: 1fr;
+        }
+
+        .featured-card-image {
+          min-height: 190px;
+          aspect-ratio: 16 / 9;
+        }
+
+        .featured-resource-preview {
+          min-height: 175px;
+        }
+
+        .featured-card-content {
+          padding: 24px;
+        }
+      }
+
+      @media print {
+        .header,
+        .footer,
+        .home-hero-actions,
+        .home-cta {
+          display: none !important;
+        }
+
+        body {
+          background: #ffffff;
+        }
+
+        .home-shell {
+          width: 100%;
+          padding: 0;
+        }
+
+        .home-hero,
+        .start-step,
+        .portal-card,
+        .featured-card {
+          break-inside: avoid;
+          box-shadow: none;
+        }
+      }
+                              /* =====================================================
+                                 CLOSING CTA
+                                 ===================================================== */
+
+                              .home-cta {
+                                display: grid;
+                                grid-template-columns: minmax(0, 1fr) auto;
+                                gap: 28px;
+                                align-items: center;
+                                padding: 36px 40px;
+                                border-radius: 24px;
+                                background: var(--home-blue-dark);
+                                color: #ffffff;
+                                box-shadow: var(--home-shadow);
+                              }
+
+                              .home-cta h2 {
+                                margin: 0 0 9px;
+                                color: #ffffff;
+                              }
+
+                              .home-cta p {
+                                max-width: 760px;
+                                margin: 0;
+                                color: rgba(255, 255, 255, 0.9);
+                                line-height: 1.7;
+                              }
+
+                              .home-cta .home-secondary-button {
+                                border-color: rgba(255, 255, 255, 0.58);
+                                white-space: nowrap;
+                              }
+
+                              /* =====================================================
+                                 RESPONSIVE
+                                 ===================================================== */
+
+                              @media (max-width: 960px) {
+                                .home-hero {
+                                  grid-template-columns: 1fr;
+                                }
+
+                                .start-path {
+                                  grid-template-columns: repeat(2, minmax(0, 1fr));
+                                }
+
+                                .featured-grid {
+                                  grid-template-columns: 1fr;
+                                }
+                              }
+
+                              @media (max-width: 720px) {
+                                .home-shell {
+                                  width: min(100% - 20px, 1180px);
+                                  padding-top: 28px;
+                                }
+
+                                .home-hero {
+                                  padding: 28px;
+                                }
+
+                                .start-path,
+                                .pathway-grid {
+                                  grid-template-columns: 1fr;
+                                }
+
+                                .home-cta {
+                                  grid-template-columns: 1fr;
+                                  padding: 28px;
+                                }
+
+                                .home-cta .home-secondary-button {
+                                  justify-self: start;
+                                }
+                              }
+
+                              @media (max-width: 520px) {
+                                .home-hero-actions {
+                                  align-items: stretch;
+                                  flex-direction: column;
+                                }
+
+                                .home-primary-button,
+                                .home-secondary-button {
+                                  width: 100%;
+                                }
+
+                                .portal-overview-card,
+                                .portal-card,
+                                .start-step {
+                                  padding: 24px;
+                                }
+
+                                .featured-card {
+                                  grid-template-columns: 1fr;
+
+                              }
+
+                              @media print {
+                                .header,
+                                .footer,
+                                .home-hero-actions,
+                                .home-cta {
+                                  display: none !important;
+                                }
+
+                                body {
+                                  background: #ffffff;
+                                }
+
+                                .home-shell {
+                                  width: 100%;
+                                  padding: 0;
+                                }
+
+                                .home-hero,
+                                .start-step,
+                                .portal-card,
+                                .featured-card {
+                                  break-inside: avoid;
+                                  box-shadow: none;
+                                }
+                              }
+    </style>
   </head>
 
   <body>
-    <div class="header">
+    <header class="header">
       <div class="logo">
-        <img
-          src="assets/images/flowhub-horizontal.png"
-          alt="FlowHub wellness portal logo"
-          title="FlowHub"
-        />
+        <a href="index.html">
+          <img
+            src="assets/images/flowhub-horizontal.png"
+            alt="FlowHub wellness portal logo"
+            title="FlowHub"
+          />
+        </a>
       </div>
 
       <div class="subtitle">Your Wellness Portal</div>
 
-      <div class="nav">
-        <nav class="nav" aria-label="Main navigation">
-          <a href="../index.html" class="active">Home</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="pages/forms.html">Forms</a>
+        <a href="pages/aftercare.html">Aftercare</a>
+        <a href="pages/flownotes.html">FlowNotes</a>
+        <a href="pages/flowresources-redesign.html">FlowResources</a>
+        <a href="pages/wellness-programs.html">Wellness Programs</a>
+        <a href="pages/faq.html">FAQ</a>
+      </nav>
+    </header>
 
-          <a href="../pages/forms.html">Forms</a>
+    <main class="home-shell">
+      <!-- ===================================================
+           HERO
+           =================================================== -->
 
-          <a href="../pages/aftercare.html">Aftercare</a>
+      <section class="home-hero">
+        <div class="home-hero-copy">
+          <span class="home-kicker">Your wellness portal</span>
 
-          <a href="../pages/flownotes.html">FlowNotes</a>
+          <h1>Welcome to FlowHub</h1>
 
-          <a href="../pages/flowresources-redesign.html">FlowResources</a>
+          <p>
+            Access client forms, aftercare guidance, wellness education,
+            practical resources, and program information—all in one place to
+            support you before, during, and after every FlowTherapy visit.
+          </p>
 
-          <a href="../pages/wellness-programs.html">Wellness Programs</a>
+          <div class="home-hero-actions">
+            <a
+              class="home-primary-button"
+              href="https://flowtherapy.setmore.com/book"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Schedule Your Session
+            </a>
 
-          <a href="../pages/faq.html">FAQ</a>
-        </nav>
-      </div>
-    </div>
+            <a class="home-secondary-button" href="pages/forms.html">
+              Start with Client Forms
+            </a>
+          </div>
+        </div>
 
-    <div class="container">
-      <div class="welcome">
-        <h1>Welcome to FlowHub</h1>
+        <div class="home-hero-visual">
+          <div class="portal-overview-card">
+            <span class="portal-overview-label"> Everything in one place </span>
 
-        <p>
-          Your FlowTherapy Massage wellness portal for appointments, forms,
-          recovery guidance, and educational resources—designed to support you
-          before, during, and after every visit.
-        </p>
+            <h2>Use FlowHub to:</h2>
+
+            <ul class="portal-overview-list">
+              <li>Prepare for your appointment with current client forms.</li>
+              <li>Find practical guidance for recovery after your session.</li>
+              <li>Read evidence-informed wellness education in FlowNotes.</li>
+              <li>Save visual guides and routines from FlowResources.</li>
+              <li>
+                Explore memberships, specialized care, and wellness programs.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           NEW CLIENT PATH
+           =================================================== -->
+
+      <section class="home-section">
+        <div class="section-heading">
+          <h2>New to FlowTherapy?</h2>
+
+          <p>
+            Follow these four simple steps to prepare for your first appointment
+            and become familiar with your FlowHub resources.
+          </p>
+        </div>
+
+        <div class="start-path">
+          <article class="start-step">
+            <span class="start-step-number">1</span>
+
+            <h3>Schedule Your Session</h3>
+
+            <p>
+              Choose the service, date, and appointment time that best support
+              your current needs.
+            </p>
+
+            <a
+              href="https://flowtherapy.setmore.com/book"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book an Appointment →
+            </a>
+          </article>
+
+          <article class="start-step">
+            <span class="start-step-number">2</span>
+
+            <h3>Complete Your Forms</h3>
+
+            <p>
+              Submit your FlowStart Intake and review any documents that apply
+              before your visit.
+            </p>
+
+            <a href="pages/forms.html">Visit Client Forms →</a>
+          </article>
+
+          <article class="start-step">
+            <span class="start-step-number">3</span>
+
+            <h3>Review What to Expect</h3>
+
+            <p>
+              Find answers about comfort, preparation, pressure, scheduling,
+              policies, and massage care.
+            </p>
+
+            <a href="pages/faq.html">Browse FAQs →</a>
+          </article>
+
+          <article class="start-step">
+            <span class="start-step-number">4</span>
+
+            <h3>Save Your Aftercare</h3>
+
+            <p>
+              Review simple recovery guidance you can use after your appointment
+              and between sessions.
+            </p>
+
+            <a href="pages/aftercare.html">View Aftercare →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           PORTAL SECTIONS
+           =================================================== -->
+
+      <section id="explore-flowhub" class="home-section">
+        <div class="section-heading">
+          <h2>Explore FlowHub</h2>
+
+          <p>
+            Find the section that best matches where you are in your wellness
+            journey.
+          </p>
+        </div>
+
+        <!-- BEFORE YOUR VISIT -->
+
+        <div class="pathway-group">
+          <div class="pathway-heading">
+            <span class="pathway-heading-number">1</span>
+
+            <div class="pathway-heading-copy">
+              <span>Prepare</span>
+              <h3>Before Your Visit</h3>
+            </div>
+          </div>
+
+          <div class="pathway-grid">
+            <article class="portal-card">
+              <span class="portal-card-label">Appointment Preparation</span>
+
+              <h3>Client Forms</h3>
+
+              <p>
+                Complete intake paperwork, share important health information,
+                review policies, and find current client documents before your
+                appointment.
+              </p>
+
+              <a class="button" href="pages/forms.html">
+                Access Client Forms
+              </a>
+            </article>
+
+            <article class="portal-card">
+              <span class="portal-card-label"
+                >Questions &amp; Expectations</span
+              >
+
+              <h3>Frequently Asked Questions</h3>
+
+              <p>
+                Find answers about preparation, comfort, pressure, prenatal
+                massage, scheduling, cancellation policies, and what to expect.
+              </p>
+
+              <a class="button" href="pages/faq.html"> View FAQs </a>
+            </article>
+          </div>
+        </div>
+
+        <!-- AFTER YOUR VISIT -->
+
+        <div class="pathway-group">
+          <div class="pathway-heading">
+            <span class="pathway-heading-number">2</span>
+
+            <div class="pathway-heading-copy">
+              <span>Recover</span>
+              <h3>After Your Visit</h3>
+            </div>
+          </div>
+
+          <div class="pathway-grid">
+            <article class="portal-card">
+              <span class="portal-card-label">Post-Session Support</span>
+
+              <h3>Aftercare</h3>
+
+              <p>
+                Follow a practical recovery timeline, understand common
+                post-session responses, and find guidance for movement, rest,
+                hydration, soreness, and when to seek care.
+              </p>
+
+              <a class="button" href="pages/aftercare.html"> View Aftercare </a>
+            </article>
+
+            <article class="portal-card">
+              <span class="portal-card-label">Visual Wellness Tools</span>
+
+              <h3>FlowResources</h3>
+
+              <p>
+                Explore downloadable wellness guides, routines, checklists, and
+                visual tools designed to support movement, recovery, and
+                self-care between appointments.
+              </p>
+
+              <a class="button" href="pages/flowresources-redesign.html">
+                Explore FlowResources
+              </a>
+            </article>
+          </div>
+        </div>
+
+        <!-- LEARN AND CONTINUE -->
+
+        <div class="pathway-group">
+          <div class="pathway-heading">
+            <span class="pathway-heading-number">3</span>
+
+            <div class="pathway-heading-copy">
+              <span>Learn &amp; Continue</span>
+              <h3>Continue Your Wellness Journey</h3>
+            </div>
+          </div>
+
+          <div class="pathway-grid">
+            <article class="portal-card">
+              <span class="portal-card-label">Wellness Education</span>
+
+              <h3>FlowNotes</h3>
+
+              <p>
+                Read evidence-informed articles about massage, movement,
+                recovery, workplace wellness, stress, and practical ways to care
+                for your body.
+              </p>
+
+              <a class="button" href="pages/flownotes.html">
+                Explore FlowNotes
+              </a>
+            </article>
+
+            <article class="portal-card">
+              <span class="portal-card-label">Personalized Pathways</span>
+
+              <h3>Wellness Programs</h3>
+
+              <p>
+                Explore FlowPass memberships, SpaFlow experiences, Veterans
+                resources, and corporate wellness services designed for
+                consistent and specialized support.
+              </p>
+
+              <a class="button" href="pages/wellness-programs.html">
+                Explore Wellness Programs
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           FEATURED CONTENT
+           =================================================== -->
+
+      <section class="home-section">
+        <div class="section-heading">
+          <h2>Featured from FlowHub</h2>
+
+          <p>
+            Start with one educational article and one practical visual guide
+            from the growing FlowHub library.
+          </p>
+        </div>
+
+        <div class="featured-grid">
+          <article class="featured-card">
+            <a
+              class="featured-card-image"
+              href="articles/breathing-and-muscle-tension.html"
+              aria-label="Read Breathing and Muscle Tension"
+            >
+              <img
+                src="assets/images/flowresources/the-science-of-relaxation.png"
+                alt="Preview for the Breathing and Muscle Tension FlowNote"
+                loading="lazy"
+              />
+            </a>
+
+            <div class="featured-card-content">
+              <span class="featured-card-label">Featured FlowNote</span>
+
+              <h3>Breathing and Muscle Tension</h3>
+
+              <p>
+                Learn how stress may affect breathing patterns and how gentle,
+                comfortable breathing may support relaxation.
+              </p>
+
+              <a href="articles/breathing-and-muscle-tension.html">
+                Read FlowNote →
+              </a>
+            </div>
+          </article>
+
+          <article class="featured-card featured-resource-card">
+            <a
+              class="featured-resource-preview"
+              href="assets/images/flow-five-desk-routine.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open the Flow Five Desk Routine"
+            >
+              <span class="featured-resource-preview-label">
+                Movement &amp; Mobility
+              </span>
+
+              <strong>The Flow Five™</strong>
+
+              <span>Desk Routine</span>
+
+              <small>5 simple movements for the workday</small>
+            </a>
+
+            <div class="featured-card-content">
+              <span class="featured-card-label"> Featured FlowResource </span>
+
+              <h3>The Flow Five™ Desk Routine</h3>
+
+              <p>
+                Use five simple movements to reduce stiffness and reset after
+                prolonged sitting or computer work.
+              </p>
+
+              <a
+                href="assets/images/flow-five-desk-routine.png"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Guide →
+              </a>
+              <a
+                href="articles/five-minute-movement-breaks-for-busy-workdays.html"
+              >
+                Read FlowNote →
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           CLOSING CTA
+           =================================================== -->
+
+      <section class="home-section home-cta">
+        <div>
+          <h2>Ready for your next session?</h2>
+
+          <p>
+            Schedule your FlowTherapy appointment, then return to FlowHub
+            whenever you need forms, preparation guidance, education, or
+            recovery support.
+          </p>
+        </div>
 
         <a
+          class="home-secondary-button"
           href="https://flowtherapy.setmore.com/book"
-          class="button"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           Schedule Your Session
         </a>
-      </div>
+      </section>
+    </main>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Client Forms</h3>
+    <footer class="footer">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="pages/forms.html">Forms</a>
+        <a href="pages/aftercare.html">Aftercare</a>
+        <a href="pages/flownotes.html">FlowNotes</a>
+        <a href="pages/flowresources-redesign.html">FlowResources</a>
+        <a href="pages/wellness-programs.html">Wellness Programs</a>
+        <a href="pages/faq.html">FAQ</a>
+      </nav>
 
-          <p>
-            Prepare for your session with digital intake forms, health history
-            updates, and important care documents.
-          </p>
-
-          <a class="button" href="pages/forms.html"> Access Forms </a>
-        </div>
-
-        <div class="card">
-          <h3>Aftercare</h3>
-
-          <p>
-            Support your wellness journey with post-session guidance, self-care
-            recommendations, and helpful resources.
-          </p>
-
-          <a class="button" href="pages/aftercare.html"> View Aftercare </a>
-        </div>
-
-        <div class="card">
-          <h3>FlowNotes</h3>
-
-          <p>
-            Explore wellness education, movement tips, and resources designed to
-            help you move, feel, and live better.
-          </p>
-
-          <a class="button" href="pages/flownotes.html"> Explore FlowNotes </a>
-        </div>
-
-        <div class="card">
-          <h3>FlowResources</h3>
-
-          <p>
-            Explore wellness guides, downloadable resources, videos, and
-            self-care tools designed to support your health between visits.
-          </p>
-
-          <a class="button" href="../pages/flowresources-redesign.html">
-            Explore Resources</a
-          >
-        </div>
-
-        <div class="card">
-          <h3>FlowPass</h3>
-
-          <p>
-            Explore membership information, wellness benefits, and options
-            designed to support consistent care.
-          </p>
-
-          <a href="pages/flowpass.html" class="button"> View Membership </a>
-        </div>
-
-        <div class="card">
-          <h3>Frequently Asked Questions</h3>
-
-          <p>
-            Find answers to common questions about appointments, preparation,
-            comfort, scheduling, prenatal massage, and what to expect during
-            your visit.
-          </p>
-
-          <a class="button" href="pages/faq.html"> View FAQs </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">
-      <div class="footer-nav">
-          <a href="../index.html" class="active">Home</a>
-          
-          <a href="../pages/forms.html">Forms</a>
-
-          <a href="../pages/aftercare.html">Aftercare</a>
-
-          <a href="../pages/flownotes.html">FlowNotes</a>
-
-          <a href="../pages/flowresources-redesign.html">FlowResources</a>
-
-          <a href="../pages/wellness-programs.html">Wellness Programs</a>
-
-          <a href="../pages/faq.html">FAQ</a>
-        </nav>
-
-        <p>© FlowTherapy • Move Better. Feel Better. Live Better.</p>
-      </div>
-    </div>
+      <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
+    </footer>
 
     <script>
-      /*  
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", function () {
-                navigator.serviceWorker
-                    .register("/service-worker.js")
-                    .then(function () {
-                        console.log("FlowHub service worker registered.");
-                    })
-                    .catch(function (error) {
-                        console.error("Service worker registration failed:", error);
-                    });
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(function () {
+              console.log("FlowHub service worker registered.");
+            })
+            .catch(function (error) {
+              console.error("Service worker registration failed:", error);
             });
-        }
-        */
+        });
+      }
     </script>
   </body>
 </html>
