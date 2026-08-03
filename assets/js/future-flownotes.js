@@ -113,8 +113,8 @@ const futureFlowNotes = {
   ],
 
   "stress-wellness": [
-    "Burnout vs Normal Stress",
     "Why Stress Affects Digestion", 
+    "Why You Hold Your Breath Without Realizing It",
     "How to Recover From an Overwhelming Week",
     "Understanding the Fight, Flight, Freeze Response",
     "The Difference Between Rest, Recovery, and Relaxation",
@@ -154,7 +154,6 @@ const futureFlowNotes = {
     "How to Sit Without Your Back Hurting",
     "Why Your Hips Get Tight at Work",
     "The Hidden Cost of Sitting All Day",
-    "Why Your Eyes Feel Tired After Work",
     "Simple Ways to Reduce Workplace Stress",
     "Why You Clench Your Jaw at Work",
     "Standing All Day Isn't the Answer Either",

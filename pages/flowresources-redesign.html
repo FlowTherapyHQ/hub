@@ -308,7 +308,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
-        margin-bottom: 14px;
+        margin-bottom: 8px;
       }
 
       .resource-tag {
@@ -339,10 +339,12 @@
 
       .featured-resource h3,
       .library-card h3 {
-        margin: 0 0 10px;
+        margin: 8px 0 8px;
         color: #086fc5;
       }
-
+      .library-card h3 {
+        min-height: 3em;
+      }
       .featured-resource h3 {
         font-size: 1.45rem;
       }
@@ -365,10 +367,9 @@
 
       .resource-actions {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
-        gap: 12px;
-        margin-top: 22px;
+        gap: 10px;
+        margin-top: 8px;
       }
 
       .resource-button,
@@ -401,8 +402,8 @@
 
       .library-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
       }
 
       .library-card {
@@ -415,6 +416,9 @@
         background: #ffffff;
         box-shadow: 0 8px 22px rgba(27, 67, 103, 0.05);
       }
+      .resource-actions {
+        margin-top: auto;
+      }
 
       .library-card[hidden] {
         display: none;
@@ -422,12 +426,11 @@
 
       .library-card-media {
         display: block;
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 16 / 8;
         overflow: hidden;
         border-bottom: 1px solid var(--resource-border);
         background: #eef6fc;
       }
-
       .library-card-media img {
         width: 100%;
         height: 100%;
@@ -442,22 +445,28 @@
 
       .library-card-body {
         display: flex;
-        flex: 1;
         flex-direction: column;
-        padding: 22px;
+        padding: 14px;
       }
 
       .library-card h3 {
-        font-size: 1.17rem;
+        margin: 8px 0 8px;
+        font-size: 1.08rem;
+        font-weight: 700;
+        line-height: 1.35;
+        color: #0b3f78; /* Darker Flow blue */
       }
 
       .library-card p {
         flex: 1;
         font-size: 0.94rem;
       }
-
+      .library-card p,
+      .library-card .resource-meta {
+        display: none;
+      }
       .library-card .resource-actions {
-        margin-top: 18px;
+        margin-top: 8px;
       }
 
       .library-summary {
@@ -783,10 +792,6 @@
                 <span class="resource-tag resource-tag-category">
                   Workplace Wellness
                 </span>
-
-                <span class="resource-tag resource-tag-type">
-                  Infographic
-                </span>
               </div>
 
               <h3>The Connected Chain</h3>
@@ -815,7 +820,7 @@
                   class="resource-text-link"
                   href="../articles/why-desk-work-can-cause-neck-and-shoulder-tension.html"
                 >
-                  Read the related article →
+                  FlowNote →
                 </a>
               </div>
             </div>
@@ -840,8 +845,6 @@
                 <span class="resource-tag resource-tag-category">
                   Movement &amp; Mobility
                 </span>
-
-                <span class="resource-tag resource-tag-type"> Routine </span>
 
                 <span class="resource-tag resource-tag-new"> Featured </span>
               </div>
@@ -872,7 +875,7 @@
                   class="resource-text-link"
                   href="../articles/five-minute-movement-breaks-for-busy-workdays.html"
                 >
-                  Read the related article →
+                  FlowNote →
                 </a>
               </div>
             </div>
@@ -920,10 +923,6 @@
                 <span class="resource-tag resource-tag-category">
                   Workplace Wellness
                 </span>
-
-                <span class="resource-tag resource-tag-type">
-                  Infographic
-                </span>
               </div>
 
               <h3>The Connected Chain</h3>
@@ -952,7 +951,7 @@
                   class="resource-text-link"
                   href="../articles/why-desk-work-can-cause-neck-and-shoulder-tension.html"
                 >
-                  Related article →
+                  FlowNote →
                 </a>
               </div>
             </div>
@@ -981,8 +980,6 @@
                 <span class="resource-tag resource-tag-category">
                   Movement &amp; Mobility
                 </span>
-
-                <span class="resource-tag resource-tag-type"> Routine </span>
               </div>
 
               <h3>The Flow Five™ Desk Routine</h3>
@@ -1011,7 +1008,7 @@
                   class="resource-text-link"
                   href="../articles/five-minute-movement-breaks-for-busy-workdays.html"
                 >
-                  Related article →
+                  FlowNote →
                 </a>
               </div>
             </div>
@@ -1039,10 +1036,6 @@
               <div class="resource-tags">
                 <span class="resource-tag resource-tag-category">
                   Workplace Wellness
-                </span>
-
-                <span class="resource-tag resource-tag-type">
-                  Visual Guide
                 </span>
               </div>
 
@@ -1072,7 +1065,7 @@
                   class="resource-text-link"
                   href="../articles/building-a-better-workstation.html"
                 >
-                  Related article →
+                  FlowNote →
                 </a>
               </div>
             </div>
@@ -1100,10 +1093,6 @@
               <div class="resource-tags">
                 <span class="resource-tag resource-tag-category">
                   Recovery
-                </span>
-
-                <span class="resource-tag resource-tag-type">
-                  How-To Guide
                 </span>
               </div>
 
@@ -1133,7 +1122,349 @@
                   class="resource-text-link"
                   href="../articles/foam-rolling-101.html"
                 >
-                  Related article →
+                  FlowNote →
+                </a>
+              </div>
+            </div>
+          </article>
+          <!-- Building a Better Workstation -->
+          <article
+            class="library-card"
+            data-category="workplace"
+            data-search="building a better workstation workplace wellness ergonomics desk chair monitor posture computer setup"
+          >
+            <a
+              class="library-card-media"
+              href="../assets/images/flowresources/building-a-better-workstation.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Building a Better Workstation guide"
+            >
+              <img
+                src="../assets/images/flowresources/building-a-better-workstation.png"
+                alt="Preview of Building a Better Workstation guide"
+                loading="lazy"
+              />
+            </a>
+
+            <div class="library-card-body">
+              <div class="resource-tags">
+                <span class="resource-tag resource-tag-category">
+                  Workplace Wellness
+                </span>
+              </div>
+
+              <h3>Building a Better Workstation</h3>
+
+              <div class="resource-actions">
+                <a
+                  class="resource-button"
+                  href="../assets/images/flowresources/building-a-better-workstation.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Guide
+                </a>
+
+                <a
+                  class="resource-text-link"
+                  href="../articles/building-a-better-workstation.html"
+                >
+                  FlowNote →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tech Neck Prevention Guide -->
+          <article
+            class="library-card"
+            data-category="workplace"
+            data-search="tech neck prevention workplace wellness phone tablet computer posture neck shoulders screen"
+          >
+            <a
+              class="library-card-media"
+              href="../assets/images/flowresources/tech-neck-prevention-guide.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Tech Neck Prevention Guide"
+            >
+              <img
+                src="../assets/images/flowresources/tech-neck-prevention-guide.png"
+                alt="Preview of Tech Neck Prevention Guide"
+                loading="lazy"
+              />
+            </a>
+
+            <div class="library-card-body">
+              <div class="resource-tags">
+                <span class="resource-tag resource-tag-category">
+                  Workplace Wellness
+                </span>
+              </div>
+
+              <h3>Tech Neck Prevention Guide</h3>
+
+              <div class="resource-actions">
+                <a
+                  class="resource-button"
+                  href="../assets/images/flowresources/tech-neck-prevention-guide.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Guide
+                </a>
+
+                <a
+                  class="resource-text-link"
+                  href="../articles/preventing-tech-neck.html"
+                >
+                  FlowNote →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Mouse Shoulder Guide -->
+          <article
+            class="library-card"
+            data-category="workplace"
+            data-search="mouse shoulder guide workplace wellness computer mouse arm neck shoulder upper back ergonomics"
+          >
+            <a
+              class="library-card-media"
+              href="../assets/images/flowresources/the-science-of-relaxation.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open The Science of Relaxation"
+            >
+              <img
+                src="../assets/images/flowresources/the-science-of-relaxation.png"
+                alt="Preview of The Science of Relaxation"
+                loading="lazy"
+              />
+            </a>
+
+            <div class="library-card-body">
+              <div class="resource-tags">
+                <span class="resource-tag resource-tag-category">
+                  Stress & Self-Care
+                </span>
+              </div>
+
+              <h3>The Science of Relaxation</h3>
+
+              <div class="resource-actions">
+                <a
+                  class="resource-button"
+                  href="../assets/images/flowresources/the-science-of-relaxation.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Guide
+                </a>
+
+                <a
+                  class="resource-text-link"
+                  href="../articles/the-science-of-relaxation.html"
+                >
+                  FlowNote →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Office Stretch Routine -->
+          <article
+            class="library-card"
+            data-category="workplace movement"
+            data-search="office stretch routine standing stretches workplace wellness movement mobility desk workday"
+          >
+            <a
+              class="library-card-media"
+              href="../assets/images/flowresources/standing-office-stretches.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Office Stretch Routine"
+            >
+              <img
+                src="../assets/images/flowresources/standing-office-stretches.png"
+                alt="Preview of Office Stretch Routine"
+                loading="lazy"
+              />
+            </a>
+
+            <div class="library-card-body">
+              <div class="resource-tags">
+                <span class="resource-tag resource-tag-category">
+                  Workplace Wellness
+                </span>
+              </div>
+
+              <h3>Office Stretch Routine</h3>
+
+              <div class="resource-actions">
+                <a
+                  class="resource-button"
+                  href="../assets/images/flowresources/standing-office-stretches.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Guide
+                </a>
+
+                <a
+                  class="resource-text-link"
+                  href="../articles/five-minute-movement-breaks-for-busy-workdays.html"
+                >
+                  FlowNote →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 20-20-20 Eye Guide -->
+          <article
+            class="library-card"
+            data-category="workplace"
+            data-search="20 20 20 eye guide workplace wellness screen eyes eye strain computer vision breaks"
+          >
+            <a
+              class="library-card-media"
+              href="../assets/images/flowresources/twenty-eye-guide.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open the 20-20-20 Eye Guide"
+            >
+              <img
+                src="../assets/images/flowresources/twenty-eye-guide.png"
+                alt="Preview of the 20-20-20 Eye Guide"
+                loading="lazy"
+              />
+            </a>
+
+            <div class="library-card-body">
+              <div class="resource-tags">
+                <span class="resource-tag resource-tag-category">
+                  Stress & Self-Care
+                </span>
+              </div>
+
+              <h3>The 20-20-20 Eye Guide</h3>
+
+              <div class="resource-actions">
+                <a
+                  class="resource-button"
+                  href="../assets/images/flowresources/twenty-eye-guide.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Guide
+                </a>
+
+                <a
+                  class="resource-text-link"
+                  href="../articles/why-your-eyes-feel-tired-after-work.html"
+                >
+                  FlowNote →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Workday Reset Checklist -->
+          <article
+            class="library-card"
+            data-category="workplace stress"
+            data-search="workday reset checklist morning midday afternoon end of day workplace wellness movement hydration posture breathing"
+          >
+            <a
+              class="library-card-media"
+              href="../assets/images/flowresources/workday-reset-checklist.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Workday Reset Checklist"
+            >
+              <img
+                src="../assets/images/flowresources/workday-reset-checklist.png"
+                alt="Preview of Workday Reset Checklist"
+                loading="lazy"
+              />
+            </a>
+
+            <div class="library-card-body">
+              <div class="resource-tags">
+                <span class="resource-tag resource-tag-category">
+                  Workplace Wellness
+                </span>
+              </div>
+
+              <h3>Workday Reset Checklist</h3>
+
+              <div class="resource-actions">
+                <a
+                  class="resource-button"
+                  href="../assets/images/flowresources/workday-reset-checklist.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Guide
+                </a>
+
+                <a
+                  class="resource-text-link"
+                  href="../articles/how-often-should-you-get-up-from-your-desk.html"
+                >
+                  FlowNote →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Better Posture, Better You -->
+          <article
+            class="library-card"
+            data-category="workplace movement"
+            data-search="better posture better you workplace wellness posture sitting screen shoulders feet breathing movement"
+          >
+            <a
+              class="library-card-media"
+              href="../assets/images/flowresources/better-posture-better-you.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Better Posture Better You guide"
+            >
+              <img
+                src="../assets/images/flowresources/better-posture-better-you.png"
+                alt="Preview of Better Posture Better You guide"
+                loading="lazy"
+              />
+            </a>
+
+            <div class="library-card-body">
+              <div class="resource-tags">
+                <span class="resource-tag resource-tag-category">
+                  Massage Education
+                </span>
+              </div>
+
+              <h3>Better Posture, Better You</h3>
+
+              <div class="resource-actions">
+                <a
+                  class="resource-button"
+                  href="../assets/images/flowresources/better-posture-better-you.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Guide
+                </a>
+
+                <a
+                  class="resource-text-link"
+                  href="../articles/can-massage-help-posture.html"
+                >
+                  FlowNote →
                 </a>
               </div>
             </div>
@@ -1255,7 +1586,7 @@
       const loadMoreButton = document.querySelector("#load-more");
 
       let activeFilter = "all";
-      let visibleLimit = 6;
+      let visibleLimit = 8;
 
       function normalize(value) {
         return value.toLowerCase().trim();
@@ -1314,18 +1645,18 @@
 
           button.classList.add("is-active");
           activeFilter = button.dataset.filter;
-          visibleLimit = 6;
+          visibleLimit = 8;
           updateLibrary();
         });
       });
 
       searchInput.addEventListener("input", function () {
-        visibleLimit = 6;
+        visibleLimit = 8;
         updateLibrary();
       });
 
       loadMoreButton.addEventListener("click", function () {
-        visibleLimit += 6;
+        visibleLimit += 8;
         updateLibrary();
       });
 
