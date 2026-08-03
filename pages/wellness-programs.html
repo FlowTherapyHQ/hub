@@ -7,13 +7,12 @@
 
     <meta
       name="description"
-      content="Explore FlowResources from FlowTherapy, including practical wellness guides, movement routines, workplace wellness resources, and self-care tools."
+      content="Explore FlowTherapy wellness programs, including restorative self-care, wellness memberships, Veterans resources, and corporate wellness services."
     />
 
     <title>Wellness Programs | FlowTherapy</title>
 
     <link rel="stylesheet" href="../assets/css/style.css" />
-
     <link rel="manifest" href="../manifest.webmanifest" />
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
@@ -39,12 +38,368 @@
     />
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
-
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
     <meta name="apple-mobile-web-app-title" content="FlowHub" />
-
     <meta name="theme-color" content="#1677c8" />
+
+    <style>
+      :root {
+        --program-blue: #1677c8;
+        --program-blue-dark: #0b3f78;
+        --program-blue-hover: #0e5fa5;
+        --program-blue-soft: #eaf4fe;
+        --program-ink: #17324d;
+        --program-muted: #52677b;
+        --program-border: #cfe2f5;
+        --program-page: #f3f8fc;
+        --program-shadow: 0 12px 30px rgba(27, 67, 103, 0.08);
+      }
+
+      body {
+        background: var(--program-page);
+      }
+
+      .wellness-programs-shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 42px 0 72px;
+      }
+
+      /* =====================================================
+         HERO
+         ===================================================== */
+
+      .programs-hero {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+        gap: 34px;
+        align-items: center;
+        overflow: hidden;
+        padding: 48px;
+        border: 1px solid var(--program-border);
+        border-radius: 26px;
+        background:
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(22, 119, 200, 0.14),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #ffffff 0%, #f5faff 100%);
+        box-shadow: var(--program-shadow);
+      }
+
+      .programs-hero-copy {
+        position: relative;
+        z-index: 2;
+      }
+
+      .programs-kicker {
+        display: inline-flex;
+        margin-bottom: 16px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--program-blue-soft);
+        color: var(--program-blue);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .programs-hero h1 {
+        margin: 0 0 16px;
+        color: var(--program-blue);
+        font-size: clamp(2.6rem, 6vw, 4.7rem);
+        line-height: 1;
+      }
+
+      .programs-hero-copy > p {
+        max-width: 700px;
+        margin: 0;
+        color: var(--program-muted);
+        font-size: 1.08rem;
+        line-height: 1.75;
+      }
+
+      .programs-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .programs-primary-button,
+      .programs-secondary-button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 18px;
+        border-radius: 999px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .programs-primary-button {
+        background: var(--program-blue);
+        color: #ffffff;
+      }
+
+      .programs-primary-button:hover {
+        background: var(--program-blue-hover);
+      }
+
+      .programs-secondary-button {
+        border: 1px solid var(--program-border);
+        background: #ffffff;
+        color: var(--program-blue);
+      }
+
+      .programs-secondary-button:hover {
+        border-color: var(--program-blue);
+      }
+
+      /* =====================================================
+         HERO PREVIEW CARDS
+         ===================================================== */
+
+      .programs-hero-visual {
+        position: relative;
+        min-height: 320px;
+      }
+
+      .program-preview {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 150px;
+        padding: 22px;
+        border: 7px solid #ffffff;
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 20px 42px rgba(27, 67, 103, 0.18);
+      }
+
+      .program-preview-one {
+        inset: 8px 76px 94px 0;
+        transform: rotate(-3deg);
+      }
+
+      .program-preview-two {
+        inset: 88px 0 10px 86px;
+        transform: rotate(4deg);
+      }
+
+      .program-preview-label {
+        color: var(--program-blue);
+        font-size: 0.67rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .program-preview h2 {
+        margin: 12px 0 8px;
+        color: var(--program-blue-dark);
+        font-size: 1.22rem;
+        line-height: 1.3;
+      }
+
+      .program-preview p {
+        margin: 0;
+        color: var(--program-muted);
+        font-size: 0.84rem;
+        line-height: 1.5;
+      }
+
+      .program-preview-line {
+        width: 58%;
+        height: 5px;
+        margin-top: 18px;
+        border-radius: 999px;
+        background: linear-gradient(
+          90deg,
+          var(--program-blue),
+          rgba(22, 119, 200, 0.12)
+        );
+      }
+
+      /* =====================================================
+         PROGRAM SECTION
+         ===================================================== */
+
+      .programs-section {
+        margin-top: 42px;
+      }
+
+      .programs-section-heading {
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .programs-section-heading h2 {
+        margin: 0 0 8px;
+        color: var(--program-blue);
+        font-size: clamp(1.8rem, 3vw, 2.35rem);
+      }
+
+      .programs-section-heading p {
+        max-width: 700px;
+        margin: 0 auto;
+        color: var(--program-muted);
+        line-height: 1.7;
+      }
+
+      .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .program-card {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        padding: 30px;
+        border: 1px solid var(--program-border);
+        border-radius: 22px;
+        background: #ffffff;
+        box-shadow: 0 8px 24px rgba(27, 67, 103, 0.06);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .program-card:hover {
+        transform: translateY(-4px);
+        border-color: #a9cfea;
+        box-shadow: 0 14px 34px rgba(27, 67, 103, 0.11);
+      }
+
+      .program-card-label {
+        align-self: flex-start;
+        margin-bottom: 14px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--program-blue-soft);
+        color: var(--program-blue);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .program-card h2 {
+        margin: 0 0 8px;
+        color: var(--program-blue-dark);
+        font-size: 1.55rem;
+      }
+
+      .program-card-subtitle {
+        margin: 0 0 14px;
+        color: var(--program-blue);
+        font-weight: 800;
+      }
+
+      .program-card-description {
+        flex: 1;
+        margin: 0;
+        color: var(--program-muted);
+        line-height: 1.7;
+      }
+
+      .program-card .button {
+        align-self: flex-start;
+        margin-top: 24px;
+      }
+
+      .back {
+        margin-top: 38px;
+        text-align: center;
+      }
+
+      .back a {
+        color: var(--program-blue);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .back a:hover {
+        text-decoration: underline;
+      }
+
+      /* =====================================================
+         RESPONSIVE
+         ===================================================== */
+
+      @media (max-width: 900px) {
+        .programs-hero {
+          grid-template-columns: 1fr;
+        }
+
+        .programs-hero-visual {
+          min-height: 270px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .wellness-programs-shell {
+          width: min(100% - 20px, 1180px);
+          padding-top: 28px;
+        }
+
+        .programs-hero {
+          padding: 28px;
+        }
+
+        .programs-hero-visual {
+          min-height: 230px;
+        }
+
+        .program-preview {
+          padding: 18px;
+        }
+
+        .program-preview-one {
+          inset: 8px 44px 56px 0;
+        }
+
+        .program-preview-two {
+          inset: 58px 0 8px 58px;
+        }
+
+        .programs-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .programs-hero-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .programs-primary-button,
+        .programs-secondary-button {
+          width: 100%;
+        }
+
+        .program-preview h2 {
+          font-size: 1rem;
+        }
+
+        .program-preview p {
+          font-size: 0.76rem;
+        }
+
+        .program-card {
+          padding: 24px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -61,116 +416,185 @@
 
       <div class="subtitle">Your Wellness Portal</div>
 
-      <div class="nav">
-        <nav class="nav" aria-label="Main navigation">
-          <a href="../index.html">Home</a>
-          <a href="../pages/forms.html">Forms</a>
-          <a href="../pages/aftercare.html">Aftercare</a>
-          <a href="../pages/flownotes.html">FlowNotes</a>
-          <a href="../pages/flowresources-redesign.html">FlowResources</a>
-          <a href="../pages/wellness-programs.html" class="active">Wellness Programs</a>
-          <a href="../pages/faq.html">FAQ</a>
-        </nav>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html">FlowNotes</a>
+        <a href="../pages/flowresources-redesign.html">FlowResources</a>
+        <a href="../pages/wellness-programs.html" class="active">
+          Wellness Programs
+        </a>
+        <a href="../pages/faq.html">FAQ</a>
       </nav>
     </header>
 
-    <div class="container wellness-programs-page">
+    <main class="wellness-programs-shell">
+      <!-- HERO -->
 
-    <div class="welcome">
-  <h1>Wellness Programs</h1>
+      <section class="programs-hero">
+        <div class="programs-hero-copy">
+          <span class="programs-kicker">
+            Personalized pathways to wellness
+          </span>
 
-  <p class="welcome-subtitle">
-    Discover personalized programs designed to support your health, wellness, and long-term care.
-  </p>
+          <h1>Wellness Programs</h1>
 
-  <p>
-    Explore programs designed to support consistent therapeutic care,
-    restorative self-care, workplace wellness, and specialized resources.
-  </p>
-</div>
+          <p>
+            Explore personalized programs designed to support consistent
+            therapeutic care, restorative self-care, workplace wellness, and
+            specialized resources for every stage of your wellness journey.
+          </p>
 
-    <div class="cards">
+          <div class="programs-hero-actions">
+            <a class="programs-primary-button" href="#program-options">
+              Explore Programs
+            </a>
 
-  <div class="card">
-    <h2>SpaFlow</h2>
+            <a
+              class="programs-secondary-button"
+              href="mailto:hello@discoverflowtherapy.com?subject=Wellness%20Program%20Question"
+            >
+              Ask a Question
+            </a>
+          </div>
+        </div>
 
-    <p class="card-subtitle">Luxury Self-Care Experiences</p>
+        <div class="programs-hero-visual" aria-hidden="true">
+          <div class="program-preview program-preview-one">
+            <div>
+              <span class="program-preview-label">Consistent Care</span>
 
-    <p>
-      Experience Flow &amp; Glow, Back Renewal, HandFlow, and SoleFlow—
-      thoughtfully designed treatments that complement therapeutic massage
-      or offer a relaxing escape on their own.
-    </p>
+              <h2>FlowPass</h2>
 
-    <a class="button" href="../pages/spaflow.html">
-      Explore SpaFlow
-    </a>
-  </div>
+              <p>
+                Membership options designed to make therapeutic care part of
+                your regular wellness routine.
+              </p>
+            </div>
 
-  <div class="card">
-    <h2>FlowPass</h2>
+            <div class="program-preview-line"></div>
+          </div>
 
-    <p class="card-subtitle">Wellness Made Routine</p>
+          <div class="program-preview program-preview-two">
+            <div>
+              <span class="program-preview-label">Wellness at Work</span>
 
-    <p>
-      Enjoy consistent therapeutic care through monthly memberships,
-      exclusive member benefits, discounted FlowBoosts, and access to
-      FlowRewards.
-    </p>
+              <h2>Corporate Wellness</h2>
 
-    <a class="button" href="../pages/flowpass.html">
-      View Memberships
-    </a>
-  </div>
+              <p>
+                On-site chair massage and workplace wellness support for teams,
+                events, and organizations.
+              </p>
+            </div>
 
-  <div class="card">
-    <h2>Veterans Resource Center</h2>
+            <div class="program-preview-line"></div>
+          </div>
+        </div>
+      </section>
 
-    <p class="card-subtitle">Supporting Those Who Served</p>
+      <!-- PROGRAM OPTIONS -->
 
-    <p>
-      Explore resources for Veterans, including information about
-      trauma-informed massage, VA Community Care, and what to expect
-      throughout your wellness journey.
-    </p>
+      <section id="program-options" class="programs-section">
+        <div class="programs-section-heading">
+          <h2>Explore Wellness Programs</h2>
 
-    <a class="button" href="../pages/veterans.html">
-      Visit Resource Center
-    </a>
-  </div>
+          <p>
+            Choose the pathway that best supports your wellness goals, care
+            preferences, workplace, or community.
+          </p>
+        </div>
 
-  <div class="card">
-    <h2>Corporate Wellness</h2>
+        <div class="programs-grid">
+          <article class="program-card">
+            <span class="program-card-label">Restorative Self-Care</span>
 
-    <p class="card-subtitle">Wellness at Work</p>
+            <h2>SpaFlow</h2>
 
-    <p>
-      Bring FlowChair and workplace wellness programs directly to your
-      office, conference, healthcare facility, employee event, or special
-      gathering.
-    </p>
+            <p class="program-card-subtitle">Luxury Self-Care Experiences</p>
 
-    <a class="button" href="../pages/corporate.html">
-      Explore Corporate Wellness
-    </a>
-  </div>
+            <p class="program-card-description">
+              Experience Flow &amp; Glow, Back Renewal, HandFlow, and
+              SoleFlow—thoughtfully designed treatments that complement
+              therapeutic massage or offer a relaxing escape on their own.
+            </p>
 
-</div>
+            <a class="button" href="../pages/spaflow.html"> Explore SpaFlow </a>
+          </article>
 
-</div>
-    
+          <article class="program-card">
+            <span class="program-card-label">Consistent Care</span>
+
+            <h2>FlowPass</h2>
+
+            <p class="program-card-subtitle">Wellness Made Routine</p>
+
+            <p class="program-card-description">
+              Enjoy consistent therapeutic care through monthly memberships,
+              exclusive member benefits, discounted FlowBoosts, and access to
+              FlowRewards.
+            </p>
+
+            <a class="button" href="../pages/flowpass.html">
+              View Memberships
+            </a>
+          </article>
+
+          <article class="program-card">
+            <span class="program-card-label">Veterans Wellness</span>
+
+            <h2>Veterans Resource Center</h2>
+
+            <p class="program-card-subtitle">Supporting Those Who Served</p>
+
+            <p class="program-card-description">
+              Explore resources for Veterans, including information about
+              trauma-informed massage, VA Community Care, and what to expect
+              throughout your wellness journey.
+            </p>
+
+            <a class="button" href="../pages/veterans.html">
+              Visit Resource Center
+            </a>
+          </article>
+
+          <article class="program-card">
+            <span class="program-card-label">Wellness at Work</span>
+
+            <h2>Corporate Wellness</h2>
+
+            <p class="program-card-subtitle">Wellness at Work</p>
+
+            <p class="program-card-description">
+              Bring FlowChair and workplace wellness programs directly to your
+              office, conference, healthcare facility, employee event, or
+              special gathering.
+            </p>
+
+            <a class="button" href="../pages/corporate.html">
+              Explore Corporate Wellness
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <div class="back">
+        <a href="../index.html">← Return to FlowHub</a>
+      </div>
     </main>
 
     <footer class="footer">
-      <div class="footer-nav">
-    <a href="../index.html">Home</a>
-    <a href="../pages/forms.html">Forms</a>
-    <a href="../pages/aftercare.html">Aftercare</a>
-    <a href="../pages/flownotes.html">FlowNotes</a>
-    <a href="../pages/flowresources-redesign.html">FlowResources</a>
-    <a href="../pages/wellness-programs.html" class="active">Wellness Programs</a>
-    <a href="../pages/faq.html">FAQ</a>
-</div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/forms.html">Forms</a>
+        <a href="../pages/aftercare.html">Aftercare</a>
+        <a href="../pages/flownotes.html">FlowNotes</a>
+        <a href="../pages/flowresources-redesign.html">FlowResources</a>
+        <a href="../pages/wellness-programs.html" class="active">
+          Wellness Programs
+        </a>
+        <a href="../pages/faq.html">FAQ</a>
+      </nav>
 
       <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
     </footer>
