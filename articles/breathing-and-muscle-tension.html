@@ -12,6 +12,7 @@
     />
 
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="/assets/js/site-layout.js" defer></script>
     <link rel="manifest" href="../manifest.webmanifest" />
 
     <link rel="icon" href="../assets/icons/favicon.ico" />
@@ -593,28 +594,7 @@
   </head>
 
   <body>
-    <header class="header">
-      <div class="logo">
-        <a href="../index.html">
-          <img
-            src="../assets/images/flowhub-horizontal.png"
-            alt="FlowHub Wellness Portal"
-          />
-        </a>
-      </div>
-
-      <div class="subtitle">Your Wellness Portal</div>
-
-      <nav class="nav" aria-label="Main navigation">
-        <a href="../index.html">Home</a>
-        <a href="../pages/forms.html">Forms</a>
-        <a href="../pages/aftercare.html">Aftercare</a>
-        <a href="../pages/flownotes.html" class="active">FlowNotes</a>
-        <a href="../pages/flowresources-redesign.html">FlowResources</a>
-        <a href="../pages/wellness-programs.html">Wellness Programs</a>
-        <a href="../pages/faq.html">FAQ</a>
-      </nav>
-    </header>
+    <div id="site-header"></div>
 
     <main class="article-shell">
       <nav class="article-breadcrumbs" aria-label="Breadcrumb">
@@ -1277,19 +1257,7 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="../index.html">Home</a>
-        <a href="../pages/forms.html">Forms</a>
-        <a href="../pages/aftercare.html">Aftercare</a>
-        <a href="../pages/flownotes.html" class="active">FlowNotes</a>
-        <a href="../pages/flowresources-redesign.html">FlowResources</a>
-        <a href="../pages/wellness-programs.html">Wellness Programs</a>
-        <a href="../pages/faq.html">FAQ</a>
-      </nav>
-
-      <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
-    </footer>
+    <div id="site-footer"></div>
 
     <script>
       if ("serviceWorker" in navigator) {

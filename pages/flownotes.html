@@ -13,6 +13,7 @@
     <title>FlowNotes | FlowHub</title>
 
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="/assets/js/site-layout.js" defer></script>
 
     <link rel="manifest" href="../manifest.webmanifest" />
 
@@ -42,33 +43,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="FlowHub" />
     <meta name="theme-color" content="#1677c8" />
-
-    <!-- MailerLite Universal -->
-    <script>
-      (function (w, d, e, u, f, l, n) {
-        w[f] =
-          w[f] ||
-          function () {
-            (w[f].q = w[f].q || []).push(arguments);
-          };
-
-        l = d.createElement(e);
-        l.async = 1;
-        l.src = u;
-
-        n = d.getElementsByTagName(e)[0];
-        n.parentNode.insertBefore(l, n);
-      })(
-        window,
-        document,
-        "script",
-        "https://assets.mailerlite.com/js/universal.js",
-        "ml",
-      );
-
-      ml("account", "2527346");
-    </script>
-    <!-- End MailerLite Universal -->
 
     <style>
       :root {
@@ -699,33 +673,209 @@
           font-size: 0.76rem;
         }
       }
+      /* =====================================================
+   DYNAMIC LATEST FLOWNOTES
+   ===================================================== */
+
+      #flownotes-library.flownotes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+        margin-top: 30px;
+      }
+
+      #flownotes-library .flownote-card {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        padding: 26px;
+        border: 1px solid #cfe2f5;
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 8px 24px rgba(27, 67, 103, 0.05);
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      #flownotes-library .flownote-card:hover {
+        transform: translateY(-4px);
+        border-color: #a9cfea;
+        box-shadow: 0 14px 32px rgba(27, 67, 103, 0.1);
+      }
+
+      #flownotes-library .flownote-category {
+        display: inline-flex;
+        align-self: flex-start;
+        margin-bottom: 14px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #eaf4fe;
+        color: #1677c8;
+        font-size: 0.67rem;
+        font-weight: 800;
+        letter-spacing: 0.075em;
+        text-transform: uppercase;
+      }
+
+      #flownotes-library .flownote-card h3 {
+        margin: 0 0 10px;
+        color: #0b3f78;
+        font-size: 1.25rem;
+        line-height: 1.4;
+      }
+
+      #flownotes-library .flownote-card .meta {
+        margin: 0 0 14px;
+        color: #52677b;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      #flownotes-library .flownote-card > p:not(.meta) {
+        flex: 1;
+        margin: 0;
+        color: #52677b;
+        line-height: 1.7;
+      }
+
+      #flownotes-library .flownote-card .button {
+        align-self: flex-start;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 960px) {
+        #flownotes-library.flownotes-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 680px) {
+        #flownotes-library.flownotes-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* Latest FlowNotes heading alignment */
+
+      .latest-flownotes-section > .section-heading {
+        display: block;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .latest-flownotes-section > .section-heading h2 {
+        margin: 0 0 10px;
+        color: #1677c8;
+        font-size: clamp(1.8rem, 3vw, 2.2rem);
+      }
+
+      .latest-flownotes-section > .section-heading p {
+        max-width: 720px;
+        margin: 0 auto;
+        color: #52677b;
+        line-height: 1.7;
+      }
+      /* =====================================================
+   ARTICLE SUGGESTION FORM
+   ===================================================== */
+
+      .article-suggestion-form {
+        display: grid;
+        gap: 16px;
+      }
+
+      .suggestion-field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .suggestion-field label {
+        color: #0b3f78;
+        font-size: 0.88rem;
+        font-weight: 800;
+      }
+
+      .suggestion-field label span {
+        color: #52677b;
+        font-weight: 500;
+      }
+
+      .suggestion-field input,
+      .suggestion-field select,
+      .suggestion-field textarea {
+        width: 100%;
+        padding: 13px 14px;
+        border: 1px solid #bfd8ef;
+        border-radius: 10px;
+        background: #ffffff;
+        color: #17324d;
+        font: inherit;
+        line-height: 1.45;
+        box-sizing: border-box;
+      }
+
+      .suggestion-field textarea {
+        min-height: 130px;
+        resize: vertical;
+      }
+
+      .suggestion-field input:focus,
+      .suggestion-field select:focus,
+      .suggestion-field textarea:focus {
+        border-color: #1677c8;
+        outline: 3px solid rgba(22, 119, 200, 0.14);
+        outline-offset: 1px;
+      }
+
+      .suggestion-consent {
+        display: grid;
+        grid-template-columns: 20px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        color: #52677b;
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+
+      .suggestion-consent input {
+        width: 17px;
+        height: 17px;
+        margin-top: 2px;
+        accent-color: #1677c8;
+      }
+
+      .suggestion-submit-button {
+        width: 100%;
+        min-height: 46px;
+        margin-top: 2px;
+        padding: 12px 18px;
+        border: 0;
+        border-radius: 10px;
+        background: #1677c8;
+        color: #ffffff;
+        font: inherit;
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .suggestion-submit-button:hover {
+        background: #0e5fa5;
+        transform: translateY(-1px);
+      }
+
+      .suggestion-submit-button:focus-visible {
+        outline: 3px solid rgba(22, 119, 200, 0.25);
+        outline-offset: 3px;
+      }
     </style>
   </head>
 
   <body>
-    <header class="header">
-      <div class="logo">
-        <a href="../index.html">
-          <img
-            src="../assets/images/flowhub-horizontal.png"
-            alt="FlowHub wellness portal logo"
-            title="FlowHub"
-          />
-        </a>
-      </div>
-
-      <div class="subtitle">Your Wellness Portal</div>
-
-      <nav class="nav" aria-label="Main navigation">
-        <a href="../index.html">Home</a>
-        <a href="../pages/forms.html">Forms</a>
-        <a href="../pages/aftercare.html">Aftercare</a>
-        <a href="../pages/flownotes.html" class="active">FlowNotes</a>
-        <a href="../pages/flowresources-redesign.html">FlowResources</a>
-        <a href="../pages/wellness-programs.html">Wellness Programs</a>
-        <a href="../pages/faq.html">FAQ</a>
-      </nav>
-    </header>
+    <div id="site-header"></div>
 
     <main class="flownotes-shell">
       <!-- ===================================================
@@ -937,7 +1087,23 @@
           </div>
         </div>
       </section>
+      <!-- ===================================================
+           LATEST FLOWNOTES
+           =================================================== -->
 
+      <section class="flownotes-section latest-flownotes-section">
+        <div class="section-heading">
+          <h2>Latest FlowNotes</h2>
+
+          <p>
+            Explore the newest wellness education from the FlowNotes library.
+          </p>
+        </div>
+
+        <div id="flownotes-library" class="flownotes-grid" aria-live="polite">
+          <!-- Cards are generated by flownotes-library.js -->
+        </div>
+      </section>
       <!-- ===================================================
            FLOWRESOURCES PROMOTION
            =================================================== -->
@@ -973,7 +1139,48 @@
           <p class="section-label">Your questions inspire future articles</p>
 
           <div class="flownotes-request-form">
-            <div class="ml-embedded" data-form="Ex1B2U"></div>
+          
+
+              action="https://formsubmit.co/hello@discoverflowtherapy.com"
+              method="POST"
+              class="flownotes-request-form"
+            >
+              <!-- Disable CAPTCHA -->
+              <input type="hidden" name="_captcha" value="false" />
+
+              <!-- Email subject -->
+              <input
+                type="hidden"
+                name="_subject"
+                value="New FlowNote Article Suggestion"
+              />
+
+              <!-- Success page -->
+<input
+    type="hidden"
+    name="_next"
+    value="https://hub.discoverflowtherapy.com/pages/thank-you2.html"
+/>
+
+              <input type="email" name="Email" placeholder="Email" required />
+
+              <input
+                type="text"
+                name="First Name"
+                placeholder="First Name (optional)"
+              />
+
+              <textarea
+                name="Suggestion"
+                rows="5"
+                placeholder="What would you like Brandy to write about?"
+                required
+              ></textarea>
+
+              <button type="submit" class="flownotes-primary-button">
+                Send Suggestion
+              </button>
+            </form>
           </div>
 
           <p class="flownotes-request-note">
@@ -989,20 +1196,9 @@
       </div>
     </main>
 
-    <footer class="footer">
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="../index.html">Home</a>
-        <a href="../pages/forms.html">Forms</a>
-        <a href="../pages/aftercare.html">Aftercare</a>
-        <a href="../pages/flownotes.html" class="active">FlowNotes</a>
-        <a href="../pages/flowresources-redesign.html">FlowResources</a>
-        <a href="../pages/wellness-programs.html">Wellness Programs</a>
-        <a href="../pages/faq.html">FAQ</a>
-      </nav>
-
-      <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
-    </footer>
-
+    <div id="site-footer"></div>
+    <script src="/assets/js/content-registry.js"></script>
+    <script src="/assets/js/flownotes-library.js"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {

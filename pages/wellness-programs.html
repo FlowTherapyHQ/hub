@@ -7,12 +7,13 @@
 
     <meta
       name="description"
-      content="Explore FlowTherapy wellness programs, including restorative self-care, wellness memberships, Veterans resources, and corporate wellness services."
+      content="Explore FlowTherapy wellness programs, including restorative self-care, wellness memberships, Veterans resources, corporate wellness, and Private Flow Events."
     />
 
     <title>Wellness Programs | FlowTherapy</title>
 
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="/assets/js/site-layout.js" defer></script>
     <link rel="manifest" href="../manifest.webmanifest" />
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
@@ -55,8 +56,13 @@
         --program-shadow: 0 12px 30px rgba(27, 67, 103, 0.08);
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         background: var(--program-page);
+        color: var(--program-ink);
       }
 
       .wellness-programs-shell {
@@ -316,6 +322,33 @@
         margin-top: 24px;
       }
 
+      /* Full-width fifth program card */
+
+      .private-events-card {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: center;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(22, 119, 200, 0.12),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #ffffff 0%, #f5faff 100%);
+      }
+
+      .private-events-content {
+        min-width: 0;
+      }
+
+      .private-events-card .button {
+        align-self: center;
+        margin-top: 0;
+        white-space: nowrap;
+      }
+
       .back {
         margin-top: 38px;
         text-align: center;
@@ -374,6 +407,16 @@
         .programs-grid {
           grid-template-columns: 1fr;
         }
+
+        .private-events-card {
+          grid-column: auto;
+          grid-template-columns: 1fr;
+        }
+
+        .private-events-card .button {
+          justify-self: start;
+          margin-top: 4px;
+        }
       }
 
       @media (max-width: 480px) {
@@ -398,39 +441,22 @@
         .program-card {
           padding: 24px;
         }
+
+        .private-events-card .button {
+          width: 100%;
+          justify-self: stretch;
+        }
       }
     </style>
   </head>
 
   <body>
-    <header class="header">
-      <div class="logo">
-        <a href="../index.html">
-          <img
-            src="../assets/images/flowhub-horizontal.png"
-            alt="FlowHub wellness portal logo"
-            title="FlowHub"
-          />
-        </a>
-      </div>
-
-      <div class="subtitle">Your Wellness Portal</div>
-
-      <nav class="nav" aria-label="Main navigation">
-        <a href="../index.html">Home</a>
-        <a href="../pages/forms.html">Forms</a>
-        <a href="../pages/aftercare.html">Aftercare</a>
-        <a href="../pages/flownotes.html">FlowNotes</a>
-        <a href="../pages/flowresources-redesign.html">FlowResources</a>
-        <a href="../pages/wellness-programs.html" class="active">
-          Wellness Programs
-        </a>
-        <a href="../pages/faq.html">FAQ</a>
-      </nav>
-    </header>
+    <div id="site-header"></div>
 
     <main class="wellness-programs-shell">
-      <!-- HERO -->
+      <!-- ===================================================
+           HERO
+           =================================================== -->
 
       <section class="programs-hero">
         <div class="programs-hero-copy">
@@ -442,8 +468,9 @@
 
           <p>
             Explore personalized programs designed to support consistent
-            therapeutic care, restorative self-care, workplace wellness, and
-            specialized resources for every stage of your wellness journey.
+            therapeutic care, restorative self-care, workplace wellness, private
+            groups, and specialized resources for every stage of your wellness
+            journey.
           </p>
 
           <div class="programs-hero-actions">
@@ -453,7 +480,7 @@
 
             <a
               class="programs-secondary-button"
-              href="/pages/contact.html"hello@discoverflowtherapy.com?subject=Wellness%20Program%20Question"
+              href="/pages/inquiry.html?type=wellness-programs"
             >
               Ask a Question
             </a>
@@ -493,7 +520,9 @@
         </div>
       </section>
 
-      <!-- PROGRAM OPTIONS -->
+      <!-- ===================================================
+           PROGRAM OPTIONS
+           =================================================== -->
 
       <section id="program-options" class="programs-section">
         <div class="programs-section-heading">
@@ -501,11 +530,13 @@
 
           <p>
             Choose the pathway that best supports your wellness goals, care
-            preferences, workplace, or community.
+            preferences, workplace, private group, or community.
           </p>
         </div>
 
         <div class="programs-grid">
+          <!-- SpaFlow -->
+
           <article class="program-card">
             <span class="program-card-label">Restorative Self-Care</span>
 
@@ -521,6 +552,8 @@
 
             <a class="button" href="../pages/spaflow.html"> Explore SpaFlow </a>
           </article>
+
+          <!-- FlowPass -->
 
           <article class="program-card">
             <span class="program-card-label">Consistent Care</span>
@@ -540,6 +573,8 @@
             </a>
           </article>
 
+          <!-- Veterans Resource Center -->
+
           <article class="program-card">
             <span class="program-card-label">Veterans Wellness</span>
 
@@ -558,6 +593,8 @@
             </a>
           </article>
 
+          <!-- Corporate Wellness -->
+
           <article class="program-card">
             <span class="program-card-label">Wellness at Work</span>
 
@@ -575,6 +612,31 @@
               Explore Corporate Wellness
             </a>
           </article>
+
+          <!-- Private Flow Events -->
+
+          <article class="program-card private-events-card">
+            <div class="private-events-content">
+              <span class="program-card-label"> Wellness Brought to You </span>
+
+              <h2>Private Flow Events</h2>
+
+              <p class="program-card-subtitle">
+                Personalized Wellness for Private Groups
+              </p>
+
+              <p class="program-card-description">
+                Bring the FlowTherapy experience to your home, hotel suite,
+                retreat, celebration, or private gathering. Private Flow Events
+                are thoughtfully planned around your group, setting, available
+                time, and wellness goals.
+              </p>
+            </div>
+
+            <a class="button" href="/pages/inquiry.html?type=private-event">
+              Start a Private Event Inquiry
+            </a>
+          </article>
         </div>
       </section>
 
@@ -583,21 +645,7 @@
       </div>
     </main>
 
-    <footer class="footer">
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="../index.html">Home</a>
-        <a href="../pages/forms.html">Forms</a>
-        <a href="../pages/aftercare.html">Aftercare</a>
-        <a href="../pages/flownotes.html">FlowNotes</a>
-        <a href="../pages/flowresources-redesign.html">FlowResources</a>
-        <a href="../pages/wellness-programs.html" class="active">
-          Wellness Programs
-        </a>
-        <a href="../pages/faq.html">FAQ</a>
-      </nav>
-
-      <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
-    </footer>
+    <div id="site-footer"></div>
 
     <script>
       if ("serviceWorker" in navigator) {

@@ -7,12 +7,13 @@
 
     <meta
       name="description"
-      content="Contact FlowTherapy with questions about appointments, client forms, aftercare, wellness programs, corporate wellness, Veterans resources, and FlowHub."
+      content="Contact FlowTherapy with questions about appointments, client forms, aftercare, wellness programs, corporate wellness, Private Flow Events, Veterans resources, and FlowHub."
     />
 
     <title>Contact FlowTherapy | FlowHub</title>
 
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="/assets/js/site-layout.js" defer></script>
     <link rel="manifest" href="../manifest.webmanifest" />
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
@@ -58,6 +59,8 @@
         --contact-success-soft: #edf9f2;
         --contact-warning: #8a5a12;
         --contact-warning-soft: #fff9ed;
+        --contact-danger: #8d3030;
+        --contact-danger-soft: #fffafa;
         --contact-shadow: 0 12px 30px rgba(27, 67, 103, 0.08);
       }
 
@@ -178,7 +181,7 @@
       }
 
       /* =====================================================
-         HERO CONTACT CARD
+         HERO CONCIERGE CARD
          ===================================================== */
 
       .contact-hero-visual {
@@ -207,10 +210,17 @@
       }
 
       .contact-options-card h2 {
-        margin: 11px 0 18px;
+        margin: 11px 0 12px;
         color: var(--contact-blue-dark);
         font-size: 1.45rem;
         line-height: 1.3;
+      }
+
+      .contact-options-intro {
+        margin: 0 0 18px;
+        color: var(--contact-muted);
+        font-size: 0.92rem;
+        line-height: 1.55;
       }
 
       .contact-options-list {
@@ -250,12 +260,12 @@
       .contact-option p {
         margin: 0;
         color: var(--contact-muted);
-        font-size: 0.92rem;
-        line-height: 1.5;
+        font-size: 0.9rem;
+        line-height: 1.48;
       }
 
       /* =====================================================
-         SECTION STYLES
+         SHARED SECTION STYLES
          ===================================================== */
 
       .contact-section {
@@ -281,6 +291,95 @@
       }
 
       /* =====================================================
+         SPECIALTY INQUIRY CARDS
+         ===================================================== */
+
+      .inquiry-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .inquiry-card {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        padding: 30px;
+        border: 1px solid var(--contact-border);
+        border-radius: 22px;
+        background: #ffffff;
+        box-shadow: 0 8px 24px rgba(27, 67, 103, 0.05);
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .inquiry-card:hover {
+        transform: translateY(-4px);
+        border-color: #a9cfea;
+        box-shadow: 0 14px 34px rgba(27, 67, 103, 0.1);
+      }
+
+      .inquiry-card-label {
+        align-self: flex-start;
+        margin-bottom: 14px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--contact-blue-soft);
+        color: var(--contact-blue);
+        font-size: 0.67rem;
+        font-weight: 800;
+        letter-spacing: 0.075em;
+        text-transform: uppercase;
+      }
+
+      .inquiry-card h3 {
+        margin: 0 0 10px;
+        color: var(--contact-blue-dark);
+        font-size: 1.45rem;
+        line-height: 1.35;
+      }
+
+      .inquiry-card p {
+        flex: 1;
+        margin: 0;
+        color: var(--contact-muted);
+        line-height: 1.7;
+      }
+
+      .inquiry-card .contact-primary-button {
+        align-self: flex-start;
+        margin-top: 23px;
+      }
+
+      /* =====================================================
+         GENERAL CONTACT INTRO
+         ===================================================== */
+
+      .general-contact-intro {
+        max-width: 860px;
+        margin: 0 auto 30px;
+        padding: 24px 28px;
+        border: 1px solid var(--contact-border);
+        border-radius: 18px;
+        background: var(--contact-blue-pale);
+        text-align: center;
+      }
+
+      .general-contact-intro h3 {
+        margin: 0 0 8px;
+        color: var(--contact-blue-dark);
+        font-size: 1.3rem;
+      }
+
+      .general-contact-intro p {
+        margin: 0;
+        color: var(--contact-muted);
+        line-height: 1.65;
+      }
+
+      /* =====================================================
          CONTACT FORM
          ===================================================== */
 
@@ -299,26 +398,6 @@
         box-shadow: var(--contact-shadow);
       }
 
-      .success-message {
-        display: none;
-        margin-bottom: 24px;
-        padding: 18px 20px;
-        border: 1px solid #acd9bd;
-        border-radius: 16px;
-        background: var(--contact-success-soft);
-        color: var(--contact-success);
-        line-height: 1.6;
-      }
-
-      .success-message.is-visible {
-        display: block;
-      }
-
-      .success-message strong {
-        display: block;
-        margin-bottom: 3px;
-      }
-
       .contact-form {
         display: grid;
         gap: 21px;
@@ -332,12 +411,11 @@
 
       .form-field {
         display: grid;
-        gap: 8px;
         min-width: 0;
+        gap: 8px;
       }
 
-      .form-field label,
-      .form-field legend {
+      .form-field label {
         color: var(--contact-blue-dark);
         font-size: 0.92rem;
         font-weight: 800;
@@ -381,6 +459,53 @@
         line-height: 1.5;
       }
 
+      .response-expectations {
+        display: grid;
+        gap: 10px;
+        padding: 20px;
+        border: 1px solid var(--contact-border);
+        border-radius: 16px;
+        background: var(--contact-blue-pale);
+      }
+
+      .response-expectations h3 {
+        margin: 0 0 4px;
+        color: var(--contact-blue-dark);
+        font-size: 1.05rem;
+      }
+
+      .response-expectations ul {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .response-expectations li {
+        display: grid;
+        grid-template-columns: 21px minmax(0, 1fr);
+        gap: 9px;
+        align-items: start;
+        color: var(--contact-muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+
+      .response-expectations li::before {
+        content: "✓";
+        display: inline-flex;
+        width: 21px;
+        height: 21px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--contact-blue-soft);
+        color: var(--contact-blue);
+        font-size: 0.7rem;
+        font-weight: 900;
+      }
+
       .privacy-notice {
         padding: 17px 18px;
         border: 1px solid #ead6a8;
@@ -419,8 +544,6 @@
         justify-self: start;
         min-width: 155px;
       }
-
-      /* Honeypot spam field */
 
       .website-field {
         position: absolute !important;
@@ -495,6 +618,38 @@
         font-weight: 900;
       }
 
+      .quick-link-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .quick-link {
+        display: flex;
+        min-height: 42px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 13px;
+        border: 1px solid var(--contact-border);
+        border-radius: 12px;
+        background: var(--contact-blue-pale);
+        color: var(--contact-blue-dark);
+        font-size: 0.9rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .quick-link:hover {
+        border-color: var(--contact-blue);
+        background: #ffffff;
+      }
+
+      .quick-link::after {
+        content: "→";
+        color: var(--contact-blue);
+      }
+
       .email-display {
         margin-top: 16px;
         padding: 13px 14px;
@@ -520,11 +675,11 @@
 
       .urgent-card {
         border-color: #e7c6c6;
-        background: #fffafa;
+        background: var(--contact-danger-soft);
       }
 
       .urgent-card h2 {
-        color: #8d3030;
+        color: var(--contact-danger);
       }
 
       /* =====================================================
@@ -604,13 +759,14 @@
           padding: 28px;
         }
 
-        .contact-form-card {
-          padding: 26px;
-        }
-
+        .inquiry-grid,
         .form-row,
         .contact-sidebar {
           grid-template-columns: 1fr;
+        }
+
+        .contact-form-card {
+          padding: 26px;
         }
 
         .urgent-card {
@@ -640,10 +796,12 @@
 
         .contact-options-card,
         .contact-form-card,
-        .sidebar-card {
+        .sidebar-card,
+        .inquiry-card {
           padding: 23px;
         }
 
+        .inquiry-card .contact-primary-button,
         .contact-submit {
           width: 100%;
         }
@@ -652,29 +810,7 @@
   </head>
 
   <body>
-    <header class="header">
-      <div class="logo">
-        <a href="../index.html">
-          <img
-            src="../assets/images/flowhub-horizontal.png"
-            alt="FlowHub wellness portal logo"
-            title="FlowHub"
-          />
-        </a>
-      </div>
-
-      <div class="subtitle">Your Wellness Portal</div>
-
-      <nav class="nav" aria-label="Main navigation">
-        <a href="../index.html">Home</a>
-        <a href="../pages/forms.html">Forms</a>
-        <a href="../pages/aftercare.html">Aftercare</a>
-        <a href="../pages/flownotes.html">FlowNotes</a>
-        <a href="../pages/flowresources-redesign.html">FlowResources</a>
-        <a href="../pages/wellness-programs.html">Wellness Programs</a>
-        <a href="../pages/faq.html">FAQ</a>
-      </nav>
-    </header>
+    <div id="site-header"></div>
 
     <main class="contact-shell">
       <!-- ===================================================
@@ -688,53 +824,55 @@
           <h1>Contact FlowTherapy</h1>
 
           <p>
-            Have a question about your appointment, client forms, aftercare,
-            wellness programs, corporate services, or FlowHub? Send a message
-            using the secure contact request below.
+            Not sure where to start? Tell us what you need and we’ll help point
+            you in the right direction. Use a specialized inquiry below or send
+            a general message for appointment, forms, aftercare, or FlowHub
+            questions.
           </p>
 
           <div class="contact-hero-actions">
-            <a class="contact-primary-button" href="#contact-form">
-              Send a Message
+            <a class="contact-primary-button" href="#choose-inquiry">
+              Choose an Inquiry
             </a>
 
-            <a
-              class="contact-secondary-button"
-              href="https://flowtherapy.setmore.com/book"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Schedule Your Session
+            <a class="contact-secondary-button" href="#contact-form">
+              General Contact
             </a>
           </div>
         </div>
 
         <div class="contact-hero-visual">
           <div class="contact-options-card">
-            <span class="contact-options-label">
-              Choose the easiest option
-            </span>
+            <span class="contact-options-label"> Your FlowHub concierge </span>
 
             <h2>How can we help?</h2>
 
+            <p class="contact-options-intro">
+              Choose the pathway that best matches your question.
+            </p>
+
             <ul class="contact-options-list">
-              <li class="contact-option">
-                <span class="contact-option-icon">Q</span>
-
-                <div>
-                  <strong>General questions</strong>
-                  <p>
-                    Ask about services, preparation, forms, or what to expect.
-                  </p>
-                </div>
-              </li>
-
               <li class="contact-option">
                 <span class="contact-option-icon">A</span>
 
                 <div>
                   <strong>Appointment support</strong>
-                  <p>Contact FlowTherapy about an upcoming appointment.</p>
+                  <p>
+                    Ask about scheduling, preparation, comfort, or an upcoming
+                    visit.
+                  </p>
+                </div>
+              </li>
+
+              <li class="contact-option">
+                <span class="contact-option-icon">E</span>
+
+                <div>
+                  <strong>Events and organizations</strong>
+                  <p>
+                    Plan workplace wellness, a private group, or a special
+                    event.
+                  </p>
                 </div>
               </li>
 
@@ -742,9 +880,10 @@
                 <span class="contact-option-icon">W</span>
 
                 <div>
-                  <strong>Wellness programs</strong>
+                  <strong>Wellness pathways</strong>
                   <p>
-                    Ask about FlowPass, SpaFlow, Veterans, or corporate care.
+                    Ask about FlowPass, SpaFlow, Veterans resources, or ongoing
+                    care.
                   </p>
                 </div>
               </li>
@@ -753,8 +892,11 @@
                 <span class="contact-option-icon">R</span>
 
                 <div>
-                  <strong>Resource help</strong>
-                  <p>Get help finding a FlowNote, guide, form, or policy.</p>
+                  <strong>FlowHub resources</strong>
+                  <p>
+                    Get help finding a form, article, guide, policy, or
+                    aftercare resource.
+                  </p>
                 </div>
               </li>
             </ul>
@@ -763,32 +905,122 @@
       </section>
 
       <!-- ===================================================
-           CONTACT FORM
+           SPECIALTY INQUIRIES
+           =================================================== -->
+
+      <section id="choose-inquiry" class="contact-section">
+        <div class="section-heading">
+          <h2>Choose Your Inquiry</h2>
+
+          <p>
+            These pathways ask questions tailored to your request and help
+            FlowTherapy understand what you need before responding.
+          </p>
+        </div>
+
+        <div class="inquiry-grid">
+          <article class="inquiry-card">
+            <span class="inquiry-card-label">Wellness at Work</span>
+
+            <h3>Corporate Wellness</h3>
+
+            <p>
+              Ask about FlowChair, employee wellness events, conferences,
+              healthcare facilities, staff appreciation, or recurring workplace
+              wellness support.
+            </p>
+
+            <a
+              class="contact-primary-button"
+              href="/pages/inquiry.html?type=corporate"
+            >
+              Start Corporate Inquiry
+            </a>
+          </article>
+
+          <article class="inquiry-card">
+            <span class="inquiry-card-label">Wellness Brought to You</span>
+
+            <h3>Private Flow Events</h3>
+
+            <p>
+              Plan wellness for a private home, hotel suite, retreat,
+              celebration, wedding group, or other special gathering.
+            </p>
+
+            <a
+              class="contact-primary-button"
+              href="/pages/inquiry.html?type=private-event"
+            >
+              Start Private Event Inquiry
+            </a>
+          </article>
+
+          <article class="inquiry-card">
+            <span class="inquiry-card-label">Supporting Those Who Served</span>
+
+            <h3>Veterans Resources</h3>
+
+            <p>
+              Ask a general question about trauma-informed massage, preparing
+              for care, VA Community Care information, or finding the right
+              resource.
+            </p>
+
+            <a
+              class="contact-primary-button"
+              href="/pages/inquiry.html?type=veterans"
+            >
+              Ask a Veterans Resource Question
+            </a>
+          </article>
+
+          <article class="inquiry-card">
+            <span class="inquiry-card-label"> Personalized Pathways </span>
+
+            <h3>Wellness Programs</h3>
+
+            <p>
+              Ask about FlowPass memberships, SpaFlow experiences, specialized
+              resources, or which wellness pathway may fit your needs.
+            </p>
+
+            <a
+              class="contact-primary-button"
+              href="/pages/inquiry.html?type=wellness-programs"
+            >
+              Ask About Wellness Programs
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           GENERAL CONTACT FORM
            =================================================== -->
 
       <section id="contact-form" class="contact-section">
         <div class="section-heading">
-          <h2>Send FlowTherapy a Message</h2>
+          <h2>General Contact</h2>
 
           <p>
-            Complete the form below and your message will be delivered to
-            FlowTherapy. Required fields are marked with an asterisk.
+            Use this form for appointment questions, client forms, aftercare,
+            massage preparation, FlowHub resources, or anything that does not
+            require a specialized inquiry.
+          </p>
+        </div>
+
+        <div class="general-contact-intro">
+          <h3>Not sure where your question belongs?</h3>
+
+          <p>
+            That’s okay. Send a general message below and FlowTherapy will help
+            direct you to the appropriate next step.
           </p>
         </div>
 
         <div class="contact-layout">
           <div class="contact-form-card">
-            <div
-              id="success-message"
-              class="success-message"
-              role="status"
-              aria-live="polite"
-            >
-              <strong>Your message has been submitted.</strong>
-              Thank you for contacting FlowTherapy. We’ll respond as soon as
-              we’re available.
-            </div>
-
             <form
               class="contact-form"
               action="https://formsubmit.co/hello@discoverflowtherapy.com"
@@ -798,8 +1030,22 @@
 
               <input
                 type="hidden"
+                name="_subject"
+                value="New FlowHub General Contact Request"
+              />
+
+              <input type="hidden" name="_template" value="table" />
+
+              <input
+                type="hidden"
                 name="_next"
                 value="https://hub.discoverflowtherapy.com/pages/thank-you.html"
+              />
+
+              <input
+                type="hidden"
+                name="_autoresponse"
+                value="Thank you for contacting FlowTherapy. Your message has been received and will be reviewed as soon as we are available. Please do not reply with confidential health information."
               />
 
               <!-- Honeypot spam protection -->
@@ -838,7 +1084,7 @@
 
                   <input
                     id="contact-email"
-                    name="Email"
+                    name="email"
                     type="email"
                     autocomplete="email"
                     required
@@ -858,8 +1104,8 @@
                   />
 
                   <p class="field-note">
-                    Optional. Include a phone number only when you are
-                    comfortable being contacted by phone or text.
+                    Optional. Include a number only if you are comfortable being
+                    contacted by phone or text.
                   </p>
                 </div>
 
@@ -888,23 +1134,49 @@
 
                 <select id="message-topic" name="Topic" required>
                   <option value="" selected disabled>Select a topic</option>
-                  <option value="Appointment question">
-                    Appointment question
-                  </option>
-                  <option value="Client forms">Client forms</option>
-                  <option value="Aftercare question">Aftercare question</option>
-                  <option value="FlowNotes or FlowResources">
-                    FlowNotes or FlowResources
-                  </option>
-                  <option value="FlowPass or wellness programs">
-                    FlowPass or wellness programs
-                  </option>
-                  <option value="Corporate wellness">Corporate wellness</option>
-                  <option value="Veterans resources">Veterans resources</option>
-                  <option value="Website or technical issue">
-                    Website or technical issue
-                  </option>
-                  <option value="Other">Other</option>
+
+                  <optgroup label="Appointments">
+                    <option value="Appointment question">
+                      Appointment question
+                    </option>
+
+                    <option value="Scheduling help">Scheduling help</option>
+
+                    <option value="Preparation or what to expect">
+                      Preparation or what to expect
+                    </option>
+                  </optgroup>
+
+                  <optgroup label="Client Care">
+                    <option value="Client forms">Client forms</option>
+
+                    <option value="Aftercare question">
+                      Aftercare question
+                    </option>
+
+                    <option value="Massage or pressure question">
+                      Massage or pressure question
+                    </option>
+
+                    <option value="Accessibility question">
+                      Accessibility question
+                    </option>
+                  </optgroup>
+
+                  <optgroup label="FlowHub">
+                    <option value="FlowNotes or FlowResources">
+                      FlowNotes or FlowResources
+                    </option>
+
+                    <option value="Website or technical issue">
+                      Website or technical issue
+                    </option>
+                  </optgroup>
+
+                  <optgroup label="Other">
+                    <option value="General question">General question</option>
+                    <option value="Other">Other</option>
+                  </optgroup>
                 </select>
               </div>
 
@@ -924,16 +1196,33 @@
                 <p class="field-note">
                   Please keep your message brief. Do not include diagnoses,
                   detailed medical history, insurance information, payment-card
-                  numbers, or other sensitive information.
+                  numbers, identification numbers, or other sensitive records.
                 </p>
+              </div>
+
+              <div class="response-expectations">
+                <h3>What to expect after submitting</h3>
+
+                <ul>
+                  <li>
+                    Your message will be delivered to FlowTherapy for review.
+                  </li>
+
+                  <li>Messages are answered as soon as availability allows.</li>
+
+                  <li>
+                    Appointment and event requests are not confirmed until
+                    FlowTherapy responds directly.
+                  </li>
+                </ul>
               </div>
 
               <div class="privacy-notice">
                 <strong>Privacy reminder:</strong>
                 This general contact form is not intended for confidential
-                health information or emergencies. Health information should be
-                shared through the appropriate client intake process or
-                discussed directly with your healthcare provider.
+                health information, medical records, or emergencies. Health
+                information should be shared through the appropriate client
+                intake process.
               </div>
 
               <div class="form-consent">
@@ -965,19 +1254,36 @@
 
           <aside class="contact-sidebar" aria-label="Contact information">
             <section class="sidebar-card">
-              <h2>Before sending a message</h2>
+              <h2>Need something quickly?</h2>
 
-              <p>
-                You may already find the answer in one of these FlowHub
-                sections:
-              </p>
+              <p>These FlowHub sections may already have what you need.</p>
 
-              <ul class="sidebar-list">
-                <li>Client Forms for required paperwork</li>
-                <li>FAQ for preparation and appointment questions</li>
-                <li>Aftercare for post-session guidance</li>
-                <li>Wellness Programs for memberships and specialized care</li>
-              </ul>
+              <div class="quick-link-list">
+                <a
+                  class="quick-link"
+                  href="https://flowtherapy.setmore.com/book"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Schedule an Appointment
+                </a>
+
+                <a class="quick-link" href="../pages/forms.html">
+                  Complete Client Forms
+                </a>
+
+                <a class="quick-link" href="../pages/faq.html">
+                  Read Frequently Asked Questions
+                </a>
+
+                <a class="quick-link" href="../pages/aftercare.html">
+                  Review Aftercare
+                </a>
+
+                <a class="quick-link" href="../pages/wellness-programs.html">
+                  Explore Wellness Programs
+                </a>
+              </div>
             </section>
 
             <section class="sidebar-card">
@@ -1033,8 +1339,8 @@
           <h2>Ready to schedule?</h2>
 
           <p>
-            Use the online booking page to explore current services and
-            appointment availability.
+            Use the online booking page to explore current FlowTherapy services
+            and appointment availability.
           </p>
         </div>
 
@@ -1053,42 +1359,9 @@
       </div>
     </main>
 
-    <footer class="footer">
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="../index.html">Home</a>
-        <a href="../pages/forms.html">Forms</a>
-        <a href="../pages/aftercare.html">Aftercare</a>
-        <a href="../pages/flownotes.html">FlowNotes</a>
-        <a href="../pages/flowresources-redesign.html">FlowResources</a>
-        <a href="../pages/wellness-programs.html">Wellness Programs</a>
-        <a href="../pages/faq.html">FAQ</a>
-      </nav>
-
-      <p>&copy; FlowTherapy • Move Better. Feel Better. Live Better.</p>
-    </footer>
+    <div id="site-footer"></div>
 
     <script>
-      /* Show confirmation after FormSubmit returns the visitor */
-
-      const pageParameters = new URLSearchParams(window.location.search);
-      const successMessage = document.getElementById("success-message");
-
-      if (pageParameters.get("sent") === "1" && successMessage) {
-        successMessage.classList.add("is-visible");
-        successMessage.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-
-        /* Remove ?sent=1 from the address without reloading */
-
-        window.history.replaceState(
-          {},
-          document.title,
-          window.location.pathname,
-        );
-      }
-
       /* Copy email address without opening an email application */
 
       const copyEmailButton = document.getElementById("copy-email");
