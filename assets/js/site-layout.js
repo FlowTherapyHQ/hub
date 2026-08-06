@@ -22,7 +22,9 @@
     if (currentPath.includes("/aftercare.html")) {
       return "aftercare";
     }
-
+if (currentPath.includes("/body-map.html")) {
+  return "flowmap";
+}
     /*
       Individual FlowNotes articles and category pages
       will highlight FlowNotes.
@@ -103,11 +105,15 @@
         </a>
 
         <a href="/pages/aftercare.html"${activeClass("aftercare")}>
-          Aftercare
-        </a>
+       Aftercare
+      </a>
 
-        <a href="/pages/flownotes.html"${activeClass("flownotes")}>
-          FlowNotes
+      <a href="/pages/body-map.html"${activeClass("flowmap")}>
+      FlowMap
+      </a>
+
+      <a href="/pages/flownotes.html"${activeClass("flownotes")}>
+       FlowNotes
         </a>
 
         <a
@@ -147,6 +153,7 @@
         <a href="/pages/aftercare.html"${activeClass("aftercare")}>
           Aftercare
         </a>
+        <a href="/pages/body-map.html">FlowMap</a>
 
         <a href="/pages/flownotes.html"${activeClass("flownotes")}>
           FlowNotes
@@ -199,4 +206,40 @@
   } else {
     insertSharedLayout();
   }
+  /* ===================================================
+   MOBILE BODY-AREA SHORTCUT
+   =================================================== */
+
+const mobileBodyAreaButton = document.getElementById(
+  "mobile-body-area-button",
+);
+
+const allBodyAreasSection = document.getElementById(
+  "all-body-areas",
+);
+
+if (mobileBodyAreaButton && allBodyAreasSection) {
+  mobileBodyAreaButton.addEventListener("click", () => {
+    allBodyAreasSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+
+  const bodyAreaObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        mobileBodyAreaButton.classList.toggle(
+          "is-hidden",
+          entry.isIntersecting,
+        );
+      });
+    },
+    {
+      threshold: 0.15,
+    },
+  );
+
+  bodyAreaObserver.observe(allBodyAreasSection);
+}
 })();

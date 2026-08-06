@@ -1,0 +1,3075 @@
+<!doctype html>
+<html lang="en">
+  <head></head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Use FlowMap from FlowTherapy to explore wellness education, aftercare, resources, and services based on the area of your body that needs support."
+    />
+
+    <title>FlowMap | FlowHub</title>
+
+    <!-- Shared FlowHub stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!-- Shared FlowHub header and footer -->
+    <script src="/assets/js/site-layout.js" defer></script>
+
+    <!-- PWA -->
+    <link rel="manifest" href="../manifest.webmanifest" />
+
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any" />
+
+    <meta name="theme-color" content="#1677c8" />
+
+    <style>
+      /* =====================================================
+         FLOWMAP VARIABLES
+         ===================================================== */
+
+      :root {
+        --map-blue: #1677c8;
+        --map-blue-dark: #0b3f78;
+        --map-blue-hover: #0e69b8;
+        --map-blue-soft: #eaf4fe;
+        --map-blue-pale: #f5faff;
+        --map-ink: #17324d;
+        --map-muted: #52677b;
+        --map-border: #cfe2f5;
+        --map-page: #f3f8fc;
+        --map-surface: #ffffff;
+        --map-shadow: 0 14px 34px rgba(27, 67, 103, 0.09);
+        --map-shadow-large: 0 22px 50px rgba(27, 67, 103, 0.13);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--map-page);
+        color: var(--map-ink);
+      }
+
+      button,
+      a {
+        font: inherit;
+      }
+
+      .flowmap-shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 42px 0 72px;
+      }
+
+      /* =====================================================
+         HERO
+         ===================================================== */
+
+      .flowmap-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 48px;
+        border: 1px solid var(--map-border);
+        border-radius: 26px;
+        background:
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(22, 119, 200, 0.15),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #ffffff, #f6fbff);
+        box-shadow: var(--map-shadow);
+        text-align: center;
+      }
+
+      .flowmap-kicker {
+        display: inline-flex;
+        margin-bottom: 15px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--map-blue-soft);
+        color: var(--map-blue);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .flowmap-hero h1 {
+        margin: 0 0 16px;
+        color: var(--map-blue);
+        font-size: clamp(2.8rem, 7vw, 5rem);
+        line-height: 1;
+      }
+
+      .flowmap-trademark {
+        font-size: 0.35em;
+        vertical-align: top;
+      }
+
+      .flowmap-hero p {
+        max-width: 790px;
+        margin: 0 auto;
+        color: var(--map-muted);
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .flowmap-notice {
+        display: inline-flex;
+        max-width: 760px;
+        margin-top: 22px;
+        padding: 12px 16px;
+        border: 1px solid var(--map-border);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.82);
+        color: var(--map-muted);
+        font-size: 0.8rem;
+        line-height: 1.55;
+      }
+
+      /* =====================================================
+         INTERACTIVE LAYOUT
+         ===================================================== */
+
+      .flowmap-workspace {
+        display: grid;
+        grid-template-columns: minmax(340px, 0.88fr) minmax(0, 1.12fr);
+        gap: 24px;
+        align-items: stretch;
+        margin-top: 30px;
+      }
+
+      .flowmap-panel {
+        border: 1px solid var(--map-border);
+        border-radius: 24px;
+        background: var(--map-surface);
+        box-shadow: var(--map-shadow);
+      }
+
+      /* =====================================================
+         BODY SELECTOR PANEL
+         ===================================================== */
+
+      .body-selector-panel {
+        display: flex;
+        min-height: 790px;
+        flex-direction: column;
+        padding: 30px;
+      }
+
+      .body-selector-heading {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .body-selector-heading h2 {
+        margin: 0 0 8px;
+        color: var(--map-blue-dark);
+        font-size: 1.65rem;
+      }
+
+      .body-selector-heading p {
+        margin: 0;
+        color: var(--map-muted);
+        font-size: 0.9rem;
+        line-height: 1.65;
+      }
+
+      .body-view-controls {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+        padding: 5px;
+        border: 1px solid var(--map-border);
+        border-radius: 999px;
+        background: var(--map-blue-pale);
+      }
+
+      .body-view-button {
+        min-height: 42px;
+        padding: 9px 16px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--map-blue);
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .body-view-button:hover {
+        background: #ffffff;
+      }
+
+      .body-view-button.is-active {
+        background: var(--map-blue);
+        color: #ffffff;
+        box-shadow: 0 7px 17px rgba(22, 119, 200, 0.22);
+      }
+
+      .body-view-button:focus-visible {
+        outline: 3px solid rgba(22, 119, 200, 0.23);
+        outline-offset: 2px;
+      }
+
+      .body-map-stage {
+        position: relative;
+        display: grid;
+        flex: 1;
+        place-items: center;
+        min-height: 590px;
+        overflow: hidden;
+        border: 1px solid var(--map-border);
+        border-radius: 21px;
+        background:
+          radial-gradient(
+            circle at center,
+            rgba(22, 119, 200, 0.1),
+            transparent 54%
+          ),
+          linear-gradient(180deg, #fbfdff, #f2f8fd);
+      }
+
+      .body-map-stage::before {
+        position: absolute;
+        width: 330px;
+        height: 520px;
+        border: 1px solid rgba(22, 119, 200, 0.1);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .body-view {
+        position: relative;
+        z-index: 2;
+        display: none;
+        width: min(100%, 360px);
+        height: 590px;
+      }
+
+      .body-view.is-active {
+        display: block;
+      }
+
+      .body-view svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      /* Base body shape */
+
+      .body-base {
+        fill: #dcebf7;
+        stroke: #80afd3;
+        stroke-width: 2;
+      }
+
+      .body-detail {
+        fill: none;
+        stroke: rgba(11, 63, 120, 0.23);
+        stroke-linecap: round;
+        stroke-width: 1.7;
+      }
+
+      /* Clickable regions */
+
+      .body-region {
+        fill: rgba(22, 119, 200, 0.18);
+        stroke: rgba(22, 119, 200, 0.72);
+        stroke-width: 1.5;
+        cursor: pointer;
+        opacity: 0.75;
+        transition:
+          fill 0.18s ease,
+          opacity 0.18s ease,
+          filter 0.18s ease,
+          stroke-width 0.18s ease;
+      }
+
+      .body-region:hover,
+      .body-region:focus {
+        fill: rgba(22, 119, 200, 0.42);
+        stroke-width: 2.5;
+        opacity: 1;
+        filter: drop-shadow(0 0 8px rgba(22, 119, 200, 0.38));
+        outline: none;
+      }
+
+      .body-region.is-selected {
+        fill: rgba(22, 119, 200, 0.66);
+        stroke: #075ea7;
+        stroke-width: 3;
+        opacity: 1;
+        filter: drop-shadow(0 0 10px rgba(22, 119, 200, 0.45));
+      }
+
+      .body-region-label {
+        fill: var(--map-blue-dark);
+        font-size: 12px;
+        font-weight: 800;
+        pointer-events: none;
+        text-anchor: middle;
+      }
+
+      .body-selector-help {
+        margin: 17px 0 0;
+        color: var(--map-muted);
+        font-size: 0.78rem;
+        line-height: 1.55;
+        text-align: center;
+      }
+
+      /* =====================================================
+         INFORMATION PANEL
+         ===================================================== */
+
+      .body-information-panel {
+        min-height: 790px;
+        padding: 36px;
+      }
+
+      .selection-heading {
+        padding-bottom: 25px;
+        border-bottom: 1px solid var(--map-border);
+      }
+
+      .selection-eyebrow {
+        display: inline-flex;
+        margin-bottom: 12px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: var(--map-blue-soft);
+        color: var(--map-blue);
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .selection-heading h2 {
+        margin: 0 0 12px;
+        color: var(--map-blue-dark);
+        font-size: clamp(2rem, 4vw, 2.9rem);
+        line-height: 1.12;
+      }
+
+      .selection-heading p {
+        margin: 0;
+        color: var(--map-muted);
+        line-height: 1.75;
+      }
+
+      .selection-sections {
+        display: grid;
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .information-card {
+        padding: 23px;
+        border: 1px solid var(--map-border);
+        border-radius: 18px;
+        background: #fbfdff;
+      }
+
+      .information-card h3 {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin: 0 0 14px;
+        color: var(--map-blue-dark);
+        font-size: 1.15rem;
+      }
+
+      .information-number {
+        display: inline-grid;
+        width: 29px;
+        height: 29px;
+        flex: 0 0 29px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--map-blue-soft);
+        color: var(--map-blue);
+        font-size: 0.75rem;
+        font-weight: 900;
+      }
+
+      .information-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .information-list li {
+        position: relative;
+        padding-left: 19px;
+        color: var(--map-muted);
+        line-height: 1.6;
+      }
+
+      .information-list li::before {
+        position: absolute;
+        top: 0.66em;
+        left: 0;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--map-blue);
+        content: "";
+      }
+
+      .link-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .information-link {
+        display: flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 14px;
+        border: 1px solid var(--map-border);
+        border-radius: 12px;
+        background: #ffffff;
+        color: var(--map-blue-dark);
+        font-weight: 750;
+        text-decoration: none;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .information-link::after {
+        flex: 0 0 auto;
+        color: var(--map-blue);
+        content: "→";
+      }
+
+      .information-link:hover {
+        transform: translateX(3px);
+        border-color: #9bc7e8;
+        box-shadow: 0 7px 18px rgba(27, 67, 103, 0.08);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .service-chip {
+        display: flex;
+        min-height: 46px;
+        align-items: center;
+        padding: 11px 13px;
+        border: 1px solid var(--map-border);
+        border-radius: 13px;
+        background: #ffffff;
+        color: var(--map-blue-dark);
+        font-size: 0.86rem;
+        font-weight: 800;
+      }
+
+      .service-chip::before {
+        display: inline-grid;
+        width: 22px;
+        height: 22px;
+        flex: 0 0 22px;
+        place-items: center;
+        margin-right: 9px;
+        border-radius: 50%;
+        background: var(--map-blue-soft);
+        color: var(--map-blue);
+        content: "✓";
+        font-size: 0.7rem;
+      }
+
+      .medical-guidance {
+        border-color: #f0d6ac;
+        background: #fffaf2;
+      }
+
+      .medical-guidance h3 {
+        color: #7a4d13;
+      }
+
+      .medical-guidance p {
+        margin: 0;
+        color: #755d3d;
+        font-size: 0.86rem;
+        line-height: 1.7;
+      }
+
+      .selection-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .flowmap-primary-button,
+      .flowmap-secondary-button {
+        display: inline-flex;
+        min-height: 47px;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 11px 19px;
+        border-radius: 999px;
+        font-weight: 850;
+        text-decoration: none;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .flowmap-primary-button {
+        border: 1px solid var(--map-blue);
+        background: var(--map-blue);
+        color: #ffffff;
+        box-shadow: 0 8px 18px rgba(22, 119, 200, 0.2);
+      }
+
+      .flowmap-primary-button:hover {
+        transform: translateY(-2px);
+        border-color: var(--map-blue-hover);
+        background: var(--map-blue-hover);
+      }
+
+      .flowmap-secondary-button {
+        border: 1px solid var(--map-border);
+        background: #ffffff;
+        color: var(--map-blue);
+      }
+
+      .flowmap-secondary-button:hover {
+        transform: translateY(-2px);
+        border-color: var(--map-blue);
+        box-shadow: 0 8px 20px rgba(22, 119, 200, 0.09);
+      }
+
+      /* =====================================================
+         QUICK REGION BUTTONS
+         ===================================================== */
+
+      .quick-region-section {
+        margin-top: 30px;
+        padding: 30px;
+        border: 1px solid var(--map-border);
+        border-radius: 22px;
+        background: #ffffff;
+        box-shadow: var(--map-shadow);
+      }
+
+      .quick-region-heading {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .quick-region-heading h2 {
+        margin: 0 0 8px;
+        color: var(--map-blue);
+        font-size: 1.7rem;
+      }
+
+      .quick-region-heading p {
+        margin: 0;
+        color: var(--map-muted);
+        line-height: 1.65;
+      }
+
+      .quick-region-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .quick-region-button {
+        min-height: 48px;
+        padding: 10px 12px;
+        border: 1px solid var(--map-border);
+        border-radius: 13px;
+        background: var(--map-blue-pale);
+        color: var(--map-blue-dark);
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .quick-region-button:hover,
+      .quick-region-button:focus-visible {
+        transform: translateY(-2px);
+        border-color: #9bc7e8;
+        outline: none;
+        background: #ffffff;
+      }
+
+      .quick-region-button.is-selected {
+        border-color: var(--map-blue);
+        background: var(--map-blue);
+        color: #ffffff;
+      }
+
+      /* =====================================================
+         RETURN LINK
+         ===================================================== */
+
+      .flowmap-back {
+        margin-top: 36px;
+        text-align: center;
+      }
+
+      .flowmap-back a {
+        color: var(--map-blue);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .flowmap-back a:hover {
+        text-decoration: underline;
+      }
+
+      /* =====================================================
+         RESPONSIVE
+         ===================================================== */
+
+      @media (max-width: 980px) {
+        .flowmap-workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .body-selector-panel,
+        .body-information-panel {
+          min-height: auto;
+        }
+
+        .body-map-stage {
+          min-height: 620px;
+        }
+
+        .body-view {
+          height: 590px;
+        }
+
+        .quick-region-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 680px) {
+        .flowmap-shell {
+          width: min(calc(100% - 20px), 1180px);
+          padding-top: 28px;
+        }
+
+        .flowmap-hero {
+          padding: 32px 23px;
+        }
+
+        .body-selector-panel,
+        .body-information-panel,
+        .quick-region-section {
+          padding: 23px;
+        }
+
+        .body-map-stage {
+          min-height: 550px;
+        }
+
+        .body-view {
+          width: min(100%, 320px);
+          height: 530px;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .quick-region-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .selection-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .flowmap-primary-button,
+        .flowmap-secondary-button {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 440px) {
+        .body-selector-panel,
+        .body-information-panel,
+        .quick-region-section {
+          padding: 18px;
+          border-radius: 19px;
+        }
+
+        .body-map-stage {
+          min-height: 500px;
+        }
+
+        .body-view {
+          height: 480px;
+        }
+
+        .quick-region-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media print {
+        .body-selector-panel,
+        .quick-region-section,
+        .selection-actions,
+        .flowmap-back {
+          display: none !important;
+        }
+
+        .flowmap-workspace {
+          display: block;
+        }
+
+        .body-information-panel,
+        .flowmap-hero {
+          box-shadow: none;
+        }
+      }
+
+      /* =====================================================
+         CLEAN FRONT/BACK SILHOUETTE FLOWMAP
+         ===================================================== */
+
+      .body-map-key {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-bottom: 14px;
+        color: var(--map-blue-dark);
+        font-size: 0.82rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .silhouette-map-stage {
+        min-height: auto;
+        padding: 18px;
+        background: linear-gradient(180deg, #ffffff, #f7fbff);
+      }
+
+      .silhouette-map-stage::before {
+        display: none;
+      }
+
+      .silhouette-map-wrap {
+        position: relative;
+        width: min(100%, 540px);
+        margin: 0 auto;
+      }
+
+      .silhouette-map-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        mix-blend-mode: multiply;
+      }
+
+      .silhouette-hotspot {
+        position: absolute;
+        display: block;
+        box-sizing: border-box;
+        min-width: 0;
+        min-height: 0;
+        padding: 0;
+        border: 2px solid transparent;
+        border-radius: 38%;
+        background: rgba(22, 119, 200, 0);
+        cursor: pointer;
+        opacity: 1;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .silhouette-hotspot:hover,
+      .silhouette-hotspot:focus-visible {
+        border-color: rgba(22, 119, 200, 0.82);
+        background: rgba(22, 119, 200, 0.22);
+        box-shadow: 0 0 0 5px rgba(22, 119, 200, 0.1);
+        transform: scale(1.025);
+        outline: none;
+      }
+
+      .silhouette-hotspot.is-selected {
+        border-color: #075ea7;
+        background: rgba(22, 119, 200, 0.38);
+        box-shadow: 0 0 0 5px rgba(22, 119, 200, 0.13);
+      }
+
+      /* Front figure: left side of image */
+
+      .front-head {
+        left: 10.3%;
+        top: 5.5%;
+        width: 15.8%;
+        height: 11.8%;
+        border-radius: 50%;
+      }
+      .front-neck {
+        left: 14%;
+        top: 15.5%;
+        width: 8.8%;
+        height: 8.4%;
+      }
+      .front-shoulders {
+        left: 4.7%;
+        top: 21%;
+        width: 27.2%;
+        height: 10.8%;
+      }
+      .front-chest {
+        left: 10.1%;
+        top: 27.3%;
+        width: 17%;
+        height: 27%;
+      }
+      .front-left-arm {
+        left: 1.4%;
+        top: 27.4%;
+        width: 10%;
+        height: 31.5%;
+      }
+      .front-right-arm {
+        left: 26.3%;
+        top: 27.4%;
+        width: 10%;
+        height: 31.5%;
+      }
+      .front-hips {
+        left: 10.3%;
+        top: 48.5%;
+        width: 17.2%;
+        height: 13.3%;
+      }
+      .front-left-knee {
+        left: 11%;
+        top: 68%;
+        width: 7%;
+        height: 7.8%;
+        border-radius: 50%;
+      }
+      .front-right-knee {
+        left: 20%;
+        top: 68%;
+        width: 7%;
+        height: 7.8%;
+        border-radius: 50%;
+      }
+      .front-left-leg {
+        left: 8.7%;
+        top: 56.2%;
+        width: 10%;
+        height: 34%;
+      }
+      .front-right-leg {
+        left: 19.2%;
+        top: 56.2%;
+        width: 10%;
+        height: 34%;
+      }
+      .front-feet {
+        left: 7.2%;
+        top: 88%;
+        width: 23%;
+        height: 7%;
+      }
+
+      /* Back figure: right side of image */
+
+      .back-head {
+        left: 62.5%;
+        top: 5.3%;
+        width: 15.5%;
+        height: 12%;
+        border-radius: 50%;
+      }
+      .back-neck {
+        left: 66%;
+        top: 15.2%;
+        width: 8.7%;
+        height: 8.5%;
+      }
+      .back-shoulders {
+        left: 56.7%;
+        top: 20.8%;
+        width: 27.8%;
+        height: 11%;
+      }
+      .back-upper {
+        left: 62%;
+        top: 27%;
+        width: 17.2%;
+        height: 20%;
+      }
+      .back-lower {
+        left: 63%;
+        top: 43%;
+        width: 15.2%;
+        height: 14.5%;
+      }
+      .back-left-arm {
+        left: 53.2%;
+        top: 27.2%;
+        width: 10%;
+        height: 31.8%;
+      }
+      .back-right-arm {
+        left: 78.4%;
+        top: 27.2%;
+        width: 10%;
+        height: 31.8%;
+      }
+      .back-hips {
+        left: 61.5%;
+        top: 49%;
+        width: 18%;
+        height: 13.5%;
+      }
+      .back-left-knee {
+        left: 62%;
+        top: 68.2%;
+        width: 7%;
+        height: 7.7%;
+        border-radius: 50%;
+      }
+      .back-right-knee {
+        left: 71%;
+        top: 68.2%;
+        width: 7%;
+        height: 7.7%;
+        border-radius: 50%;
+      }
+      .back-left-leg {
+        left: 59.5%;
+        top: 56.5%;
+        width: 10%;
+        height: 34%;
+      }
+      .back-right-leg {
+        left: 70.5%;
+        top: 56.5%;
+        width: 10%;
+        height: 34%;
+      }
+      .back-feet {
+        left: 58%;
+        top: 88%;
+        width: 23.5%;
+        height: 7%;
+      }
+
+      @media (max-width: 680px) {
+        .silhouette-map-stage {
+          padding: 8px;
+        }
+
+        .body-map-key {
+          gap: 8px;
+          font-size: 0.72rem;
+        }
+      }
+
+      /* SINGLE LARGE BODY WITH FRONT / BACK TOGGLE */
+      .body-selector-panel {
+        min-height: 0;
+        padding: 28px;
+      }
+
+      .single-view-controls {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 14px;
+        padding: 5px;
+        border: 1px solid var(--map-border);
+        border-radius: 999px;
+        background: var(--map-blue-pale);
+      }
+
+      .single-view-button {
+        min-height: 44px;
+        padding: 10px 16px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--map-blue);
+        font-weight: 850;
+        cursor: pointer;
+      }
+
+      .single-view-button.is-active {
+        background: var(--map-blue);
+        color: #fff;
+        box-shadow: 0 7px 17px rgba(22, 119, 200, 0.22);
+      }
+
+      .single-view-button:focus-visible {
+        outline: 3px solid rgba(22, 119, 200, 0.24);
+        outline-offset: 2px;
+      }
+
+      .single-svg-map-stage {
+        min-height: 0;
+        padding: 18px 18px 4px;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at center,
+            rgba(22, 119, 200, 0.08),
+            transparent 58%
+          ),
+          linear-gradient(180deg, #fff, #f7fbff);
+      }
+
+      .single-svg-map-stage::before {
+        display: none;
+      }
+      .single-svg-view {
+        display: none;
+        width: 100%;
+      }
+      .single-svg-view.is-active {
+        display: block;
+      }
+
+       .single-svg-figure {
+    position: relative;
+    width: min(100%, 430px);
+    margin: 12px auto 0;
+}
+
+      .single-svg-image {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .single-svg-hotspot {
+        position: absolute;
+        display: block;
+        min-width: 0;
+        min-height: 0;
+        padding: 0;
+        border: 2px solid transparent;
+        border-radius: 999px;
+        background: transparent;
+        cursor: pointer;
+        opacity: 1;
+        transition: 0.18s ease;
+      }
+
+      .single-svg-hotspot:hover,
+      .single-svg-hotspot:focus-visible {
+        border-color: rgba(22, 119, 200, 0.9);
+        background: rgba(22, 119, 200, 0.2);
+        box-shadow: 0 0 16px rgba(22, 119, 200, 0.22);
+        transform: scale(1.025);
+        outline: none;
+      }
+
+      .single-svg-hotspot.is-selected {
+        border-color: #075ea7;
+        background: rgba(22, 119, 200, 0.36);
+        box-shadow: 0 0 18px rgba(22, 119, 200, 0.28);
+      }
+
+      .region-head {
+        left: 34%;
+        top: 0.5%;
+        width: 32%;
+        height: 14%;
+        border-radius: 50%;
+      }
+      .region-neck {
+        left: 41%;
+        top: 12%;
+        width: 18%;
+        height: 9%;
+      }
+      .region-shoulders {
+        left: 15%;
+        top: 17%;
+        width: 70%;
+        height: 12%;
+      }
+      .region-chest {
+        left: 28%;
+        top: 23%;
+        width: 44%;
+        height: 26%;
+        border-radius: 30%;
+      }
+      .region-upper-back {
+        left: 27%;
+        top: 22%;
+        width: 46%;
+        height: 22%;
+        border-radius: 30%;
+      }
+      .region-lower-back {
+        left: 31%;
+        top: 42%;
+        width: 38%;
+        height: 18%;
+        border-radius: 30%;
+      }
+      .region-left-arm {
+        left: 2%;
+        top: 24%;
+        width: 27%;
+        height: 38%;
+      }
+      .region-right-arm {
+        left: 71%;
+        top: 24%;
+        width: 27%;
+        height: 38%;
+      }
+      .region-hips {
+        left: 27%;
+        top: 50%;
+        width: 46%;
+        height: 16%;
+        border-radius: 35%;
+      }
+      .region-left-leg {
+        left: 24%;
+        top: 61%;
+        width: 24%;
+        height: 34%;
+      }
+      .region-right-leg {
+        left: 52%;
+        top: 61%;
+        width: 24%;
+        height: 34%;
+      }
+      .region-left-knee {
+        left: 27%;
+        top: 76%;
+        width: 19%;
+        height: 9%;
+        border-radius: 50%;
+      }
+      .region-right-knee {
+        left: 54%;
+        top: 76%;
+        width: 19%;
+        height: 9%;
+        border-radius: 50%;
+      }
+      .region-feet {
+        left: 21%;
+        top: 93%;
+        width: 58%;
+        height: 7%;
+      }
+
+      @media (max-width: 980px) {
+        .single-svg-map-stage {
+          min-height: 0;
+        }
+
+        .single-svg-figure {
+          width: min(100%, 500px);
+        }
+      }
+
+      /* =====================================================
+         FLOWMAP FINAL POLISH
+         Subtle body hover, anatomy-shaped hotspots, and a
+         smooth front/back transition.
+         ===================================================== */
+
+      /* Smoothly stack both views so opacity can animate. */
+      .single-svg-map-stage {
+        display: grid;
+        place-items: start center;
+      }
+
+      .single-svg-view {
+        grid-area: 1 / 1;
+        display: block;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(8px) scale(0.985);
+        transition:
+          opacity 220ms ease,
+          transform 220ms ease,
+          visibility 0s linear 220ms;
+      }
+
+      .single-svg-view.is-active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+        transition:
+          opacity 220ms ease,
+          transform 220ms ease,
+          visibility 0s linear 0s;
+      }
+
+      /* A slight response from the body when a region is explored. */
+      .single-svg-figure {
+        transition:
+          filter 180ms ease,
+          transform 180ms ease;
+      }
+
+      .single-svg-figure:hover {
+        filter: drop-shadow(0 10px 20px rgba(22, 119, 200, 0.1));
+      }
+
+      .single-svg-image {
+        transition:
+          opacity 180ms ease,
+          filter 180ms ease;
+      }
+
+      .single-svg-figure:hover .single-svg-image {
+        opacity: 0.95;
+        filter: brightness(1.04);
+      }
+
+      /* Keep hotspots calm until hovered or selected. */
+      .single-svg-hotspot {
+        border-color: transparent;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .single-svg-hotspot:hover,
+      .single-svg-hotspot:focus-visible {
+        border-color: rgba(22, 119, 200, 0.78);
+        background: rgba(22, 119, 200, 0.15);
+        box-shadow:
+          0 0 0 4px rgba(22, 119, 200, 0.08),
+          0 8px 20px rgba(22, 119, 200, 0.15),
+          inset 0 0 10px rgba(22, 119, 200, 0.1);
+        transform: scale(1.018);
+      }
+
+      .single-svg-hotspot.is-selected {
+        border-color: rgba(7, 94, 167, 0.92);
+        background: rgba(22, 119, 200, 0.3);
+        box-shadow:
+          0 0 0 4px rgba(22, 119, 200, 0.09),
+          0 8px 22px rgba(22, 119, 200, 0.2),
+          inset 0 0 10px rgba(22, 119, 200, 0.12);
+      }
+
+      /*
+       * More anatomical hotspot silhouettes.
+       * clip-path shapes the visible highlight while the buttons
+       * remain comfortably large and accessible.
+       */
+
+      .region-head {
+        left: 35%;
+        top: 1%;
+        width: 30%;
+        height: 13.5%;
+        border-radius: 48% 48% 44% 44%;
+        clip-path: ellipse(48% 49% at 50% 50%);
+      }
+
+      .region-neck {
+        left: 42%;
+        top: 12.5%;
+        width: 16%;
+        height: 8.5%;
+        border-radius: 30% 30% 44% 44%;
+        clip-path: polygon(20% 0, 80% 0, 100% 82%, 72% 100%, 28% 100%, 0 82%);
+      }
+
+      .region-shoulders {
+        left: 16%;
+        top: 17.5%;
+        width: 68%;
+        height: 11.5%;
+        border-radius: 40%;
+        clip-path: polygon(
+          0 45%,
+          9% 20%,
+          27% 4%,
+          43% 22%,
+          50% 38%,
+          57% 22%,
+          73% 4%,
+          91% 20%,
+          100% 45%,
+          91% 82%,
+          73% 100%,
+          50% 75%,
+          27% 100%,
+          9% 82%
+        );
+      }
+
+      .region-chest {
+        left: 29%;
+        top: 23%;
+        width: 42%;
+        height: 25%;
+        border-radius: 28% 28% 38% 38%;
+        clip-path: polygon(
+          10% 0,
+          45% 5%,
+          50% 15%,
+          55% 5%,
+          90% 0,
+          100% 24%,
+          88% 100%,
+          12% 100%,
+          0 24%
+        );
+      }
+
+      .region-upper-back {
+        left: 28%;
+        top: 22%;
+        width: 44%;
+        height: 21%;
+        border-radius: 26% 26% 36% 36%;
+        clip-path: polygon(
+          8% 0,
+          39% 7%,
+          50% 22%,
+          61% 7%,
+          92% 0,
+          100% 28%,
+          84% 100%,
+          16% 100%,
+          0 28%
+        );
+      }
+
+      .region-lower-back {
+        left: 33%;
+        top: 41.5%;
+        width: 34%;
+        height: 18%;
+        border-radius: 30% 30% 42% 42%;
+        clip-path: polygon(14% 0, 86% 0, 100% 72%, 78% 100%, 22% 100%, 0 72%);
+      }
+
+      .region-left-arm {
+        left: 6%;
+        top: 24%;
+        width: 23%;
+        height: 38%;
+        border-radius: 50%;
+        clip-path: polygon(
+          48% 0,
+          78% 4%,
+          94% 24%,
+          80% 54%,
+          100% 92%,
+          76% 100%,
+          49% 66%,
+          30% 100%,
+          5% 90%,
+          24% 54%,
+          8% 24%,
+          22% 5%
+        );
+      }
+
+      .region-right-arm {
+        left: 71%;
+        top: 24%;
+        width: 23%;
+        height: 38%;
+        border-radius: 50%;
+        clip-path: polygon(
+          52% 0,
+          78% 5%,
+          92% 24%,
+          76% 54%,
+          95% 90%,
+          70% 100%,
+          51% 66%,
+          24% 100%,
+          0 92%,
+          20% 54%,
+          6% 24%,
+          22% 4%
+        );
+      }
+
+      .region-hips {
+        left: 29%;
+        top: 50%;
+        width: 42%;
+        height: 16%;
+        border-radius: 32% 32% 48% 48%;
+        clip-path: polygon(
+          12% 0,
+          88% 0,
+          100% 58%,
+          78% 100%,
+          50% 86%,
+          22% 100%,
+          0 58%
+        );
+      }
+
+      .region-left-leg {
+        left: 25%;
+        top: 61%;
+        width: 22%;
+        height: 34%;
+        border-radius: 46%;
+        clip-path: polygon(
+          22% 0,
+          78% 0,
+          92% 38%,
+          70% 64%,
+          76% 100%,
+          29% 100%,
+          34% 64%,
+          8% 38%
+        );
+      }
+
+      .region-right-leg {
+        left: 53%;
+        top: 61%;
+        width: 22%;
+        height: 34%;
+        border-radius: 46%;
+        clip-path: polygon(
+          22% 0,
+          78% 0,
+          92% 38%,
+          66% 64%,
+          71% 100%,
+          24% 100%,
+          30% 64%,
+          8% 38%
+        );
+      }
+
+      .region-left-knee {
+    left: 28%;
+    top: 70%;
+    width: 17%;
+    height: 8.5%;
+    clip-path: ellipse(48% 45% at 50% 50%);
+}
+
+.region-right-knee {
+    left: 55%;
+    top: 70%;
+    width: 17%;
+    height: 8.5%;
+    clip-path: ellipse(48% 45% at 50% 50%);
+}
+
+      .region-feet {
+        left: 23%;
+        top: 93%;
+        width: 54%;
+        height: 7%;
+        border-radius: 42%;
+        clip-path: polygon(
+          0 38%,
+          18% 14%,
+          44% 30%,
+          50% 55%,
+          56% 30%,
+          82% 14%,
+          100% 38%,
+          92% 100%,
+          56% 90%,
+          50% 70%,
+          44% 90%,
+          8% 100%
+        );
+      }
+
+      /* Gentle button motion reinforces the view change. */
+      .single-view-button {
+        transition:
+          color 180ms ease,
+          background 180ms ease,
+          box-shadow 180ms ease,
+          transform 180ms ease;
+      }
+
+      .single-view-button:hover {
+        transform: translateY(-1px);
+      }
+
+      .single-view-button.is-active {
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .single-svg-view,
+        .single-svg-figure,
+        .single-svg-image,
+        .single-svg-hotspot,
+        .single-view-button {
+          transition: none !important;
+          transform: none !important;
+        }
+      }
+
+      /* =====================================================
+         FINAL ARM + PALM REFINEMENT
+         Tapered arm glow, rounded palm only, no glowing fingers.
+         ===================================================== */
+
+      .single-svg-hotspot:hover,
+      .single-svg-hotspot:focus-visible {
+        border-color: rgba(22, 119, 200, 0.68);
+        background: rgba(22, 119, 200, 0.11);
+        box-shadow:
+          0 0 0 3px rgba(22, 119, 200, 0.06),
+          0 7px 17px rgba(22, 119, 200, 0.12),
+          inset 0 0 8px rgba(22, 119, 200, 0.07);
+      }
+
+      .single-svg-hotspot.is-selected {
+        border-color: rgba(7, 94, 167, 0.82);
+        background: rgba(22, 119, 200, 0.24);
+        box-shadow:
+          0 0 0 3px rgba(22, 119, 200, 0.07),
+          0 8px 19px rgba(22, 119, 200, 0.16),
+          inset 0 0 9px rgba(22, 119, 200, 0.08);
+      }
+
+      .region-left-arm {
+        left: 7.5%;
+        top: 24%;
+        width: 21%;
+        height: 34.5%;
+        border-radius: 48%;
+        clip-path: polygon(
+          45% 0,
+          73% 5%,
+          91% 22%,
+          80% 47%,
+          68% 69%,
+          61% 89%,
+          52% 100%,
+          39% 100%,
+          32% 88%,
+          24% 69%,
+          9% 47%,
+          15% 22%
+        );
+      }
+
+      .region-right-arm {
+        left: 71.5%;
+        top: 24%;
+        width: 21%;
+        height: 34.5%;
+        border-radius: 48%;
+        clip-path: polygon(
+          55% 0,
+          85% 22%,
+          91% 47%,
+          76% 69%,
+          68% 88%,
+          61% 100%,
+          48% 100%,
+          39% 89%,
+          32% 69%,
+          20% 47%,
+          9% 22%,
+          27% 5%
+        );
+      }
+
+      
+      /* Remove extra space beneath the FlowMap figure */
+.flowmap-workspace {
+  align-items: start;
+}
+
+.body-selector-panel {
+  align-self: start;
+}
+
+.single-svg-map-stage{
+    min-height:0;
+    padding-bottom:16px;
+}
+
+.single-svg-figure{
+    margin:10px auto 0;
+}
+/* =====================================================
+   MOBILE FLOATING BODY-AREA BUTTON
+   ===================================================== */
+
+.mobile-body-area-button {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .mobile-body-area-button {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 999;
+
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 18px;
+    border: 1px solid var(--map-blue);
+    border-radius: 999px;
+
+    background: var(--map-blue);
+    color: #ffffff;
+
+    box-shadow: 0 10px 26px rgba(22, 119, 200, 0.3);
+
+    font-size: 0.88rem;
+    font-weight: 850;
+    cursor: pointer;
+
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease,
+      background 180ms ease;
+  }
+
+  .mobile-body-area-button:hover,
+  .mobile-body-area-button:focus-visible {
+    transform: translateY(-2px);
+    background: var(--map-blue-hover);
+    outline: none;
+  }
+
+  .mobile-body-area-button.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(14px);
+  }
+}
+/* Elbow hotspots — repositioned over the actual elbow joints */
+
+.region-left-elbow,
+.region-right-elbow {
+  top: 36.5%;
+  width: 9%;
+  height: 7%;
+  border-radius: 50%;
+  clip-path: ellipse(46% 44% at 50% 50%);
+}
+
+.region-left-elbow {
+  left: 10%;
+}
+
+.region-right-elbow {
+  left: 81%;
+}
+    </style>
+  </head>
+
+  <body>
+    <!-- Shared header generated by site-layout.js -->
+    <div id="site-header"></div>
+
+    <main class="flowmap-shell">
+      <!-- ===================================================
+           HERO
+           =================================================== -->
+
+      <section class="flowmap-hero">
+        <span class="flowmap-kicker"> Explore wellness by body area </span>
+
+        <h1>FlowMap<span class="flowmap-trademark">™</span></h1>
+
+        <p>
+          Select where you are feeling discomfort to explore relevant FlowNotes,
+          practical resources, aftercare guidance, and FlowTherapy services that
+          may support your wellness journey.
+        </p>
+
+        <div class="flowmap-notice">
+          FlowMap provides general wellness education and is not intended to
+          diagnose an injury or medical condition.
+        </div>
+      </section>
+
+      <!-- ===================================================
+           INTERACTIVE WORKSPACE
+           =================================================== -->
+
+      <section class="flowmap-workspace" aria-label="Interactive body map">
+        <!-- BODY SELECTOR -->
+
+        <div class="flowmap-panel body-selector-panel">
+          <div class="body-selector-heading">
+            <h2>Select a body area</h2>
+
+            <p>
+              Choose the front or back view, then select the area you would like
+              to explore.
+            </p>
+          </div>
+
+          <div class="single-view-controls" aria-label="Choose body view">
+            <button
+              class="single-view-button is-active"
+              type="button"
+              data-single-view-button="front"
+              aria-pressed="true"
+            >
+              Front View
+            </button>
+            <button
+              class="single-view-button"
+              type="button"
+              data-single-view-button="back"
+              aria-pressed="false"
+            >
+              Back View
+            </button>
+          </div>
+
+          <div class="body-map-stage single-svg-map-stage">
+            <div
+              class="single-svg-view is-active"
+              data-single-body-view="front"
+            >
+              <div class="single-svg-figure">
+                <img
+                  class="single-svg-image"
+                  src="../assets/images/flowmap-body-silhouette-large.svg"
+                  alt="Front standing human body silhouette"
+                />
+
+                <button
+                  class="body-region single-svg-hotspot region-head"
+                  type="button"
+                  data-region="head"
+                  aria-label="Head and jaw"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-neck"
+                  type="button"
+                  data-region="neck"
+                  aria-label="Neck"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-shoulders"
+                  type="button"
+                  data-region="shoulders"
+                  aria-label="Shoulders"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-chest"
+                  type="button"
+                  data-region="chest"
+                  aria-label="Chest and front torso"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-left-arm"
+                  type="button"
+                  data-region="arms-hands"
+                  aria-label="Left arm, wrist, and hand"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-right-arm"
+                  type="button"
+                  data-region="arms-hands"
+                  aria-label="Right arm, wrist, and hand"
+                ></button>
+                <button
+  class="body-region single-svg-hotspot region-left-elbow"
+  type="button"
+  data-region="elbows"
+  aria-label="Left elbow"
+></button>
+
+<button
+  class="body-region single-svg-hotspot region-right-elbow"
+  type="button"
+  data-region="elbows"
+  aria-label="Right elbow"
+></button>
+                
+                <button
+                  class="body-region single-svg-hotspot region-hips"
+                  type="button"
+                  data-region="hips"
+                  aria-label="Hips and pelvis"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-left-knee"
+                  type="button"
+                  data-region="knees"
+                  aria-label="Left knee"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-right-knee"
+                  type="button"
+                  data-region="knees"
+                  aria-label="Right knee"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-left-leg"
+                  type="button"
+                  data-region="legs"
+                  aria-label="Left thigh and calf"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-right-leg"
+                  type="button"
+                  data-region="legs"
+                  aria-label="Right thigh and calf"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-feet"
+                  type="button"
+                  data-region="feet"
+                  aria-label="Feet and ankles"
+                ></button>
+              </div>
+            </div>
+
+            <div class="single-svg-view" data-single-body-view="back">
+              <div class="single-svg-figure">
+                <img
+                  class="single-svg-image"
+                  src="../assets/images/flowmap-body-silhouette-large.svg"
+                  alt="Back standing human body silhouette"
+                />
+
+                <button
+                  class="body-region single-svg-hotspot region-head"
+                  type="button"
+                  data-region="head"
+                  aria-label="Back of head"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-neck"
+                  type="button"
+                  data-region="neck"
+                  aria-label="Back of neck"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-shoulders"
+                  type="button"
+                  data-region="shoulders"
+                  aria-label="Shoulders and trapezius"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-upper-back"
+                  type="button"
+                  data-region="upper-back"
+                  aria-label="Upper back"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-lower-back"
+                  type="button"
+                  data-region="lower-back"
+                  aria-label="Lower back"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-left-arm"
+                  type="button"
+                  data-region="arms-hands"
+                  aria-label="Back left arm, wrist, and hand"
+                ></button>
+                <button
+  class="body-region single-svg-hotspot region-left-elbow"
+  type="button"
+  data-region="elbows"
+  aria-label="Back of left elbow"
+></button>
+
+<button
+  class="body-region single-svg-hotspot region-right-elbow"
+  type="button"
+  data-region="elbows"
+  aria-label="Back of right elbow"
+></button>
+                <button
+                  class="body-region single-svg-hotspot region-right-arm"
+                  type="button"
+                  data-region="arms-hands"
+                  aria-label="Back right arm, wrist, and hand"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-hips"
+                  type="button"
+                  data-region="hips"
+                  aria-label="Hips and glutes"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-left-knee"
+                  type="button"
+                  data-region="knees"
+                  aria-label="Back of left knee"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-right-knee"
+                  type="button"
+                  data-region="knees"
+                  aria-label="Back of right knee"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-left-leg"
+                  type="button"
+                  data-region="legs"
+                  aria-label="Back left thigh and calf"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-right-leg"
+                  type="button"
+                  data-region="legs"
+                  aria-label="Back right thigh and calf"
+                ></button>
+                <button
+                  class="body-region single-svg-hotspot region-feet"
+                  type="button"
+                  data-region="feet"
+                  aria-label="Back feet and ankles"
+                ></button>
+              </div>
+            </div>
+          </div>
+
+          <p class="body-selector-help">
+            Select a highlighted area with your mouse, touchscreen, or keyboard.
+          </p>
+        </div>
+
+        <!-- INFORMATION PANEL -->
+
+        <div class="flowmap-panel body-information-panel" aria-live="polite">
+          <div class="selection-heading">
+            <span class="selection-eyebrow"> Selected body area </span>
+
+            <h2 id="region-title">Neck &amp; Shoulders</h2>
+
+            <p id="region-introduction">
+              Explore practical information for common neck and shoulder
+              tension, workday discomfort, restricted movement, and everyday
+              stress.
+            </p>
+          </div>
+
+          <div class="selection-sections">
+            <section class="information-card">
+              <h3>
+                <span class="information-number">1</span>
+                Common reasons people explore this area
+              </h3>
+
+              <ul class="information-list" id="region-concerns"></ul>
+            </section>
+
+            <section class="information-card">
+              <h3>
+                <span class="information-number">2</span>
+                Related FlowNotes
+              </h3>
+
+              <div class="link-list" id="region-flownotes"></div>
+            </section>
+
+            <section class="information-card">
+              <h3>
+                <span class="information-number">3</span>
+                Helpful FlowResources
+              </h3>
+
+              <div class="link-list" id="region-resources"></div>
+            </section>
+
+            <section class="information-card">
+              <h3>
+                <span class="information-number">4</span>
+                FlowTherapy services to explore
+              </h3>
+
+              <div class="services-grid" id="region-services"></div>
+            </section>
+
+            <section class="information-card">
+              <h3>
+                <span class="information-number">5</span>
+                Simple aftercare
+              </h3>
+
+              <ul class="information-list" id="region-aftercare"></ul>
+            </section>
+
+            <section class="information-card medical-guidance">
+              <h3>When to seek medical care</h3>
+
+              <p id="region-medical-guidance">
+                Seek prompt medical attention for sudden or severe pain,
+                significant weakness, numbness, loss of coordination, difficulty
+                breathing, chest pain, or symptoms following a serious injury.
+              </p>
+            </section>
+          </div>
+
+          <div class="selection-actions">
+            <a
+              class="flowmap-primary-button"
+              href="https://discoverflowtherapy.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Schedule Your Session
+            </a>
+
+            <a class="flowmap-secondary-button" href="contact.html">
+              Ask FlowTherapy
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           QUICK REGION BUTTONS
+           =================================================== -->
+
+      <section class="quick-region-section" id="all-body-areas">
+        <div class="quick-region-heading">
+          <h2>Browse all body areas</h2>
+
+          <p>Prefer not to use the figure? Choose an area from the list.</p>
+        </div>
+
+        <div class="quick-region-grid">
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="head"
+          >
+            Head &amp; Jaw
+          </button>
+
+          <button
+            class="quick-region-button is-selected"
+            type="button"
+            data-quick-region="neck"
+          >
+            Neck
+          </button>
+
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="shoulders"
+          >
+            Shoulders
+          </button>
+
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="chest"
+          >
+            Chest &amp; Torso
+          </button>
+
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="upper-back"
+          >
+            Upper Back
+          </button>
+
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="lower-back"
+          >
+            Lower Back
+          </button>
+
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="arms-hands"
+          >
+            Arms &amp; Hands
+          </button>
+
+          <button
+  class="quick-region-button"
+  type="button"
+  data-quick-region="elbows"
+>
+  Elbows
+</button>
+
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="hips"
+          >
+            Hips &amp; Glutes
+          </button>
+
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="knees"
+          >
+            Knees
+          </button>
+
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="legs"
+          >
+            Legs &amp; Calves
+          </button>
+
+          <button
+            class="quick-region-button"
+            type="button"
+            data-quick-region="feet"
+          >
+            Feet
+          </button>
+        </div>
+      </section>
+
+      <div class="flowmap-back">
+        <a href="../index.html"> ← Return to FlowHub </a>
+      </div>
+      <button
+  class="mobile-body-area-button"
+  id="mobile-body-area-button"
+  type="button"
+  aria-controls="all-body-areas"
+>
+  Browse Body Areas
+</button>
+    </main>
+
+    <!-- Shared footer generated by site-layout.js -->
+    <div id="site-footer"></div>
+
+    <script>
+      (() => {
+        "use strict";
+
+        /* ===================================================
+           FLOWMAP CONTENT
+           =================================================== */
+
+        const regionContent = {
+          head: {
+            title: "Head & Jaw",
+            introduction:
+              "Explore wellness information related to headaches, facial tension, jaw discomfort, scalp tension, and stress-related holding patterns.",
+
+            concerns: [
+              "Jaw clenching or grinding",
+              "Tension headaches",
+              "Facial and scalp tension",
+              "Stress-related discomfort",
+              "Screen-related eye and facial fatigue",
+            ],
+
+            flownotes: [
+              {
+                title: "Why Your Eyes Feel Tired After Work",
+                url: "../articles/why-your-eyes-feel-tired-after-work.html",
+              },
+              {
+                title: "Breathing and Muscle Tension",
+                url: "../articles/breathing-and-muscle-tension.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "Browse Stress & Wellness Resources",
+                url: "../categories/stress-wellness.html",
+              },
+              {
+                title: "Explore FlowResources",
+                url: "flowresources-redesign.html",
+              },
+            ],
+
+            services: [
+              "Crown Flow",
+              "Mini Facial",
+              "Focused Flow",
+              "Upper Body Flow",
+            ],
+
+            aftercare: [
+              "Allow the jaw to rest with the teeth slightly separated.",
+              "Take short breaks from screens and relax the muscles around the eyes.",
+              "Use slow, comfortable breathing to reduce unnecessary tension.",
+              "Notice clenching habits without forcing the jaw to relax.",
+            ],
+
+            medical:
+              "Seek medical evaluation for sudden or severe headache, facial weakness, changes in speech or vision, confusion, fainting, significant jaw injury, or new neurological symptoms.",
+          },
+
+          neck: {
+            title: "Neck",
+            introduction:
+              "Explore practical information for common neck tension, workday discomfort, restricted movement, and stress-related muscle guarding.",
+
+            concerns: [
+              "Tech neck and prolonged screen use",
+              "Restricted rotation or stiffness",
+              "Muscle tension related to stress",
+              "Postural fatigue",
+              "Discomfort after prolonged sitting",
+            ],
+
+            flownotes: [
+              {
+                title: "Why Desk Work Causes Neck and Shoulder Tension",
+                url: "../articles/why-desk-work-can-cause-neck-and-shoulder-tension.html",
+              },
+              {
+                title: "Preventing Tech Neck",
+                url: "../articles/preventing-tech-neck.html",
+              },
+              {
+                title: "Breathing and Muscle Tension",
+                url: "../articles/breathing-and-muscle-tension.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "The Flow Five™ Desk Routine",
+                url: "flowresources-redesign.html",
+              },
+              {
+                title: "Browse Workplace Wellness Resources",
+                url: "../categories/workplace-wellness.html",
+              },
+            ],
+
+            services: [
+              "Upper Body Flow",
+              "Focused Flow",
+              "Crown Flow",
+              "Cupping",
+            ],
+
+            aftercare: [
+              "Use gentle movement instead of forcing a deep stretch.",
+              "Change positions regularly during desk or screen work.",
+              "Support the arms and shoulders when sitting.",
+              "Use heat only when it feels comfortable and appropriate.",
+            ],
+
+            medical:
+              "Seek prompt medical care for neck pain after a serious injury, severe headache with neck stiffness, loss of strength, spreading numbness, loss of coordination, fever, or difficulty breathing or swallowing.",
+          },
+
+          shoulders: {
+            title: "Shoulders",
+            introduction:
+              "Explore wellness guidance for shoulder tension, limited mobility, repetitive activity, desk-related fatigue, and everyday overuse.",
+
+            concerns: [
+              "Upper shoulder tension",
+              "Repetitive reaching or lifting",
+              "Desk and computer work",
+              "Reduced shoulder mobility",
+              "General muscle fatigue",
+            ],
+
+            flownotes: [
+              {
+                title: "Why Desk Work Causes Neck and Shoulder Tension",
+                url: "../articles/why-desk-work-can-cause-neck-and-shoulder-tension.html",
+              },
+              {
+                title: "Standing Desks: Helpful or Hype?",
+                url: "../articles/standing-desks-helpful-or-hype.html",
+              },
+              {
+                title: "Massage Soreness: What Is Normal?",
+                url: "../articles/massage-soreness-what-is-normal.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "The Flow Five™ Desk Routine",
+                url: "flowresources-redesign.html",
+              },
+              {
+                title: "Explore Workplace Wellness Guides",
+                url: "../categories/workplace-wellness.html",
+              },
+            ],
+
+            services: [
+              "Upper Body Flow",
+              "Focused Flow",
+              "Cupping",
+              "Massage Gun",
+            ],
+
+            aftercare: [
+              "Use comfortable shoulder circles and gentle arm movements.",
+              "Avoid repeatedly testing painful or restricted movement.",
+              "Support the arms when working at a desk.",
+              "Allow adequate recovery after repetitive lifting or exercise.",
+            ],
+
+            medical:
+              "Seek medical care for sudden loss of movement, visible deformity, severe swelling, inability to use the arm, chest pain, unexplained weakness, or symptoms following a fall or significant injury.",
+          },
+
+          chest: {
+            title: "Chest & Front Torso",
+            introduction:
+              "Explore general wellness information for postural tightness, shallow breathing patterns, upper-body tension, and repetitive forward-reaching activities.",
+
+            concerns: [
+              "Rounded or forward posture",
+              "Tension associated with desk work",
+              "Shallow or guarded breathing",
+              "Repetitive pushing or reaching",
+              "General upper-body stiffness",
+            ],
+
+            flownotes: [
+              {
+                title: "Breathing and Muscle Tension",
+                url: "../articles/breathing-and-muscle-tension.html",
+              },
+              {
+                title: "Building a More Comfortable Workstation",
+                url: "../articles/building-a-more-comfortable-workstation.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "Browse Movement & Mobility Resources",
+                url: "../categories/movement-mobility.html",
+              },
+              {
+                title: "Explore FlowResources",
+                url: "flowresources-redesign.html",
+              },
+            ],
+
+            services: ["Upper Body Flow", "Focused Flow", "Stretch Clinic"],
+
+            aftercare: [
+              "Practice comfortable breathing without forcing deep breaths.",
+              "Take breaks from prolonged forward-reaching positions.",
+              "Use gentle chest-opening movement within a comfortable range.",
+              "Notice whether stress causes you to hold your breath.",
+            ],
+
+            medical:
+              "Chest pain, pressure, shortness of breath, sweating, faintness, pain spreading to the arm or jaw, or sudden unexplained symptoms require immediate medical evaluation.",
+          },
+
+          "upper-back": {
+            title: "Upper Back",
+            introduction:
+              "Explore resources for upper-back tension, posture-related fatigue, muscle knots, prolonged sitting, and repetitive work.",
+
+            concerns: [
+              "Desk-related upper-back tension",
+              "Postural fatigue",
+              "Muscle knots or sensitive areas",
+              "Limited thoracic movement",
+              "Repetitive lifting or reaching",
+            ],
+
+            flownotes: [
+              {
+                title: "The Truth About Muscle Knots",
+                url: "../articles/the-truth-about-muscle-knots.html",
+              },
+              {
+                title: "Why Desk Work Causes Neck and Shoulder Tension",
+                url: "../articles/why-desk-work-can-cause-neck-and-shoulder-tension.html",
+              },
+              {
+                title: "Five-Minute Movement Breaks for Busy Workdays",
+                url: "../articles/five-minute-movement-breaks-for-busy-workdays.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "The Flow Five™ Desk Routine",
+                url: "flowresources-redesign.html",
+              },
+              {
+                title: "Browse Workplace Wellness",
+                url: "../categories/workplace-wellness.html",
+              },
+            ],
+
+            services: [
+              "Upper Body Flow",
+              "Focused Flow",
+              "Cupping",
+              "Hot Stones",
+            ],
+
+            aftercare: [
+              "Use gentle upper-back rotation and comfortable movement.",
+              "Take regular breaks from prolonged sitting.",
+              "Avoid aggressively pressing sensitive areas after massage.",
+              "Support recovery with normal hydration, meals, and rest.",
+            ],
+
+            medical:
+              "Seek medical evaluation for upper-back pain accompanied by chest pain, shortness of breath, fever, significant weakness, unexplained weight loss, trauma, or new numbness and tingling.",
+          },
+
+          "lower-back": {
+            title: "Lower Back",
+            introduction:
+              "Explore practical guidance for lower-back fatigue, prolonged sitting, lifting demands, muscle tension, and restricted movement.",
+
+            concerns: [
+              "Prolonged sitting",
+              "Lifting or repetitive bending",
+              "Muscle fatigue and stiffness",
+              "Reduced hip mobility",
+              "General postural strain",
+            ],
+
+            flownotes: [
+              {
+                title: "Five-Minute Movement Breaks for Busy Workdays",
+                url: "../articles/five-minute-movement-breaks-for-busy-workdays.html",
+              },
+              {
+                title: "Active Recovery vs. Rest Days",
+                url: "../articles/active-recovery-vs-rest-days.html",
+              },
+              {
+                title: "Massage Soreness: What Is Normal?",
+                url: "../articles/massage-soreness-what-is-normal.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "Browse Recovery Resources",
+                url: "../categories/recovery.html",
+              },
+              {
+                title: "Explore FlowResources",
+                url: "flowresources-redesign.html",
+              },
+            ],
+
+            services: [
+              "Lower Body Flow",
+              "Focused Flow",
+              "Hot Stones",
+              "Cupping",
+            ],
+
+            aftercare: [
+              "Choose gentle walking or comfortable movement over complete inactivity.",
+              "Avoid repeatedly stretching into sharp discomfort.",
+              "Change sitting positions throughout the day.",
+              "Use pillows or support as needed when resting.",
+            ],
+
+            medical:
+              "Seek urgent care for lower-back pain with new loss of bladder or bowel control, numbness around the groin, progressive leg weakness, fever, unexplained weight loss, or symptoms following significant trauma.",
+          },
+
+          "arms-hands": {
+            title: "Arms, Wrists & Hands",
+            introduction:
+              "Explore wellness guidance for repetitive hand use, forearm tension, gripping, computer work, and everyday upper-extremity fatigue.",
+
+            concerns: [
+              "Repetitive typing or mouse use",
+              "Grip-intensive work or hobbies",
+              "Forearm tension",
+              "Hand and wrist fatigue",
+              "Repetitive lifting or carrying",
+            ],
+
+            flownotes: [
+              {
+                title: "Can Massage Help Carpal Tunnel Symptoms?",
+                url: "../articles/can-massage-help-carpal-tunnel.html",
+              },
+              {
+                title: "Five-Minute Movement Breaks for Busy Workdays",
+                url: "../articles/five-minute-movement-breaks-for-busy-workdays.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "Browse Workplace Wellness Resources",
+                url: "../categories/workplace-wellness.html",
+              },
+              {
+                title: "Explore FlowResources",
+                url: "flowresources-redesign.html",
+              },
+            ],
+
+            services: [
+              "HandFlow",
+              "Focused Flow",
+              "Upper Body Flow",
+              "Cupping",
+            ],
+
+            aftercare: [
+              "Take regular breaks from repetitive gripping or typing.",
+              "Use gentle hand, wrist, and forearm movement.",
+              "Adjust work tools to reduce unnecessary gripping force.",
+              "Avoid prolonged pressure directly over irritated areas.",
+            ],
+
+            medical:
+              "Seek medical evaluation for persistent numbness, progressive weakness, loss of grip, severe swelling, color changes, significant injury, or symptoms that interfere with daily use of the hand.",
+          },
+elbows: {
+  title: "Elbows & Forearms",
+
+  introduction:
+    "Explore wellness guidance for repetitive gripping, lifting, racquet sports, golf, tool use, forearm fatigue, and discomfort around the inner or outer elbow.",
+
+  concerns: [
+    "Outer-elbow discomfort associated with repetitive wrist extension",
+    "Inner-elbow discomfort associated with gripping or wrist flexion",
+    "Forearm muscle fatigue",
+    "Repetitive racquet sports, golf, lifting, or tool use",
+    "Reduced grip comfort or endurance",
+  ],
+
+  flownotes: [
+    {
+      title: "Tennis Elbow vs. Golfer’s Elbow",
+      url: "../articles/tennis-elbow-vs-golfers-elbow.html",
+    },
+    {
+      title: "Can Massage Help Tennis or Golfer’s Elbow?",
+      url: "../articles/can-massage-help-elbow-tendinopathy.html",
+    },
+  ],
+
+  resources: [
+    {
+      title: "Elbow Overuse: Inside vs. Outside Discomfort",
+      url: "flowresources-redesign.html",
+    },
+    {
+      title: "Forearm and Grip Recovery Guide",
+      url: "flowresources-redesign.html",
+    },
+  ],
+
+  services: [
+    "HandFlow",
+    "Focused Flow",
+    "Upper Body Flow",
+    "Cupping",
+  ],
+
+  aftercare: [
+    "Reduce or modify repetitive gripping when symptoms are irritated.",
+    "Use gentle wrist and forearm movement within a comfortable range.",
+    "Avoid repeatedly pressing directly into a sensitive tendon attachment.",
+    "Increase work, sport, or lifting demands gradually.",
+  ],
+
+  medical:
+    "Seek medical evaluation for significant swelling, visible deformity, sudden weakness, persistent numbness, loss of grip, symptoms following trauma, or discomfort that continues to interfere with work, sleep, or normal daily use.",
+},
+          hips: {
+            title: "Hips & Glutes",
+            introduction:
+              "Explore information related to prolonged sitting, hip stiffness, gluteal tension, exercise recovery, and limited lower-body mobility.",
+
+            concerns: [
+              "Prolonged sitting",
+              "Hip flexor tightness",
+              "Gluteal or piriformis-region tension",
+              "Running and exercise recovery",
+              "Reduced hip mobility",
+            ],
+
+            flownotes: [
+              {
+                title: "Active Recovery vs. Rest Days",
+                url: "../articles/active-recovery-vs-rest-days.html",
+              },
+              {
+                title: "Everyday Mobility Exercises",
+                url: "../articles/everyday-mobility-exercises.html",
+              },
+              {
+                title: "Five-Minute Movement Breaks for Busy Workdays",
+                url: "../articles/five-minute-movement-breaks-for-busy-workdays.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "Browse Movement & Mobility Resources",
+                url: "../categories/movement-mobility.html",
+              },
+              {
+                title: "Explore Recovery Guides",
+                url: "../categories/recovery.html",
+              },
+            ],
+
+            services: [
+              "Lower Body Flow",
+              "Focused Flow",
+              "Stretch Clinic",
+              "Massage Gun",
+            ],
+
+            aftercare: [
+              "Use comfortable walking and gentle hip movement.",
+              "Avoid forcing deep stretches after a session.",
+              "Change sitting positions regularly.",
+              "Allow recovery time after demanding lower-body activity.",
+            ],
+
+            medical:
+              "Seek medical evaluation for inability to bear weight, severe groin pain, sudden loss of movement, significant swelling, symptoms after a fall, or worsening numbness or weakness in the leg.",
+          },
+
+          knees: {
+            title: "Knees",
+            introduction:
+              "Explore general wellness support for activity-related fatigue, surrounding muscle tension, walking, running, and repetitive lower-body movement.",
+
+            concerns: [
+              "Walking or running fatigue",
+              "Repetitive squatting or stairs",
+              "Tension in surrounding thigh and calf muscles",
+              "Post-exercise recovery",
+              "Reduced comfortable range of movement",
+            ],
+
+            flownotes: [
+              {
+                title: "Active Recovery vs. Rest Days",
+                url: "../articles/active-recovery-vs-rest-days.html",
+              },
+              {
+                title: "Everyday Mobility Exercises",
+                url: "../articles/everyday-mobility-exercises.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "Browse Recovery Resources",
+                url: "../categories/recovery.html",
+              },
+              {
+                title: "Explore Movement & Mobility",
+                url: "../categories/movement-mobility.html",
+              },
+            ],
+
+            services: [
+              "Lower Body Flow",
+              "Focused Flow",
+              "Stretch Clinic",
+              "Massage Gun",
+            ],
+
+            aftercare: [
+              "Use comfortable, low-impact movement.",
+              "Avoid repeatedly testing painful movements.",
+              "Allow time for recovery following demanding activity.",
+              "Support the surrounding hip, thigh, and calf muscles with gentle movement.",
+            ],
+
+            medical:
+              "Seek medical evaluation for inability to bear weight, significant swelling, locking, instability, deformity, redness with fever, or symptoms following a serious injury.",
+          },
+
+          legs: {
+            title: "Legs & Calves",
+            introduction:
+              "Explore guidance for muscle fatigue, tight calves, prolonged standing, exercise recovery, walking, and repetitive lower-body activity.",
+
+            concerns: [
+              "Prolonged standing or walking",
+              "Running and exercise recovery",
+              "Calf and thigh tightness",
+              "General muscle fatigue",
+              "Repetitive lower-body work",
+            ],
+
+            flownotes: [
+              {
+                title: "Active Recovery vs. Rest Days",
+                url: "../articles/active-recovery-vs-rest-days.html",
+              },
+              {
+                title: "Everyday Mobility Exercises",
+                url: "../articles/everyday-mobility-exercises.html",
+              },
+              {
+                title: "Massage Soreness: What Is Normal?",
+                url: "../articles/massage-soreness-what-is-normal.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "Browse Recovery Resources",
+                url: "../categories/recovery.html",
+              },
+              {
+                title: "Explore FlowResources",
+                url: "flowresources-redesign.html",
+              },
+            ],
+
+            services: [
+              "Lower Body Flow",
+              "Focused Flow",
+              "FootFlow",
+              "Massage Gun",
+            ],
+
+            aftercare: [
+              "Use gentle walking and comfortable ankle movement.",
+              "Resume strenuous exercise gradually after a demanding session.",
+              "Eat normally and support recovery with adequate rest.",
+              "Avoid aggressively stretching fatigued muscles.",
+            ],
+
+            medical:
+              "Seek urgent medical care for sudden one-sided calf swelling, warmth, redness, unexplained shortness of breath, severe pain, inability to walk, or symptoms following significant injury.",
+          },
+
+          feet: {
+            title: "Feet",
+            introduction:
+              "Explore wellness support for foot fatigue, prolonged standing, plantar tension, ankle stiffness, and everyday walking demands.",
+
+            concerns: [
+              "Prolonged standing or walking",
+              "Foot and arch fatigue",
+              "Plantar-region tension",
+              "Tight ankles and calves",
+              "General exercise recovery",
+            ],
+
+            flownotes: [
+              {
+                title: "Active Recovery vs. Rest Days",
+                url: "../articles/active-recovery-vs-rest-days.html",
+              },
+              {
+                title: "Everyday Mobility Exercises",
+                url: "../articles/everyday-mobility-exercises.html",
+              },
+            ],
+
+            resources: [
+              {
+                title: "Browse Recovery Resources",
+                url: "../categories/recovery.html",
+              },
+              {
+                title: "Explore FlowResources",
+                url: "flowresources-redesign.html",
+              },
+            ],
+
+            services: ["FootFlow", "Lower Body Flow", "Focused Flow"],
+
+            aftercare: [
+              "Use comfortable ankle circles and gentle toe movement.",
+              "Wear supportive footwear appropriate for your activity.",
+              "Increase walking or exercise demands gradually.",
+              "Allow feet and calves time to recover after prolonged standing.",
+            ],
+
+            medical:
+              "Seek medical evaluation for inability to bear weight, severe swelling, open wounds, signs of infection, sudden color changes, loss of sensation, or symptoms following a significant injury.",
+          },
+        };
+
+        /* ===================================================
+           ELEMENT REFERENCES
+           =================================================== */
+
+        const regionTitle = document.getElementById("region-title");
+
+        const regionIntroduction = document.getElementById(
+          "region-introduction",
+        );
+
+        const regionConcerns = document.getElementById("region-concerns");
+
+        const regionFlowNotes = document.getElementById("region-flownotes");
+
+        const regionResources = document.getElementById("region-resources");
+
+        const regionServices = document.getElementById("region-services");
+
+        const regionAftercare = document.getElementById("region-aftercare");
+
+        const regionMedicalGuidance = document.getElementById(
+          "region-medical-guidance",
+        );
+
+        const bodyRegions = document.querySelectorAll(".body-region");
+
+        const quickRegionButtons = document.querySelectorAll(
+          "[data-quick-region]",
+        );
+
+        const bodyViewButtons = document.querySelectorAll("[data-view-button]");
+
+        const bodyViews = document.querySelectorAll("[data-body-view]");
+
+        let selectedRegion = "neck";
+
+        /* ===================================================
+           RENDER HELPERS
+           =================================================== */
+
+        function renderList(container, items) {
+          container.innerHTML = "";
+
+          items.forEach((item) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = item;
+            container.appendChild(listItem);
+          });
+        }
+
+        function renderLinks(container, links) {
+          container.innerHTML = "";
+
+          links.forEach((item) => {
+            const link = document.createElement("a");
+
+            link.className = "information-link";
+            link.href = item.url;
+            link.textContent = item.title;
+
+            container.appendChild(link);
+          });
+        }
+
+        function renderServices(container, services) {
+          container.innerHTML = "";
+
+          services.forEach((service) => {
+            const serviceElement = document.createElement("div");
+
+            serviceElement.className = "service-chip";
+            serviceElement.textContent = service;
+
+            container.appendChild(serviceElement);
+          });
+        }
+
+        /* ===================================================
+           REGION SELECTION
+           =================================================== */
+
+        function selectRegion(regionName, scrollToPanel = false) {
+          const content = regionContent[regionName];
+
+          if (!content) {
+            return;
+          }
+
+          selectedRegion = regionName;
+
+          regionTitle.textContent = content.title;
+
+          regionIntroduction.textContent = content.introduction;
+
+          renderList(regionConcerns, content.concerns);
+          renderLinks(regionFlowNotes, content.flownotes);
+          renderLinks(regionResources, content.resources);
+          renderServices(regionServices, content.services);
+          renderList(regionAftercare, content.aftercare);
+
+          regionMedicalGuidance.textContent = content.medical;
+
+          bodyRegions.forEach((region) => {
+            region.classList.toggle(
+              "is-selected",
+              region.dataset.region === regionName,
+            );
+          });
+
+          quickRegionButtons.forEach((button) => {
+            button.classList.toggle(
+              "is-selected",
+              button.dataset.quickRegion === regionName,
+            );
+          });
+
+          if (
+            scrollToPanel &&
+            window.matchMedia("(max-width: 980px)").matches
+          ) {
+            document.querySelector(".body-information-panel").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }
+
+        /* ===================================================
+           BODY VIEW SWITCHING
+           =================================================== */
+
+        function setBodyView(viewName) {
+          bodyViewButtons.forEach((button) => {
+            const isActive = button.dataset.viewButton === viewName;
+
+            button.classList.toggle("is-active", isActive);
+
+            button.setAttribute("aria-pressed", String(isActive));
+          });
+
+          bodyViews.forEach((view) => {
+            view.classList.toggle(
+              "is-active",
+              view.dataset.bodyView === viewName,
+            );
+          });
+        }
+
+        /* ===================================================
+           EVENT LISTENERS
+           =================================================== */
+
+        bodyRegions.forEach((region) => {
+          region.addEventListener("click", () => {
+            selectRegion(region.dataset.region, true);
+          });
+
+          region.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+
+              selectRegion(region.dataset.region, true);
+            }
+          });
+        });
+
+        quickRegionButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const regionName = button.dataset.quickRegion;
+
+            selectRegion(regionName, true);
+          });
+        });
+
+        const singleViewButtons = document.querySelectorAll(
+          "[data-single-view-button]",
+        );
+
+        const singleBodyViews = document.querySelectorAll(
+          "[data-single-body-view]",
+        );
+
+        function setSingleBodyView(viewName) {
+          singleViewButtons.forEach((button) => {
+            const active = button.dataset.singleViewButton === viewName;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", String(active));
+          });
+
+          singleBodyViews.forEach((view) => {
+            view.classList.toggle(
+              "is-active",
+              view.dataset.singleBodyView === viewName,
+            );
+          });
+        }
+
+        singleViewButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setSingleBodyView(button.dataset.singleViewButton);
+          });
+        });
+
+        /* ===================================================
+           INITIAL STATE
+           =================================================== */
+
+        selectRegion("neck");
+      })();
+    </script>
+  </body>
+</html>
