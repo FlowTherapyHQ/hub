@@ -36,7 +36,6 @@ FlowHub.formatArticleDate = function (dateString) {
 
   return new Intl.DateTimeFormat("en-US", {
     month: "long",
-    day: "numeric",
     year: "numeric",
   }).format(date);
 };
@@ -99,40 +98,27 @@ FlowHub.getArticleNavigation = function (articleId) {
    ========================================================= */
 
 FlowHub.createArticleMetaHTML = function (article) {
-  const category = FlowHub.escapeHTML(article.category);
   const date = FlowHub.escapeHTML(
     FlowHub.formatArticleDate(article.publishDate)
   );
-  const readTime = FlowHub.escapeHTML(article.readTime);
+
+  const readTime = FlowHub.escapeHTML(article.readTime || "");
 
   return `
-    <div class="flowhub-article-meta" aria-label="Article information">
-      ${
-        category
-          ? `<span class="flowhub-article-category">${category}</span>`
-          : ""
-      }
+    <span>By Brandy Hennigan, LMT</span>
 
-      ${
-        date
-          ? `
-            <span class="flowhub-article-meta-item">
-              Published ${date}
-            </span>
-          `
-          : ""
-      }
+    <span aria-hidden="true">•</span>
 
-      ${
-        readTime
-          ? `
-            <span class="flowhub-article-meta-item">
-              ${readTime}
-            </span>
-          `
-          : ""
-      }
-    </div>
+    <span>${date}</span>
+
+    ${
+      readTime
+        ? `
+          <span aria-hidden="true">•</span>
+          <span>${readTime}</span>
+        `
+        : ""
+    }
   `;
 };
 
@@ -325,6 +311,16 @@ FlowHub.renderArticleNavigation = function (articleId) {
     FlowHub.createArticleNavigationHTML(articleId);
 };
 
+FlowHub.renderArticleReadTime = function (article) {
+  const target = document.querySelector("[data-article-read-time]");
+
+  if (!target || !article || !article.readTime) {
+    return;
+  }
+
+  target.textContent = article.readTime;
+};
+
 /* =========================================================
    Initialize article utilities
    ========================================================= */
@@ -344,6 +340,7 @@ FlowHub.initArticle = function (articleId) {
   }
 
   FlowHub.renderArticleMeta(article);
+  FlowHub.renderArticleReadTime(article);
   FlowHub.renderRelatedArticles(resolvedId);
   FlowHub.renderArticleNavigation(resolvedId);
 };

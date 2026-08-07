@@ -20,7 +20,7 @@ FlowHub.articles = [
     "category": "Movement & Mobility",
     "publishDate": "2026-08-07",
     "updatedDate": "2026-08-07",
-    "readTime": "8 min",
+    "readTime": "7 min",
     "featured": true,
     "image": "/assets/images/flownotes/massage-for-runners.webp",
     "excerpt": "How therapeutic massage may support comfort, recovery, mobility, and consistent training throughout a runner's season.",
