@@ -1,119 +1,161 @@
 "use strict";
 
 /* =========================================================
-   FLOWHUB CMS LITE — CONTENT REGISTRY
-
-   Add and update FlowNotes and FlowResources here.
-   Dates must use YYYY-MM-DD format.
-   Only one item in each collection should normally have
-   featured: true.
+   FLOWHUB CMS
+   Version 2.0
    ========================================================= */
 
-window.FlowHubCMS = {
-  version: "1.0.0",
+window.FlowHub = window.FlowHub || {};
 
-  flowNotes: [
+FlowHub.version = "2.0";
+
+/* =========================================================
+   ARTICLES
+   ========================================================= */
+
+FlowHub.articles = [
+
     {
-      id: "breathing-and-muscle-tension",
+        id: "breathing-and-muscle-tension",
 
-      title: "Breathing and Muscle Tension",
+        title: "Breathing and Muscle Tension",
 
-      category: "Stress & Wellness",
+        category: "Stress & Wellness",
 
-      publishDate: "2026-08-03",
+        publishDate: "2026-08-03",
 
-      readTime: "6-minute read",
+        updatedDate: "2026-08-03",
 
-      excerpt:
-        "Learn how stress may affect breathing patterns and how gentle, comfortable breathing may support relaxation.",
+        readTime: "6 min",
 
-      url: "/articles/breathing-and-muscle-tension.html",
+        featured: true,
 
-      image:
-        "/assets/images/flowresources/the-science-of-relaxation.png",
+        image:
+            "/assets/images/flowresources/the-science-of-relaxation.png",
 
-      imageAlt:
-        "Preview for the Breathing and Muscle Tension FlowNote",
+        excerpt:
+            "Learn how stress may affect breathing patterns and how gentle breathing can support relaxation.",
 
-      featured: true,
+        url:
+            "/articles/breathing-and-muscle-tension.html",
+
+        tags: [
+            "breathing",
+            "stress",
+            "wellness",
+            "relaxation",
+            "nervous system"
+        ]
     },
 
     {
-      id: "five-minute-movement-breaks-for-busy-workdays",
+        id: "five-minute-movement-breaks-for-busy-workdays",
 
-      title: "Five-Minute Movement Breaks for Busy Workdays",
+        title: "Five-Minute Movement Breaks for Busy Workdays",
 
-      category: "Workplace Wellness",
+        category: "Workplace Wellness",
 
-      publishDate: "2026-08-02",
+        publishDate: "2026-08-02",
 
-      readTime: "5-minute read",
+        updatedDate: "2026-08-02",
 
-      excerpt:
-        "Discover practical ways to add brief movement breaks throughout a busy workday.",
+        readTime: "5 min",
 
-      url:
-        "/articles/five-minute-movement-breaks-for-busy-workdays.html",
+        featured: false,
 
-      image: "",
+        image: "",
 
-      imageAlt:
-        "Preview for Five-Minute Movement Breaks for Busy Workdays",
+        excerpt:
+            "Simple movement breaks can help reduce stiffness during long workdays.",
 
-      featured: false,
+        url:
+            "/articles/five-minute-movement-breaks-for-busy-workdays.html",
+
+        tags: [
+            "movement",
+            "office",
+            "exercise",
+            "desk",
+            "stretching"
+        ]
     },
-{
-    id: "standing-desks-helpful-or-hype",
 
-    title: "Standing Desks: Helpful or Hype?",
-
-    category: "Workplace Wellness",
-
-    publishDate: "2026-08-01",
-
-    readTime: "7-minute read",
-
-    excerpt:
-        "Learn when standing desks may help, their limitations, and practical strategies for reducing discomfort throughout the workday.",
-
-    url:
-        "/articles/standing-desks-helpful-or-hype.html",
-
-    image: "",
-
-    imageAlt:
-        "Preview for Standing Desks: Helpful or Hype?",
-
-    featured: false,
-}
-  ],
-
-  flowResources: [
     {
-      id: "flow-five-desk-routine",
+        id: "standing-desks-helpful-or-hype",
 
-      title: "The Flow Five™ Desk Routine",
+        title: "Standing Desks: Helpful or Hype?",
 
-      previewTitle: "The Flow Five™",
+        category: "Workplace Wellness",
 
-      previewSubtitle: "Desk Routine",
+        publishDate: "2026-08-01",
 
-      category: "Movement & Mobility",
+        updatedDate: "2026-08-01",
 
-      publishDate: "2026-08-03",
+        readTime: "7 min",
 
-      description:
-        "Use five simple movements to reduce stiffness and reset after prolonged sitting or computer work.",
+        featured: false,
 
-      previewNote: "5 simple movements for the workday",
+        image: "",
 
-      resourceUrl:
-        "/assets/images/flow-five-desk-routine.png",
+        excerpt:
+            "Explore the benefits and limitations of standing desks and practical ways to stay comfortable at work.",
 
-      relatedArticleUrl:
-        "/articles/five-minute-movement-breaks-for-busy-workdays.html",
+        url:
+            "/articles/standing-desks-helpful-or-hype.html",
 
-      featured: true,
-    },
-  ],
+        tags: [
+            "standing desk",
+            "ergonomics",
+            "office",
+            "workplace",
+            "movement"
+        ]
+    }
+
+];
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
+FlowHub.getArticle = function(id) {
+
+    return FlowHub.articles.find(article => article.id === id);
+
+};
+
+FlowHub.getAllArticles = function() {
+
+    return [...FlowHub.articles];
+
+};
+
+FlowHub.getFeaturedArticle = function() {
+
+    return FlowHub.articles.find(article => article.featured);
+
+};
+
+FlowHub.getNewestArticles = function(limit = 6) {
+
+    return [...FlowHub.articles]
+
+        .sort((a, b) =>
+
+            new Date(b.publishDate) -
+
+            new Date(a.publishDate))
+
+        .slice(0, limit);
+
+};
+
+FlowHub.getCategoryArticles = function(category) {
+
+    return FlowHub.articles.filter(
+
+        article => article.category === category
+
+    );
+
 };

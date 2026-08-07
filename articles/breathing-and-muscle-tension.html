@@ -593,7 +593,7 @@
     </style>
   </head>
 
-  <body>
+  <body data-article-id="breathing-and-muscle-tension">
     <div id="site-header"></div>
 
     <main class="article-shell">
@@ -1220,55 +1220,16 @@
         </div>
       </article>
 
-      <section class="related-reading">
-        <h2>Related Reading</h2>
+      <div id="flowhub-related-articles"></div>
 
-        <div class="related-grid">
-          <a class="related-card" href="why-stress-causes-muscle-tension.html">
-            Why Stress Causes Muscle Tension
-          </a>
-
-          <a class="related-card" href="the-science-of-relaxation.html">
-            The Science of Relaxation
-          </a>
-
-          <a
-            class="related-card"
-            href="when-stress-shows-up-as-physical-pain.html"
-          >
-            When Stress Shows Up as Physical Pain
-          </a>
-
-          <a class="related-card" href="why-you-hold-stress-in-your-jaw.html">
-            Why You Hold Stress in Your Jaw
-          </a>
-
-          <a
-            class="related-card"
-            href="why-your-eyes-feel-tired-after-work.html"
-          >
-            Why Your Eyes Feel Tired After Work
-          </a>
-
-          <a class="related-card" href="self-care-without-the-guilt.html">
-            Self-Care Without the Guilt
-          </a>
-        </div>
-      </section>
+      <div id="flowhub-article-navigation"></div>
     </main>
 
     <div id="site-footer"></div>
 
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function () {
-          navigator.serviceWorker
-            .register("/service-worker.js")
-            .catch(function (error) {
-              console.error("Service worker registration failed:", error);
-            });
-        });
-      }
-    </script>
+    <script src="/assets/js/site-layout.js"></script>
+    <script src="/assets/js/content-registry.js"></script>
+    <script src="/assets/js/related-articles.js"></script>
+    <script src="/assets/js/article-utils.js"></script>
   </body>
 </html>
