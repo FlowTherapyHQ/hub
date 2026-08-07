@@ -1,0 +1,124 @@
+/* ==========================================================================
+   02. Header
+========================================================================== */
+
+.header {
+    background: #ffffff;
+    padding: 20px 30px 28px;
+    text-align: center;
+    border-bottom: 1px solid #dbeafe;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo img {
+    display: block;
+    width: min(460px, 90%);
+    max-width: 460px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.subtitle {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    color: #52606d;
+    font-size: 18px;
+}
+
+
+/* ==========================================================================
+   03. Navigation
+========================================================================== */
+
+.nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.nav a {
+    padding: 8px 12px;
+    color: #1677c8;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.nav a:hover {
+    background: #dbeafe;
+}
+
+.nav a.active {
+    background: #1677c8;
+    color: #ffffff;
+}
+
+.nav a.active:hover {
+    background: #125fa5;
+}
+
+.nav a:focus-visible,
+.button:focus-visible,
+.footer-nav a:focus-visible,
+.back a:focus-visible,
+.center-link a:focus-visible,
+.article-back a:focus-visible,
+.category:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   04. Layout
+========================================================================== */
+
+.container {
+    flex: 1;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+/* ==========================================================================
+   12. Footer
+========================================================================== */
+
+.footer {
+    margin-top: auto;
+    padding: 30px;
+    background: #ffffff;
+    color: #6b7280;
+    border-top: 1px solid #dbeafe;
+    text-align: center;
+}
+
+.footer-nav {
+    margin-bottom: 15px;
+}
+
+.footer-nav a {
+    margin: 0 10px;
+    color: #1677c8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.footer-nav a.active {
+    color: #125fa5;
+    text-decoration: underline;
+}
+.container {
+  width: min(1100px, calc(100% - 2rem));
+  margin-right: auto;
+  margin-left: auto;
+}

@@ -234,45 +234,47 @@ FlowHub.createArticleNavigationHTML = function (articleId) {
 
   const previousHTML = navigation.previous
     ? `
-      <a
-        class="flowhub-article-nav-link flowhub-article-nav-previous"
-        href="${FlowHub.escapeHTML(navigation.previous.url)}"
-      >
-        <span class="flowhub-article-nav-label">
+      <a class="flownote-nav-card flownote-nav-previous"
+         href="${FlowHub.escapeHTML(navigation.previous.url)}">
+
+        <span class="flownote-nav-label">
           ← Previous FlowNote
         </span>
 
-        <strong>
+        <span class="flownote-nav-title">
           ${FlowHub.escapeHTML(navigation.previous.title)}
-        </strong>
+        </span>
+
       </a>
     `
-    : `<span></span>`;
+    : `<div class="flownote-nav-placeholder"></div>`;
 
   const nextHTML = navigation.next
     ? `
-      <a
-        class="flowhub-article-nav-link flowhub-article-nav-next"
-        href="${FlowHub.escapeHTML(navigation.next.url)}"
-      >
-        <span class="flowhub-article-nav-label">
+      <a class="flownote-nav-card flownote-nav-next"
+         href="${FlowHub.escapeHTML(navigation.next.url)}">
+
+        <span class="flownote-nav-label">
           Next FlowNote →
         </span>
 
-        <strong>
+        <span class="flownote-nav-title">
           ${FlowHub.escapeHTML(navigation.next.title)}
-        </strong>
+        </span>
+
       </a>
     `
-    : `<span></span>`;
+    : `<div class="flownote-nav-placeholder"></div>`;
 
   return `
     <nav
-      class="flowhub-article-navigation"
-      aria-label="FlowNote navigation"
-    >
+      class="flownote-navigation"
+      aria-label="Previous and Next FlowNotes">
+
       ${previousHTML}
+
       ${nextHTML}
+
     </nav>
   `;
 };

@@ -1,0 +1,40 @@
+/* ==========================================================================
+   01. Reset & Global Styles
+========================================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f9fc;
+    color: #1f2933;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.55;
+}
